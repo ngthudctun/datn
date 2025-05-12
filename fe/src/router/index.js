@@ -30,7 +30,7 @@ const routes = [
                 component: () => import('@/views/admin/index.vue'),
             },
             {
-                path: "/cateproduct",
+                path: "cateproduct",
                 name: "category-product",
                 component: () => import('@/views/admin/CurdProduct/Product_List.vue'),
             },

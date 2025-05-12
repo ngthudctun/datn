@@ -1,11 +1,8 @@
 
 
 <template>
-
   <div class="">
-
-    
-    <aside class="left-sidebar top-0 d-none d-lg-flex">
+    <aside class="left-sidebar top-0"  id="sidebar">
       <!-- Sidebar scroll-->
       <div>
         <!-- Sidebar navigation-->
@@ -210,7 +207,13 @@
           <div
             class="d-flex align-items-center justify-content-start h-100 mx-4"
           >
-            <i class=" d-flex d-lg-none ti ti-menu-2"></i>
+          <input type="checkbox" id="menu-toggle" />
+          
+            <i
+              class="ti ti-menu-2 d-flex d-lg-none"
+              id="toggleSidebar"
+              style="font-size: 24px; cursor: pointer"
+            ></i>
             <div class="ms-2 d-flex justify-content-center align-items-center">
               <img
                 class="mx-2 rounded"
@@ -253,14 +256,9 @@
         </div>
       </nav>
     </div>
-    
   </div>
-
-  
 </template>
 
   <script setup>
-
 import { baseImageUrl } from "@/config/constans.js";
-
 </script>
