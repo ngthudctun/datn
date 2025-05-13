@@ -26,7 +26,7 @@
         <NavSuport />
       </div>
 
-      <div class="container bg-white" style="padding-top: 70px">
+      <div class=" bg-white" style="padding-top: 70px">
         <div
           class="row border-black py-4"
           style="border-top: 1px solid #e1e1e1"

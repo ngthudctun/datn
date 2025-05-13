@@ -24,7 +24,7 @@
           <div class="ms-2 d-flex justify-content-center align-items-center">
             <img
               class="mx-2 rounded"
-              :src="$imageUrl + 'images.jpg'"
+              :src=" $imagebaseUrl + 'images.jpg'"
               alt=""
               width="60"
               height="100%"
