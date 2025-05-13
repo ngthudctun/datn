@@ -1,101 +1,338 @@
 
+
+
+
+
 <template>
-    <div
-      class="page-wrapper"
-      id="main-wrapper"
-      data-layout="vertical"
-      data-navbarbg="skin6"
-      data-sidebartype="full"
-      data-sidebar-position="fixed"
-      data-header-position="fixed"
-    >
+  <div
+    class="page-wrapper"
+    id="main-wrapper"
+    data-layout="vertical"
+    data-navbarbg="skin6"
+    data-sidebartype="full"
+    data-sidebar-position="fixed"
+    data-header-position="fixed"
+  >
+    <div class="body-wrapper">
       <!-- Sidebar Start -->
-  
+
       <!--  Sidebar End -->
       <!--  Main wrapper -->
-      <div class="body-wrapper">
-        <!--  Header Start -->
-   
-        <!--  Header End -->
-        <div class="">
-              <NavSuport />
-        </div>
-  
-        <div class="container-fluid">
-          <div class="row bg-white py-3 rounded" style="  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);">
+
+      <!--  Header Start -->
+
+      <!--  Header End -->
+      <div class="">
+        <NavSuport />
+      </div>
+
+      <div class=" bg-white" style="padding-top: 70px">
+        <div
+          class="row border-black py-4"
+          style="border-top: 1px solid #e1e1e1"
+        >
+          <div class="ps-3" style="box-sizing: border-box">
+            <h2>Danh sách sản phẩm</h2>
             <div class="">
-              <div class="mt-1"><h5>Bảng điều khiển</h5></div>
-              <hr>
-              <div class="border-top mt-3">
-                <div class="row">
-                  <div class="col-12 py-1 col-lg-4">
-                    <div
-                      class="d-flex bg-info rounded border border-dark-light text-white px-1"
-                    >
-                      <div class="p-3 bg-info m-1 text h1 rounded text-white">
-                        <i class="fa-solid fa-globe"></i>
-                      </div>
-                      <div
-                        class="d-flex col-9 px-3 flex-column align-items-center justify-content-center"
+              <h6 class="d-flex">
+                <a href="">Trang chủ</a>
+                <div class="mx-1">/</div>
+                Danh sách sản phẩm
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="border-top: 1px solid #e1e1e1">
+          <div class="">
+            <div class="mt-3">
+              <div class="row justify-content-center">
+                <div class="col-12 col-lg-6 row justify-content-center">
+                  <div
+                    class="add_product py-2 rounded-start-1 text-center col-5 text-white"
+                  >
+                    <b> thêm sản phẩm</b>
+                  </div>
+                  <div
+                    class="py-2 rounded-end text-center col-7"
+                    style="background-color: #b2acac42"
+                  >
+                    <form class="d-flex align-items-center">
+                      <i class="fas fa-search"></i>
+                      <input
+                        class="form-control mx-2 border-0 p-0"
+                        type=""
+                        placeholder="Tìm kiếm sản phẩm"
+                        aria-label=""
+                      />
+                    </form>
+                  </div>
+                </div>
+                <div
+                  class="col-12 col-lg-6 mt-3 mt-lg-0 col-lg-6 d-flex justify-content-start"
+                  style="flex-wrap: wrap"
+                >
+                  <div class="col-12 col-lg-4 d-flex justify-content-center">
+                    <div class="dropdown nlb-select col-12">
+                      <button
+                        class="btn btn-light border-0 w-100 dropdown-toggle text-center"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
                       >
-                        <div class="">cài đặt trang web</div>
-                        <b>xem thêm</b>
-                      </div>
+                        bán chạy nhất
+                      </button>
+                      <ul class="dropdown-menu border-1 text-center">
+                        <li>
+                          <a class="dropdown-item" href="#"> bán chạy nhất</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="#"> mới nhất</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="#">Sản phẩm cũ nhất</a>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-  
-                  <div class="col-12 py-1 col-lg-4">
+                  <div
+                    class="col-12 col-lg-8 mt-2 mt-lg-0 d-flex justify-content-center"
+                  >
                     <div
-                      class="d-flex bg-warning rounded border border-dark-light text-white px-1"
+                      class="dropdown nlb-select px-1 col-4"
+                      style="box-sizing: border-box"
                     >
-                      <div class="p-3 m-1 text h1 rounded text-white">
-                        <i class="fa-solid fa-globe"></i>
-                      </div>
-                      <div
-                        class="d-flex col-9 px-3 flex-column align-items-center justify-content-center"
+                      <button
+                        class="btn btn-light border-0 dropdown-toggle text-center w-100"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
                       >
-                        <div class="">cài đặt trang web</div>
-                        <b>xem thêm</b>
-                      </div>
+                        Trạng thái
+                      </button>
+                      <ul class="dropdown-menu border-1 text-center">
+                        <li>
+                          <a class="dropdown-item" href="#">Đã ẩn</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="#">Kích hoạt</a>
+                        </li>
+                      </ul>
                     </div>
-                  </div>
-                  <div class="col-12 py-1 col-lg-4">
                     <div
-                      class="d-flex bg-danger bg-gradient rounded border border-dark-light text-white px-1"
+                      class="dropdown nlb-select px-1 col-4"
+                      style="box-sizing: border-box"
                     >
-                      <div class="p-3 m-1 text h1 rounded text-white">
-                        <i class="fa-solid fa-globe"></i>
-                      </div>
-                      <div
-                        class="d-flex col-9 px-3 flex-column align-items-center justify-content-center"
+                      <button
+                        class="btn btn-light border-0 dropdown-toggle text-center w-100"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
                       >
-                        <div class="">cài đặt trang web</div>
-                        <b>xem thêm</b>
-                      </div>
+                        Trạng thái
+                      </button>
+                      <ul class="dropdown-menu border-1 text-center">
+                        <li>
+                          <a class="dropdown-item" href="#">Đã ẩn</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="#">Kích hoạt</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div
+                      class="dropdown nlb-select px-1 col-4"
+                      style="box-sizing: border-box"
+                    >
+                      <button
+                        class="btn btn-light border-0 dropdown-toggle text-center w-100"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Thêm bộ lọc
+                      </button>
+                      <ul class="dropdown-menu border-1 text-center p-2" style="min-width: 300px;">
+                        <li class="dropdown-item">
+                          <div class="text-start">
+                            <h5><b>Lọc theo: </b></h5><br>
+                            <select class="form-select" id="categorySelect">
+                              <option value="">Tất cả</option>
+                              <option value="1">Bánh ngọt</option>
+                              <option value="2">Bánh mặn</option>
+                              <option value="3">Đồ uống</option>
+                            </select>
+                            <br>
+                            <select class="form-select" id="">
+                              <option value="">Tất cả</option>
+                              <option value="1">Bánh ngọt</option>
+                              <option value="2">Bánh mặn</option>
+                              <option value="3">Đồ uống</option>
+                            </select>
+                          </div>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
-                <!--    <div class="row d-flex ">
-                  <div
-                    class="col-2 h-100 mx-1  d-flex"
-                    style="border: 1px solid black; border-radius: 5px"
-                  >
-                    <div class="col-3 p-3 m-1 bg-secondary text h1 rounded text-white">   <i class="fa-solid fa-globe"></i></div>
-                  </div>
-                </div> -->
+              </div>
+              <div class="row box-product" style="overflow-x: auto">
+                <ul>
+                  <li>
+                    <div
+                      class="mt-4 d-flex align-items-center"
+                      style="background-color: #b3b3b31a; min-width: 1100px"
+                    >
+                      <div
+                        class="col-4 d-flex justify-content-center align-items-center"
+                      >
+                        <input class="" type="checkbox" name="" id="" />
+                        <div class="col-10 d-flex justify-content-center">
+                          <b>Tên sản phẩm</b>
+                        </div>
+                      </div>
+                      <div class="col-2 row"><b>Giá sản phẩm</b></div>
+                      <div
+                        class="col-3 p-2 rounded d-flex justify-content-center"
+                        style="flex-wrap: wrap"
+                      >
+                        <b>Tag</b>
+                      </div>
+                      <div class="col-2 d-flex justify-content-center">
+                        <b>Trạng thái</b>
+                      </div>
+                    </div>
+                    <br />
+                    <div
+                      class="py-3 row align-items-center"
+                      style="min-width: 1100px"
+                    >
+                      <div class="col-4 d-flex align-items-center">
+                        <input class="col-2" type="checkbox" name="" id="" />
+                        <img
+                          class="rounded-2 col-2"
+                          :src="baseImageUrl + 'images.jpg'"
+                          alt=""
+                          width=""
+                          height="50"
+                        />
+                        <div
+                          class="h-100 col-7 px-3"
+                          style="box-sizing: border-box"
+                        >
+                          <div class="text-break text-max-1">
+                            Cái cây sản phẩm
+                          </div>
+                          <div class="">
+                            <a class="text-decoration-underline link-primary"
+                              >danh muc</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-2 row"><b>2.999,000 Đ</b></div>
+                      <div
+                        class="col-3 p-2 justify-content-center rounded d-flex"
+                        style="flex-wrap: wrap"
+                      >
+                        <div
+                          class="border-1 border p-1 m-1 rounded-2"
+                          style="background-color: #e3e6ed"
+                        >
+                          <b>may tinh</b>
+                        </div>
+                        <div
+                          class="border-1 border p-1 m-1 rounded-2"
+                          style="background-color: #e3e6ed"
+                        >
+                          <b>may tinh</b>
+                        </div>
+                        <div
+                          class="border-1 border p-1 m-1 rounded-2"
+                          style="background-color: #e3e6ed"
+                        >
+                          <b>may tinh</b>
+                        </div>
+                        <div
+                          class="border-1 border p-1 m-1 rounded-2"
+                          style="background-color: #e3e6ed"
+                        >
+                          <b>may tinh</b>
+                        </div>
+                        <div
+                          class="border-1 border p-1 m-1 rounded-2"
+                          style="background-color: #e3e6ed"
+                        >
+                          <b>may tinh</b>
+                        </div>
+                      </div>
+                      <div class="col-2 d-flex justify-content-center">
+                        <label class="switch">
+                          <label class="nlb-toggle-switch">
+                            <input
+                              type="checkbox"
+                              class="nlb-toggle-input"
+                              :checked="getcheck()"
+                            />
+                            <span class="nlb-slider"></span>
+                          </label>
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                      <div class="col-1 d-flex justify-content-center">
+                        <div class="">
+                          <div class="dropdown">
+                            <div
+                              class=""
+                              type="button"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                            >
+                              <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                              <li>
+                                <router-link
+                                  :to="'/admin/product-editproduct/'"
+                                >
+                                  <div class="dropdown-item">
+                                    Chỉnh sửa
+                                  </div></router-link
+                                >
+                              </li>
+                              <li>
+                                <div class="dropdown-item">xoa</div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
-     
       </div>
     </div>
-  </template>
+  </div>
+</template>
   
+<style>
+</style>
+
   <script setup>
-  import NavSuport from "@/components/admin/AdminLayout/NavSuport.vue";
-  import { baseImageUrl } from "@/config/constans.js";
-  </script>
+import "@/assets/css/admincss/css/curdproduct/productlist.css";
+import NavSuport from "@/components/admin/AdminLayout/NavSuport.vue";
+import { baseImageUrl } from "@/config/constans.js";
+const getcheck = (value) => {
+  if (value == null) {
+    return false;
+  } else {
+    return true;
+  }
+};
+</script>
   
   
   

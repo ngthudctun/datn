@@ -18,8 +18,8 @@
       <NavSuport />
       <!--  Header End -->
 
-      <div class="container-fluid">
-        <div class="row py-3  bg-white rounded" style="  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);">
+      <div class="container">
+        <div class="row py-3  bg-white " style="  ">
           <div class="">
             <div class="mt-1"><h5>Bảng điều khiển</h5></div>
             <hr>
@@ -99,8 +99,8 @@
         </div>
       </div>
 
-      <div class="container-fluid pt-0">
-        <div class="row bg-white py-3 rounded" style="  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);">
+      <div class="container pt-0">
+        <div class="row bg-white py-3 " style="  ">
           <div class="">
             <div class="mt-1"><h5>Bảng điều khiển</h5></div>
             <hr>
@@ -165,8 +165,8 @@
           </div>
         </div>
       </div>
-      <div class="container-fluid pt-0">
-        <div class="row bg-white rounded" style="  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);">
+      <div class="container pt-0">
+        <div class="row bg-white " style="  ">
           <div class="border py-2">
             <div class="mt-1"><h5>Thống kê sô liệu</h5></div>
             <div class="border-top mt-3">
@@ -242,10 +242,10 @@
         </div>
       </div>
       <div class="body-wrapper-inner ">
-          <div class="container-fluid  p-1">
+          <div class=" ">
           <!--  Row 1 -->
-          <div class="row p-2" style="box-sizing: border-box;">
-            <div class="col-lg-8 d-flex align-items-strech">
+          <div class="row " style="box-sizing: border-box;">
+            <div class="col-lg-8 d-flex align-items-strech p-0">
               <div class="card w-100">
                 <div class="card-body">
                   <div
@@ -267,8 +267,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="row">
+            <div class="col-lg-4 p-0">
+              <div class="row bg-white">
                 <div class="col-lg-12">
                   <!-- Yearly Breakup -->
                   <div class="card overflow-hidden">
@@ -310,7 +310,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-12 bg-white">
                   <!-- Monthly Earnings -->
                   <div class="card mb-0">
                     <div class="card-body h-100">

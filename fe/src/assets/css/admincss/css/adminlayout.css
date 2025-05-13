@@ -1,0 +1,29 @@
+  /* Ẩn checkbox thật */
+  #menu-toggle {
+    
+  }
+
+  /* Sidebar mặc định ẩn ở mobile */
+.sidebarch {
+  visibility: hidden;
+}
+
+.menu-toggle:checked ~ .sidebarch {
+  visibility: visible; /* Sửa lại ở đây */
+}
+
+  /* Icon menu chỉ hiển thị trên mobile */
+  .menu-icon {
+   
+  }
+
+  @media (min-width: 992px) {
+    /* Trên desktop: luôn hiển thị sidebar và ẩn icon */
+    .menu-icon {
+
+    }
+
+    .sidebarch {
+ 
+    }
+  }

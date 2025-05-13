@@ -32,7 +32,7 @@ File: js
   var elements = findMatchingElement();
 
   // Do something with the matching element
-  if(elements){
+  if (elements) {
     elements.classList.add("active");
   }
 
@@ -85,3 +85,11 @@ File: js
   });
 
 });
+
+const toggleBtn = document.getElementById('toggleSidebar');
+const sidebar = document.getElementById('sidebar');
+
+toggleBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('d-none');  // Toggle hiện / ẩn
+});
+
