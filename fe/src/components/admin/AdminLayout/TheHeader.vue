@@ -2,11 +2,11 @@
 
 <template>
   <div class="">
-    <aside class="left-sidebar top-0"  id="sidebar">
+    <aside class="left-sidebar top-0 d-none d-lg-flex"  id="sidebar">
       <!-- Sidebar scroll-->
       <div>
         <!-- Sidebar navigation-->
-        <nav class="sidebar-nav scroll-sidebar mt-4" data-simplebar="">
+        <nav class="sidebar-nav scroll-sidebar mt-4" data-simplebar="" style=" scrollbar-width: none">
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -191,71 +191,7 @@
       </div>
       <!-- End Sidebar scroll-->
     </aside>
-    <div
-      class="bg-white w-100 position-fixed"
-      style="
-        z-index: 1110;
 
-        box-sizing: border-box;
-
-        top: 0;
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-      "
-    >
-      <nav class="row py-2 py-lg-3">
-        <div class="col-lg-3 col-7">
-          <div
-            class="d-flex align-items-center justify-content-start h-100 mx-4"
-          >
-          <input type="checkbox" id="menu-toggle" />
-          
-            <i
-              class="ti ti-menu-2 d-flex d-lg-none"
-              id="toggleSidebar"
-              style="font-size: 24px; cursor: pointer"
-            ></i>
-            <div class="ms-2 d-flex justify-content-center align-items-center">
-              <img
-                class="mx-2 rounded"
-                :src="baseImageUrl + 'images.jpg'"
-                alt=""
-                width="60"
-                height="100%"
-              />
-              <div
-                class="d-flex justify-content-center align-items-center size"
-              >
-                shop now
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="col-lg-5 border border-dark rounded d-none d-lg-flex align-items-center"
-        >
-          <form class="d-flex align-items-center">
-            <i class="fas fa-search"></i>
-            <input
-              class="form-control border-0 ps-5"
-              type=""
-              placeholder="Search anything..."
-              aria-label=""
-            />
-          </form>
-        </div>
-
-        <div class="col-lg-3 col-5">
-          <div
-            class="d-flex align-items-center justify-content-start h-100 mx-4"
-          >
-            <div class="ms-2 d-none d-lg-flex">
-              <b>Xin chào trường nguyễn</b>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </div>
   </div>
 </template>
 
