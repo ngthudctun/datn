@@ -1,44 +1,29 @@
   /* Ẩn checkbox thật */
   #menu-toggle {
-    display: none;
+    
   }
 
   /* Sidebar mặc định ẩn ở mobile */
-  .sidebar {
-    display: none;
-  }
+.sidebarch {
+  visibility: hidden;
+}
 
-  /* Khi checkbox được check, hiển thị sidebar */
-  #menu-toggle:checked ~ .sidebar {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100vh;
-
-    z-index: 999;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    padding: 1rem;
-  }
+.menu-toggle:checked ~ .sidebarch {
+  visibility: visible; /* Sửa lại ở đây */
+}
 
   /* Icon menu chỉ hiển thị trên mobile */
   .menu-icon {
-    display: flex;
-    font-size: 24px;
-    cursor: pointer;
+   
   }
 
   @media (min-width: 992px) {
     /* Trên desktop: luôn hiển thị sidebar và ẩn icon */
     .menu-icon {
-      display: none;
+
     }
 
-    .sidebar {
-      display: block !important;
-      position: static;
-      box-shadow: none;
-      height: auto;
+    .sidebarch {
+ 
     }
   }

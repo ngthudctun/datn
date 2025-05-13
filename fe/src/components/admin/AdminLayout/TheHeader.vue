@@ -2,11 +2,11 @@
 
 <template>
   <div class="">
-    <aside class="left-sidebar top-0 d-none d-lg-flex"  id="sidebar">
+    <aside class="left-sidebar top-0 d-none d-lg-flex"  style="z-index: 2000;" id="sidebar">
       <!-- Sidebar scroll-->
       <div>
         <!-- Sidebar navigation-->
-        <nav class="sidebar-nav scroll-sidebar mt-4" data-simplebar="" style=" scrollbar-width: none">
+        <nav class="sidebar-nav scroll-sidebar mt-4" data-simplebar="">
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>

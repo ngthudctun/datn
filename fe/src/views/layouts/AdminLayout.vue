@@ -2,7 +2,6 @@
   <div>
     <TheHeader />
     <main>
-      
       <router-view />
     </main>
     <TheFooter />
