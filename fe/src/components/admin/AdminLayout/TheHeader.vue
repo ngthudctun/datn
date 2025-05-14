@@ -2,11 +2,21 @@
 
 <template>
   <div class="">
-    <aside class="left-sidebar top-0 d-none d-lg-flex"  style="z-index: 2000;" id="sidebar">
+    <aside
+      class="left-sidebar animation-sidebar top-0 d-none d-lg-flex"
+      style="z-index: 2000"
+      id="sidebarch"
+    >
       <!-- Sidebar scroll-->
       <div>
         <!-- Sidebar navigation-->
-        <nav class="sidebar-nav scroll-sidebar mt-4" data-simplebar="">
+        <nav class="sidebar-nav scroll-sidebar mt-4" data-simplebar="" style=" scrollbar-width: none; ">
+          <button
+            class="active-sidebar d-lg-none"
+            v-on:click="Adminlayout.getadminorder()"
+          >
+            OO
+          </button>
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -191,10 +201,10 @@
       </div>
       <!-- End Sidebar scroll-->
     </aside>
-
   </div>
 </template>
 
   <script setup>
-import { baseImageUrl } from "@/config/constans.js";
+import { AdminLayout } from "@/storage/admin/layoutAdmin";
+const Adminlayout = AdminLayout();
 </script>

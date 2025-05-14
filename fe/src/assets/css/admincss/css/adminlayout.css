@@ -1,29 +1,64 @@
   /* Ẩn checkbox thật */
-  #menu-toggle {
-    
-  }
+  #menu-toggle {}
 
   /* Sidebar mặc định ẩn ở mobile */
-.sidebarch {
-  visibility: hidden;
-}
+  .sidebarch {
+    visibility: hidden;
+  }
 
-.menu-toggle:checked ~ .sidebarch {
-  visibility: visible; /* Sửa lại ở đây */
-}
+  .menu-toggle:checked~.sidebarch {
+    visibility: visible;
+    /* Sửa lại ở đây */
+  }
 
   /* Icon menu chỉ hiển thị trên mobile */
-  .menu-icon {
-   
+  .menu-icon {}
+
+  .animation-sidebar {
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slider-in 0.2s ease-in forwards;
+
   }
+  .animation-out {
+    opacity: 0;
+    transform: translateX(0);
+    animation: slider-out 0.2s ease-in forwards;
+
+  }
+
+
+ .animation-out{
+
+ }
 
   @media (min-width: 992px) {
+
     /* Trên desktop: luôn hiển thị sidebar và ẩn icon */
-    .menu-icon {
+    .menu-icon {}
 
-    }
-
-    .sidebarch {
- 
-    }
+    .sidebarch {}
   }
+
+@keyframes slider-in {
+  from {
+    opacity: 0;
+    transform: translateX(-100%); /* Đẩy sidebar ra ngoài */
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0); /* Trở lại vị trí ban đầu */
+  }
+}
+@keyframes slider-out {
+  from {
+    opacity: 1;
+    transform: translateX(0); /* Đẩy sidebar ra ngoài */
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(-100%); /* Trở lại vị trí ban đầu */
+  }
+}
