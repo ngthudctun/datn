@@ -23,10 +23,13 @@
               <span class="hide-menu text-primary">Home</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./index.html" aria-expanded="false">
-                <i class="ti ti-atom"></i>
+                <router-link to="/admin/">
+                <div class="sidebar-link">
+                  <i class="ti ti-atom"></i>
                 <span class="hide-menu">Dashboard</span>
-              </a>
+                </div>
+              </router-link>
+
             </li>
             <!-- ---------------------------------- -->
             <!-- Dashboard -->

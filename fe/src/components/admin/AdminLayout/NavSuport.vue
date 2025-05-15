@@ -35,18 +35,29 @@
       </div>
 
       <div
-        class="col-lg-5 rounded d-none d-lg-flex align-items-center"
+        class="col-lg-5 rounded d-none d-lg-flex align-items-center position-relative"
         style="border: 1px solid #e1e1e1"
       >
         <form class="d-flex align-items-center">
           <i class="fas fa-search"></i>
           <input
+            autocomplete="off"
             class="form-control border-0 ps-5"
-            type=""
-            placeholder="Search anything..."
-            aria-label=""
+            type="text"
+            id="myInput"
+            v-on:click="Adminlayout.myFunction('myInput', 'myUL')"
+            v-on:input="Adminlayout.myFunction('myInput', 'myUL')"
           />
         </form>
+        <ul id="myUL" class="position-absolute my-ul-list top-100 w-100" style="left: 0">
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="#">Danh mục sản phẩm </a></li>
+          <li><a href="#">Billy</a></li>
+          <li><a href="#">Bob</a></li>
+          <li><a href="#">Calvin</a></li>
+          <li><a href="#">Christina</a></li>
+          <li><a href="#">Cindy</a></li>
+        </ul>
       </div>
 
       <div class="col-lg-3 col-5">
@@ -63,4 +74,5 @@
 <script setup>
 import { AdminLayout } from "@/storage/admin/layoutAdmin";
 const Adminlayout = AdminLayout();
+
 </script>

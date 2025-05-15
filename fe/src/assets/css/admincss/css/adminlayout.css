@@ -20,6 +20,7 @@
     animation: slider-in 0.2s ease-in forwards;
 
   }
+
   .animation-out {
     opacity: 0;
     transform: translateX(0);
@@ -28,9 +29,60 @@
   }
 
 
- .animation-out{
 
- }
+
+  .my-ul-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    z-index: 2000;
+  }
+
+  .my-ul-list .box-con {
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+    transition: background-color 0.3s ease;
+  }
+
+  .my-ul-list li {
+
+    display: none;
+  }
+
+  .my-ul-list li:active~.my-ul-list {
+
+    display: none;
+  }
+
+  .show-menu-drop {
+    padding: 0;
+    display: block !important;
+    top: 100;
+    left: 0;
+    right: 0;
+  }
+
+  .my-ul-list li a {
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+    transition: background-color 0.3s ease;
+  }
+
+  .my-ul-list li a:hover {
+    background-color: #ddd;
+  }
+
+
 
   @media (min-width: 992px) {
 
@@ -40,25 +92,30 @@
     .sidebarch {}
   }
 
-@keyframes slider-in {
-  from {
-    opacity: 0;
-    transform: translateX(-100%); /* Đẩy sidebar ra ngoài */
+  @keyframes slider-in {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+      /* Đẩy sidebar ra ngoài */
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+      /* Trở lại vị trí ban đầu */
+    }
   }
 
-  to {
-    opacity: 1;
-    transform: translateX(0); /* Trở lại vị trí ban đầu */
-  }
-}
-@keyframes slider-out {
-  from {
-    opacity: 1;
-    transform: translateX(0); /* Đẩy sidebar ra ngoài */
-  }
+  @keyframes slider-out {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+      /* Đẩy sidebar ra ngoài */
+    }
 
-  to {
-    opacity: 0;
-    transform: translateX(-100%); /* Trở lại vị trí ban đầu */
+    to {
+      opacity: 0;
+      transform: translateX(-100%);
+      /* Trở lại vị trí ban đầu */
+    }
   }
-}

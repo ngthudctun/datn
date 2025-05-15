@@ -1,0 +1,40 @@
+#fruitOptions {
+    width: 500px;
+}
+
+.awesomplete {
+    width: 100% !important;
+     display: block;
+    width: 100%;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #5A6A85;
+    appearance: none;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid #DFE5EF;
+    border-radius: 7px;
+    box-shadow: unset;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+   
+
+    ul[role="listbox"] li {
+        padding: 5px 0;
+        margin: 5px 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.009);
+    }
+
+    .awesomplete mark {
+        background-color: rgba(255, 255, 255, 0) !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    .awesomplete>ul>li[aria-selected=true] {
+        background-color: rgba(132, 132, 132, 0.489) !important;
+        border-end-end-radius: 10px;
+    }

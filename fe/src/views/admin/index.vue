@@ -51,7 +51,7 @@
                       <div
                         class="d-flex col-9 px-3 flex-column align-items-center justify-content-center"
                       >
-                        <div class="">cài đặt trang web</div>
+                        <div class="">cài đặt trang cá nhân</div>
                         <b>xem thêm</b>
                       </div>
                     </div>

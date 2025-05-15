@@ -47,10 +47,13 @@
                   <div class="row justify-content-center">
                     <div class="col-12 col-lg-6 row justify-content-center">
                       <div
-                        class="add_product py-2 rounded-start-1 text-center col-5 text-white"
+                        class="add_product py-2 rounded-start-1 text-center col-5 "
                       >
-                        <b> thêm sản phẩm</b>
+                        <router-link to="/admin/add-product">
+                          <b class="text-white"> thêm sản phẩm</b>
+                        </router-link>
                       </div>
+
                       <div
                         class="py-2 rounded-end text-center col-7"
                         style="background-color: #b2acac42"
@@ -157,6 +160,7 @@
                             type="button"
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
+                            @click.stop
                           >
                             Thêm bộ lọc
                           </button>
@@ -164,7 +168,7 @@
                             class="dropdown-menu border-1 text-center p-2"
                             style="min-width: 300px"
                           >
-                            <li class="dropdown-item">
+                            <div class="dropdown-item">
                               <div class="text-start">
                                 <h5><b>Lọc theo: </b></h5>
                                 <br />
@@ -181,7 +185,7 @@
                                 <br />
                                 <!--  loc theo danh mucmuc -->
                                 <select
-                                  v-if="getSelect == 'option-1'"
+                                  v-show="getSelect == 'option-1'"
                                   class="form-select"
                                   id=""
                                 >
@@ -193,15 +197,17 @@
                                 <!--  end show loc danh muc -->
 
                                 <!-- loc theo giá -->
-                                <div v-if="getSelect == 'option-2'" id="">
+                                <div v-show="getSelect == 'option-2'" id="">
                                   <div class="">
-                                    <sliderrange/>
+                                    <div class="position-relative" @click.stop>
+                                      <sliderrange />
+                                    </div>
                                   </div>
                                 </div>
 
                                 <!-- end loc theo giá -->
                               </div>
-                            </li>
+                            </div>
                           </ul>
                         </div>
                       </div>
@@ -247,7 +253,7 @@
                             />
                             <img
                               class="rounded-2 col-2"
-                              :src="'images.jpg'"
+                              :src="$imagebaseUrl + 'images.jpg'"
                               alt=""
                               width=""
                               height="50"
@@ -358,7 +364,7 @@
                             />
                             <img
                               class="rounded-2 col-2"
-                              :src="'images.jpg'"
+                              :src="$imagebaseUrl + 'images.jpg'"
                               alt=""
                               width=""
                               height="50"
@@ -491,8 +497,6 @@ const getcheck = (value) => {
     return true;
   }
 };
-  
-
 </script>
   
   

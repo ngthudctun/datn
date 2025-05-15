@@ -1,6 +1,7 @@
 <template>
   <form>
-    <div ref="slider" class="my-4"></div>
+
+    <div ref="slider" class="my-4" @mousedown.prevent></div>
     <p>Khoảng giá: {{ min }}đ → {{ max }}đ</p><br>
     <button type="submit" class="btn btn-primary">Tìm kiếm</button>
   </form>
