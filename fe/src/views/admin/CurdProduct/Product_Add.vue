@@ -43,7 +43,7 @@
             </div>
             <div class="mt-4" style="border-top: 1px solid #e1e1e1">
               <div class="w-100 row" style="height: 1000px">
-                <div class="col-8" style="border-right: 1px solid black">
+                <div class="col-8" style="border-right: 1px solid #e1e1e1">
                   <div class="p-3" style="box-sizing: border-box">
                     <h4>Điền thông tin sản phẩm</h4>
                     <div class="form-group mt-3">
@@ -90,25 +90,25 @@
                         <li>
                           <div href="#" class="box-con">
                             <input type="checkbox" name="" id="ttt" />
-                            <label class="mx-2" for="ttt"> Con cá</label>
+                            <label class="mx-2" for="ttt"> Con cá 1</label>
                           </div>
                         </li>
                         <li>
                           <div href="#" class="box-con">
                             <input type="checkbox" name="" id="ttt" />
-                            <label class="mx-2" for="ttt"> Con cá</label>
+                            <label class="mx-2" for="ttt"> Con cá 2</label>
                           </div>
                         </li>
                         <li>
                           <div href="#" class="box-con">
                             <input type="checkbox" name="" id="ttt" />
-                            <label class="mx-2" for="ttt"> Con cá</label>
+                            <label class="mx-2" for="ttt"> Con cá 3 </label>
                           </div>
                         </li>
                         <li>
                           <div href="#" class="box-con">
                             <input type="checkbox" name="" id="ttt" />
-                            <label class="mx-2" for="ttt"> Con cá</label>
+                            <label class="mx-2" for="ttt"> Con cá 4</label>
                           </div>
                         </li>
                         <li>
@@ -132,19 +132,36 @@
                 </div>
                 <div class="col-4">
                   <div class="p-3" style="box-sizing: border-box">
-                    <h4 style="visibility: hidden;">Đ</h4>
+                    <h4 style="visibility: hidden">Đ</h4>
                     <div class="form-group mt-3">
-                      <label for="usr"><b>Tên sản phẩm:</b></label>
+                      <label for="usr"><b>Trạng thái sản phẩm:</b></label>
                       <select name="" class="form-control mt-1" id="">
                         <option value="" class="">Chưa kích hoạt</option>
                         <option value="" class="">Kích hoạt</option>
                       </select>
                     </div>
                     <div class="form-group mt-3 position-relative">
-                      <label for="usr"><b>Hình ảnh sản phẩm</b></label>
+                      <label for="usr"><b>Hình ảnh sản phẩm</b></label
+                      ><br />
                       <dragimg />
+                      <input type="hidden" id="" name="selected_image" />
                     </div>
                     <br />
+                    <div class="w-100">
+                      <button type="button" class="w-100 btn btn-primary">
+                        Thêm sản phẩm
+                      </button>
+                    </div>
+                    <hr />
+                    <div class="form-group mt-3 position-relative">
+                      <label for="usr"><b>Hình ảnh thêm</b></label>
+                      <dragimgextra />
+                      <input
+                        type="hidden"
+                        id="value_img-hiden"
+                        name="selected_image"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -165,9 +182,10 @@ import NavSuport from "@/components/admin/AdminLayout/NavSuport.vue";
 import { AdminLayout } from "@/storage/admin/layoutAdmin";
 import Adminwordtext from "@/components/admin/AdminLayout/textword.vue";
 import dragimg from "@/components/admin/AdminLayout/button/dragimg.vue";
+import dragimgextra from "@/components/admin/AdminLayout/button/dragextraimg.vue";
 
 import { onMounted, ref } from "vue";
-import Dragimg from "@/components/admin/AdminLayout/button/dragimg.vue";
+
 const Adminlayout = AdminLayout();
 </script>
   

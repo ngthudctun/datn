@@ -4,7 +4,7 @@
       class="custum-file-upload d-none"
       id="show-one-img"
       data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasExample22"
+      data-bs-target="#offcanvasExample22pp"
       aria-controls="offcanvasExample"
     >
       <img
@@ -21,7 +21,7 @@
       class="custum-file-upload"
       id="no-img-input"
       data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasExample22"
+      data-bs-target="#offcanvasExample22pp"
       aria-controls="offcanvasExample"
     >
       <div class="icon">
@@ -37,12 +37,12 @@
       class="offcanvas offcanvas-start"
       style="z-index: 2000; width: 90%"
       tabindex="-1"
-      id="offcanvasExample22"
+      id="offcanvasExample22pp"
       aria-labelledby="offcanvasExampleLabel"
     >
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasExampleLabel">
-          Thư mục hình ảnh
+          Thư mục hình ảnh phu
         </h5>
         <button
           type="button"
@@ -122,7 +122,7 @@
                     class="col-3 mb-2"
                     v-for="img in images"
                     :key="img"
-                    @click="imageStore.toggleImageSelect(img)"
+                    @click="imageStore.toggleExtraImage(img)"
                     style="position: relative; cursor: pointer"
                   >
                     <img
@@ -132,7 +132,7 @@
                       width="100%"
                       height="150px"
                       :class="{
-                        'img-selected': imageStore.selectedImage === img,
+                        'img-selected': imageStore.extra_array.includes(img),
                       }"
                     />
                  
@@ -162,7 +162,7 @@
             <input
               type="text"
               class="mt-1 form-control"
-              id="value_img-hiden"
+              id="show_name_extra"
               placeholder="ten hinh anh"
               style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
             /><br />
@@ -203,21 +203,6 @@ import { useImageSelect } from "@/assets/js/adminjs/dragimg.js";
 import { onMounted, ref } from "vue";
 const imagebaseUrl = import.meta.env.VITE_IMAGE_BASE_URL;
 const imageStore = useImageSelect();
-const images_firt = ref(null);
 const images = ["images.jpg", "1", "2", "22", "3"];
-function submitImage() {
-  const noimg = document.getElementById("no-img-input");
-  const oneimg = document.getElementById("show-one-img");
-  const showoneimg = oneimg.querySelector("img");
-  const hiddenInput = document.getElementById("value_img-hiden");
-  const selected = hiddenInput.value;
-  if (selected) {
-    oneimg.classList.remove("d-none");
-    noimg.classList.add("d-none");
-    showoneimg.src = imagebaseUrl + selected;
-  } else {
-    oneimg.classList.add("d-none");
-    noimg.classList.remove("d-none");
-  }
-}
+function submitImage() {}
 </script>
