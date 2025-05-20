@@ -7,13 +7,13 @@
             <div class="owl-carousel owl-theme" ref="owlCarousel">
                 <div class="item" v-for="(group, index) in groupedCategories" :key="index">
                     <div class="category-grid">
-                        <div class="category-item" v-for="cat in group" :key="cat.name + cat.img">
+                        <a href="" class="category-item" v-for="cat in group" :key="cat.name + cat.img">
                             <div class="p-3 border rounded text-center h-100 d-flex flex-column align-items-center">
                                 <img :src="cat.img" :alt="cat.name" class="img-fluid mb-2"
                                     style="height: 100px; object-fit: cover; width: 100%; max-width: 120px;" />
                                 <h6 class="fw-semibold mt-auto">{{ cat.name }}</h6>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -71,8 +71,8 @@ export default {
             nav: true,          // nút prev/next
             dots: false,
             autoplay: true,
-            autoplayTimeout: 3000,
-            items: 1,           // 1 slide hiển thị 12 mục (grid 2 hàng 6 cột)
+            autoplayTimeout: 5000,
+            items: 0.5,           // 1 slide hiển thị 12 mục (grid 2 hàng 6 cột)
             responsive: {
                 0: {
                     items: 1,
@@ -96,16 +96,16 @@ export default {
     /* 6 cột */
     grid-template-rows: repeat(2, auto);
     /* 2 hàng */
-    gap: 15px;
+    gap: 10px;
 }
 
 .category-item {
     /* Style mỗi mục */
     cursor: pointer;
-    transition: transform 0.3s ease;
 }
 
-.category-item:hover {
+.category-item:hover img{
+    transition: transform 0.5s ease;
     transform: scale(1.05);
 }
 

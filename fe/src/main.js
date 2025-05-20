@@ -32,7 +32,7 @@ const app = createApp(App)
 const pinia = createPinia()
 
 // Biến toàn cục
-app.config.globalProperties.$imagebaseUrl = import.meta.env.VITE_IMAGE_BASE_URL
+app.config.globalProperties.$imageUrl = import.meta.env.VITE_IMAGE_BASE_URL
 
 app.use(pinia)
 app.use(router)
