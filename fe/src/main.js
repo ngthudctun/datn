@@ -1,19 +1,39 @@
-// import './assets/css/color.min.css';
-
-import router from "./router"; // Import Vue Router
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-
 import App from './App.vue'
+import router from './router'
 
+// Local CSS
+import './assets/css/bootstrap.min.css'
+import './assets/css/font-awesome.min.css'
+import './assets/css/elegant-icons.css'
+import './assets/css/jquery-ui.min.css'
+import './assets/css/magnific-popup.css'
+import './assets/css/owl.carousel.min.css'
+import './assets/css/slicknav.min.css'
+import './assets/css/style.css'
+import './assets/css/fixbs.css'
 
-/* axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`; */   //auto gửi token
+// Local JS
+import './assets/js/jquery-3.3.1.min.js'
+import './assets/js/bootstrap.min.js'
+import './assets/js/jquery.magnific-popup.min.js'
+import './assets/js/jquery-ui.min.js'
+import './assets/js/mixitup.min.js'
+import './assets/js/jquery.countdown.min.js'
+import './assets/js/jquery.slicknav.js'
+import './assets/js/owl.carousel.min.js'
+import './assets/js/jquery.nicescroll.min.js'
+import './assets/js/main.js'
+import './assets/js/additional.js'
 
-const app = createApp(App);
-app.config.globalProperties.$imagebaseUrl = import.meta.env.VITE_IMAGE_BASE_URL; 
-//base url images
+const app = createApp(App)
+
 const pinia = createPinia()
 
-app.use(pinia);
-app.use(router); // Kích hoạt Vue Router
-app.mount("#app");
+// Biến toàn cục
+app.config.globalProperties.$imagebaseUrl = import.meta.env.VITE_IMAGE_BASE_URL
+
+app.use(pinia)
+app.use(router)
+app.mount('#app')
