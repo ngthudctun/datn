@@ -55,7 +55,7 @@
                       </div>
 
                       <div
-                        class="py-2 rounded-end text-center col-7"
+                        class="rounded-end text-center col-7"
                         style="background-color: #b2acac42"
                       >
                         <form class="d-flex align-items-center">
