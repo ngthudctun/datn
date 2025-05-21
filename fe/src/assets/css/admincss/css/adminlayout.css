@@ -36,10 +36,12 @@
     padding: 0;
     margin: 0;
     z-index: 2000;
+
   }
 
   .my-ul-list .box-con {
     border: 1px solid #ddd;
+
     background-color: #ffffff;
     padding: 12px;
     text-decoration: none;
@@ -52,6 +54,10 @@
   .my-ul-list li {
 
     display: none;
+  }
+
+  .my-ul-list li .box-con:hover {
+    
   }
 
   .my-ul-list li:active~.my-ul-list {
@@ -80,6 +86,7 @@
 
   .my-ul-list li a:hover {
     background-color: #ddd;
+    animation: all 0.2s;
   }
 
 

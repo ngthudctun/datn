@@ -4,8 +4,8 @@
       class="custum-file-upload d-none"
       id="show-one-img"
       data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasExample22"
-      aria-controls="offcanvasExample"
+      data-bs-target="#offcanvasExample22one"
+      aria-controls="offcanvasExample22one"
     >
       <img
         src=""
@@ -21,8 +21,8 @@
       class="custum-file-upload"
       id="no-img-input"
       data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasExample22"
-      aria-controls="offcanvasExample"
+      data-bs-target="#offcanvasExample22one"
+      aria-controls="offcanvasExample22one"
     >
       <div class="icon">
         <img
@@ -37,7 +37,7 @@
       class="offcanvas offcanvas-start"
       style="z-index: 2000; width: 90%"
       tabindex="-1"
-      id="offcanvasExample22"
+      id="offcanvasExample22one"
       aria-labelledby="offcanvasExampleLabel"
     >
       <div class="offcanvas-header">
@@ -51,34 +51,36 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="offcanvas-body" style="height: 500px">
+      <div class="offcanvas-body">
         <div
-          class="row justify-content-center p-2"
-          style="border: 1px solid; box-sizing: border-box; height: 500px"
+          class="row justify-content-center py-2 h-100 position-relative"
+          style="border: 1px solid #e1e1e1; box-sizing: border-box"
         >
           <div class="col-2">
             <div
               class="py-2 link-primary"
-              style="border-bottom: 1px solid black"
+              style="border-bottom: 1px solid #e1e1e1"
             >
               Hình ảnh sản phẩm
             </div>
             <div
               class="py-2 link-primary"
-              style="border-bottom: 1px solid black"
+              style="border-bottom: 1px solid #e1e1e1"
             >
               Hình ảnh Danh mục
             </div>
           </div>
+
           <div
             class="col-7 d-flex justify-content-center flex-wrap pb-9"
-            style="border-right: 1px solid black; border-left: 1px solid black"
+            style="
+              border-right: 1px solid #e1e1e1;
+              border-left: 1px solid #e1e1e1;
+            "
           >
             <div class="col-12">
               <div class="w-100 d-flex justify-content-between">
                 <div class="col-3 position-relative">
-                  <label for="usr"><b>Lọc theo:</b></label>
-
                   <select
                     class="mt-1 form-select"
                     aria-label="Default select example"
@@ -90,16 +92,16 @@
                   </select>
                 </div>
                 <div class="col-3 px-1" style="box-sizing: border-box">
-                  <label for="usr" style="visibility: hidden"><b>.</b></label
-                  ><br />
-                  <button type="button" class="mt-1 btn btn-primary">
+                  <button
+                    type="button"
+                    @click="showupdateimg('show_all-img', 'uploadimg')"
+                    class="mt-1 btn btn-primary"
+                  >
                     Thêm Hình ảnh
                   </button>
                 </div>
                 <div class="col-1"></div>
                 <div class="col-5">
-                  <label for="usr"><b>Tìm kiếm:</b></label>
-
                   <input
                     type="text"
                     class="mt-1 form-control"
@@ -110,7 +112,7 @@
                 </div>
               </div>
               <div
-                class="row mt-4 justify-content-center"
+                class="row justify-content-center"
                 style="
                   box-sizing: border-box;
                   max-height: 500px;
@@ -118,24 +120,28 @@
                 "
               >
                 <div class="row mt-4" style="max-height: 500px; overflow: auto">
-                  <div
-                    class="col-3 mb-2"
-                    v-for="img in images"
-                    :key="img"
-                    @click="imageStore.toggleImageSelect(img)"
-                    style="position: relative; cursor: pointer"
-                  >
-                    <img
-                      :src="$imagebaseUrl + img"
-                      class="images_select-ss"
-                      style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)"
-                      width="100%"
-                      height="150px"
-                      :class="{
-                        'img-selected': imageStore.selectedImage === img,
-                      }"
-                    />
-                 
+                  <div class="mt-5" id="uploadimg" v-show="uploadnum == 1">
+                    <uploadimage />
+                  </div>
+                  <div class="row" id="show_all-img" v-show="uploadnum == 0">
+                    <div
+                      class="col-3 mb-2"
+                      v-for="img in images"
+                      :key="img"
+                      @click="imageStore.toggleImageSelect(img)"
+                      style="position: relative; cursor: pointer"
+                    >
+                      <img
+                        :src="$imagebaseUrl + img"
+                        class="images_select-ss"
+                        style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)"
+                        width="100%"
+                        height="150px"
+                        :class="{
+                          'img-selected': imageStore.selectedImage === img,
+                        }"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -143,10 +149,7 @@
 
             <!--     -->
           </div>
-          <div
-            class="col-3 rounded position-relative"
-            style="background: #0034ff0a"
-          >
+          <div class="col-3 rounded position-relative">
             <label for="usr"><b>URL:</b></label>
 
             <input
@@ -178,10 +181,13 @@
             <br />
 
             <button
-              @click="submitImage"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample222"
+              aria-controls="offcanvasExample222"
+              @click="submitImage()"
               id="sumbit_img"
               type="button"
-              class="btn bottom-0 end-0 btn-primary position-absolute"
+              class="btn btn-primary"
             >
               Thêm Hinh anh
             </button>
@@ -201,6 +207,7 @@
 <script setup>
 import { useImageSelect } from "@/assets/js/adminjs/dragimg.js";
 import { onMounted, ref } from "vue";
+import uploadimage from "./uploadimagesAd.vue";
 const imagebaseUrl = import.meta.env.VITE_IMAGE_BASE_URL;
 const imageStore = useImageSelect();
 const images_firt = ref(null);
@@ -219,5 +226,10 @@ function submitImage() {
     oneimg.classList.add("d-none");
     noimg.classList.remove("d-none");
   }
+}
+const imagetype = null;
+let uploadnum = ref(0);
+function showupdateimg() {
+  uploadnum.value = uploadnum.value === 0 ? 1 : 0;
 }
 </script>
