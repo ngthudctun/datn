@@ -8,7 +8,7 @@
                 <div class="item" v-for="(group, index) in groupedCategories" :key="index">
                     <div class="category-grid">
                         <a href="" class="category-item" v-for="cat in group" :key="cat.name + cat.img">
-                            <div class="p-3 border rounded text-center h-100 d-flex flex-column align-items-center">
+                            <div class="p-3 text-center h-100 d-flex flex-column align-items-center">
                                 <img :src="cat.img" :alt="cat.name" class="img-fluid mb-2"
                                     style="height: 100px; object-fit: cover; width: 100%; max-width: 120px;" />
                                 <h6 class="fw-semibold mt-auto">{{ cat.name }}</h6>
@@ -57,8 +57,8 @@ export default {
     computed: {
         groupedCategories() {
             const groups = [];
-            for (let i = 0; i < this.categories.length; i += 12) {
-                groups.push(this.categories.slice(i, i + 12));
+            for (let i = 0; i < this.categories.length; i += 4) {
+                groups.push(this.categories.slice(i, i + 4));
             }
             return groups;
         },
@@ -67,65 +67,64 @@ export default {
         // Khởi tạo Owl Carousel trên phần tử ref
         $(this.$refs.owlCarousel).owlCarousel({
             loop: true,
-            margin: 10,
-            nav: true,          // nút prev/next
+            margin: 4,
+            nav: true,
             dots: false,
             autoplay: true,
-            autoplayTimeout: 5000,
-            items: 0.5,           // 1 slide hiển thị 12 mục (grid 2 hàng 6 cột)
+            autoplayTimeout: 10000,
+            autoplayHoverPause: true,
+            items: 1,
             responsive: {
-                0: {
-                    items: 1,
-                },
-                600: {
-                    items: 1,
-                },
-                1000: {
-                    items: 1,
-                }
+                0: { items: 1 },
+                576: { items: 1.5 },
+                768: { items: 2 },
+                992: { items: 3 },
+                1200: { items: 4 }
             }
         });
-    },
+    }
 };
 </script>
 
 <style scoped>
 .category-grid {
     display: grid !important;
-    grid-template-columns: repeat(6, 1fr);
-    /* 6 cột */
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, auto);
-    /* 2 hàng */
-    gap: 10px;
+    gap: 4px;
 }
 
 .category-item {
-    /* Style mỗi mục */
     cursor: pointer;
+    border: none;
 }
 
-.category-item:hover img{
-    transition: transform 0.5s ease;
+.category-item:hover img {
+    transition: transform 0.3s ease;
     transform: scale(1.05);
 }
+
+.category-section:hover ::v-deep(.owl-nav button.owl-prev),
+.category-section:hover ::v-deep(.owl-nav button.owl-next) {
+    opacity: 1;
+}
+
 
 ::v-deep .owl-carousel .owl-nav button.owl-prev,
 ::v-deep .owl-carousel .owl-nav button.owl-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.1);
-    color: white;
+    color: #000;
     border: none;
     padding: 4px 15px !important;
     border-radius: 50%;
     cursor: pointer;
     font-size: 18px;
     z-index: 10;
+    opacity: 0;
     transition: all .3s ease;
-    &:hover {
-        background: rgba(0, 0, 0, 0.5);
-    }
+    background: #e1e1e1;
 }
 
 ::v-deep .owl-carousel .owl-nav button.owl-prev {

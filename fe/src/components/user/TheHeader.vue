@@ -3,21 +3,21 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
-            <li><span class="icon_search search-switch"></span></li>
-            <li><a href="#"><span class="icon_heart_alt"></span>
-                    <div class="tip">2</div>
-                </a></li>
-            <li><a href="#"><span class="icon_bag_alt"></span>
-                    <div class="tip">2</div>
-                </a></li>
+            <li><a href="#"><span class="fal fa-heart"></span>
+                <div class="tip">2</div>
+            </a></li>
+            <li><a href="#"><span class="fal fa-cart-shopping"></span>
+                <div class="tip">2</div>
+            </a></li>
+            <li><span class="fal fa-user"></span></li>
         </ul>
         <div class="offcanvas__logo">
             <a href="./index.html"><img :src="$imageUrl + 'logo.png'" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
-            <a href="login.html">Đăng nhập</a>
-            <a href="register.html">Đăng kí</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
         </div>
     </div>
     <div class="w-100">
@@ -36,7 +36,7 @@
                         <form action="#">
                             <input type="text" placeholder="Tìm sản phẩm, thương hiệu và tên cửa hàng">
                             <button type="submit" class="site-btn"><span
-                                    class="icon_search search-switch"></span></button>
+                                    class="icon_search search-switch fa-regular fa-magnifying-glass"></span></button>
                         </form>
                     </div>
                 </div>
@@ -46,10 +46,11 @@
                             <a href="login.html">Đăng nhập</a>
                             <a href="register.html">Đăng kí</a>
                         </div>
+
                         <ul class="header__right__widget">
                             <li>
                                 <a class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-regular fa-bell"></i>
+                                    <i class="fa-light fa-bell"></i>
                                     <div class="tip">2</div>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -58,12 +59,12 @@
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><span class="icon_cart_alt"></span>
+                            <li><a href="#"><span class="icon_cart_alt fa-light fa-cart-shopping"></span>
                                     <div class="tip">2</div>
                                 </a></li>
                             <li>
                                 <a class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="fa-regular fa-user"></span>
+                                    <span class="fa-light fa-user"></span>
                                     <div class="tip">2</div>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -95,7 +96,4 @@
             </ul>
         </nav>
     </header>
-
 </template>
-
-<style></style>
