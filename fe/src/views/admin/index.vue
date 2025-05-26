@@ -18,13 +18,13 @@
       <NavSuport />
       <!--  Header End -->
 
-      <div class="p-2" style="box-sizing: border-box;">
+      <div class="p-2" style="box-sizing: border-box">
         <div class="">
           <div class="row py-3 bg-white" style="">
             <div class="">
               <div class="mt-1"><h5>Bảng điều khiển</h5></div>
               <hr />
-              <div class=" mt-3" style="padding-top: 20px">
+              <div class="mt-3" style="padding-top: 20px">
                 <div class="row">
                   <div class="col-lg-3 col-sm-6 py-1">
                     <div class="d-flex rounded border border-dark-light px-1">
@@ -284,15 +284,7 @@
                         <div class="row align-items-center">
                           <div class="col-7">
                             <h4 class="fw-semibold mb-3">$36,358</h4>
-                            <div class="d-flex align-items-center mb-3">
-                              <span
-                                class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center"
-                              >
-                                <i class="ti ti-arrow-up-left text-success"></i>
-                              </span>
-                              <p class="text-dark me-1 fs-3 mb-0">+9%</p>
-                              <p class="fs-3 mb-0">năm trước</p>
-                            </div>
+
                             <div class="d-flex align-items-center">
                               <div class="me-4">
                                 <span
@@ -333,8 +325,6 @@
                                   class="ti ti-arrow-down-right text-danger"
                                 ></i>
                               </span>
-                              <p class="text-dark me-1 fs-3 mb-0">+9%</p>
-                              <p class="fs-3 mb-0">last year</p>
                             </div>
                           </div>
                           <div class="col-4">
@@ -377,7 +367,7 @@
                             class="timeline-badge-border d-block flex-shrink-0"
                           ></span>
                         </div>
-                        <div class="timeline-desc fs-3 text-dark mt-n1">
+                        <div class="">
                           giao hàng thành công hóa đơn 50.000.000d
                         </div>
                       </li>
@@ -399,116 +389,10 @@
                             class="timeline-badge-border d-block flex-shrink-0"
                           ></span>
                         </div>
-                        <div
-                          class="timeline-desc fs-3 text-dark mt-n1 fw-semibold"
-                        >
-                          Chờ xác nhận đơn hàng
-                          <a
-                            href="javascript:void(0)"
-                            class="text-primary d-block fw-normal"
-                            >#ML-3467</a
-                          >
-                        </div>
                       </li>
                       <li
                         class="timeline-item d-flex position-relative overflow-hidden"
-                      >
-                        <div
-                          class="timeline-time text-dark flex-shrink-0 text-end"
-                        >
-                          12:00 am
-                        </div>
-                        <div
-                          class="timeline-badge-wrap d-flex flex-column align-items-center"
-                        >
-                          <span
-                            class="timeline-badge border-2 border border-success flex-shrink-0 my-8"
-                          ></span>
-                          <span
-                            class="timeline-badge-border d-block flex-shrink-0"
-                          ></span>
-                        </div>
-                        <div class="timeline-desc fs-3 text-dark mt-n1">
-                          giao hàng thanh công
-                          <a
-                            href="javascript:void(0)"
-                            class="text-primary d-block fw-normal"
-                            >#ML-3467</a
-                          >
-                        </div>
-                      </li>
-                      <li
-                        class="timeline-item d-flex position-relative overflow-hidden"
-                      >
-                        <div
-                          class="timeline-time text-dark flex-shrink-0 text-end"
-                        >
-                          09:30 am
-                        </div>
-                        <div
-                          class="timeline-badge-wrap d-flex flex-column align-items-center"
-                        >
-                          <span
-                            class="timeline-badge border-2 border border-warning flex-shrink-0 my-8"
-                          ></span>
-                          <span
-                            class="timeline-badge-border d-block flex-shrink-0"
-                          ></span>
-                        </div>
-                        <div
-                          class="timeline-desc fs-3 text-dark mt-n1 fw-semibold"
-                        >
-                          New sale recorded
-                          <a
-                            href="javascript:void(0)"
-                            class="text-primary d-block fw-normal"
-                            >#ML-3467</a
-                          >
-                        </div>
-                      </li>
-                      <li
-                        class="timeline-item d-flex position-relative overflow-hidden"
-                      >
-                        <div
-                          class="timeline-time text-dark flex-shrink-0 text-end"
-                        >
-                          09:30 am
-                        </div>
-                        <div
-                          class="timeline-badge-wrap d-flex flex-column align-items-center"
-                        >
-                          <span
-                            class="timeline-badge border-2 border border-danger flex-shrink-0 my-8"
-                          ></span>
-                          <span
-                            class="timeline-badge-border d-block flex-shrink-0"
-                          ></span>
-                        </div>
-                        <div
-                          class="timeline-desc fs-3 text-dark mt-n1 fw-semibold"
-                        >
-                          New arrival recorded
-                        </div>
-                      </li>
-                      <li
-                        class="timeline-item d-flex position-relative overflow-hidden"
-                      >
-                        <div
-                          class="timeline-time text-dark flex-shrink-0 text-end"
-                        >
-                          12:00 am
-                        </div>
-                        <div
-                          class="timeline-badge-wrap d-flex flex-column align-items-center"
-                        >
-                          <span
-                            class="timeline-badge border-2 border border-success flex-shrink-0 my-8"
-                          ></span>
-                        </div>
-                        <div class="timeline-desc fs-3 text-dark mt-n1">
-                          Payment Done
-                        </div>
-                      </li>
+                      ></li>
                     </ul>
                   </div>
                 </div>
@@ -536,7 +420,7 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="border-bottom py-3">
-                          <div class="col-12 d-flex">
+                          <div class="row">
                             <div class="col-3 text-start">
                               <b>Tên sản phẩm</b>
                             </div>
@@ -555,10 +439,10 @@
                       </div>
                     </div>
 
-                    <div class="row">
-                      <div class="col-12">
+                    <div class="">
+                      <div class="row">
                         <div class="py-3">
-                          <div class="col-12 d-flex">
+                          <div class="row">
                             <div class="col-3 text-start">banh trang 123</div>
                             <div class="col-3 text-center">
                               <div class="text-success"><b>553</b></div>
@@ -612,17 +496,7 @@
               </div>
             </div>
             <div class=""></div>
-            <div class="py-6 px-6 text-center">
-              <p class="mb-0 fs-4">
-                Design and Developed by
-                <a
-                  href="https://adminmart.com/"
-                  target="_blank"
-                  class="pe-1 text-primary text-decoration-underline"
-                  >AdminMart.com</a
-                >
-              </p>
-            </div>
+         
           </div>
         </div>
       </div>

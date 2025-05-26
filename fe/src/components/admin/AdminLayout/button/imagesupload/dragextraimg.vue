@@ -24,8 +24,8 @@
           class="custum-file-upload"
           id="no-img-input"
           data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasExample22pp"
-          aria-controls="offcanvasExample"
+          data-bs-target="#offcanvasExample22pps"
+          aria-controls="offcanvasExample22pps"
         >
           <div class="icon">
             <img
@@ -66,13 +66,13 @@
         >
           <div class="col-2">
             <div
-              class="p-2 link-primary"
+              class="p-2 link-danger"
               style="border-bottom: 1px solid #e1e1e1"
             >
               Hình ảnh sản phẩm
             </div>
             <div
-              class="p-2 link-primary"
+              class="p-2 link-danger"
               style="border-bottom: 1px solid #e1e1e1"
             >
               Hình ảnh Danh mục
@@ -99,7 +99,7 @@
                   </select>
                 </div>
                 <div class="col-3 px-1" style="box-sizing: border-box">
-                  <button type="button" class="mt-1 btn btn-primary">
+                  <button type="button" class="mt-1 btn btn-danger">
                     Thêm Hình ảnh
                   </button>
                 </div>
@@ -131,11 +131,11 @@
                     style="position: relative; cursor: pointer"
                   >
                     <img
-                      :src="$imagebaseUrl + img"
+                      :src="$imageUrl + 'product/' + img"
                       class="images_select-ss"
                       style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)"
                       width="100%"
-                      height="150px"
+                      height="170px"
                       :class="{
                         'img-selected': imageStore.extra_array.includes(img),
                       }"
@@ -184,7 +184,7 @@
               @click="submitextraImage()"
               id="sumbit_img"
               type="button"
-              class="btn bottom-0 end-0 btn-primary"
+              class="btn bottom-0 end-0 btn-danger"
             >
               Thêm Hinh anh
             </button>
@@ -204,17 +204,22 @@
 <script setup>
 import { useImageSelect } from "@/assets/js/adminjs/dragimg.js";
 import { onMounted, ref } from "vue";
-const imagebaseUrl = import.meta.env.VITE_IMAGE_BASE_URL;
 const imageStore = useImageSelect();
-const images = ["images.jpg", "1", "2", "22", "3"];
-
+const images = [
+  "product-2.jpg",
+  "product-1.jpg",
+  "product-3.jpg",
+  "product-4.jpg",
+  "product-5.jpg",
+];
+const imagetypeex = "product";
 let extravalue = ref([]);
 function submitextraImage() {
   if (imageStore.extra_array.length > 0) {
-    extravalue.value = [...imageStore.extra_array]; // ✅ tạo mảng mới (deep copy)
+    extravalue.value = [...imageStore.extra_array];
     console.log("Mảng ảnh phụ đã chọn:", extravalue.value);
   } else {
-    extravalue.value = []; // clear nếu không chọn ảnh nào
+    extravalue.value = [];
     console.log("Chưa chọn ảnh phụ nào.");
   }
 }

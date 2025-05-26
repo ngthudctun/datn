@@ -58,13 +58,13 @@
         >
           <div class="col-2">
             <div
-              class="py-2 link-primary"
+              class="py-2 link-danger"
               style="border-bottom: 1px solid #e1e1e1"
             >
               Hình ảnh sản phẩm
             </div>
             <div
-              class="py-2 link-primary"
+              class="py-2 link-danger"
               style="border-bottom: 1px solid #e1e1e1"
             >
               Hình ảnh Danh mục
@@ -95,7 +95,7 @@
                   <button
                     type="button"
                     @click="showupdateimg('show_all-img', 'uploadimg')"
-                    class="mt-1 btn btn-primary"
+                    class="mt-1 btn btn-danger"
                   >
                     Thêm Hình ảnh
                   </button>
@@ -132,11 +132,11 @@
                       style="position: relative; cursor: pointer"
                     >
                       <img
-                        :src="$imagebaseUrl + img"
+                        :src="$imageUrl + 'product/' + img"
                         class="images_select-ss"
                         style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)"
                         width="100%"
-                        height="150px"
+                        height="170px"
                         :class="{
                           'img-selected': imageStore.selectedImage === img,
                         }"
@@ -187,7 +187,7 @@
               @click="submitImage()"
               id="sumbit_img"
               type="button"
-              class="btn btn-primary"
+              class="btn btn-danger"
             >
               Thêm Hinh anh
             </button>
@@ -208,26 +208,34 @@
 import { useImageSelect } from "@/assets/js/adminjs/dragimg.js";
 import { onMounted, ref } from "vue";
 import uploadimage from "./uploadimagesAd.vue";
-const imagebaseUrl = import.meta.env.VITE_IMAGE_BASE_URL;
+const imageUrl = import.meta.env.VITE_IMAGE_BASE_URL;
+
 const imageStore = useImageSelect();
 const images_firt = ref(null);
-const images = ["images.jpg", "1", "2", "22", "3"];
+const images = [
+  "product-2.jpg",
+  "product-1.jpg",
+  "product-3.jpg",
+  "product-4.jpg",
+  "product-5.jpg",
+];
 function submitImage() {
   const noimg = document.getElementById("no-img-input");
   const oneimg = document.getElementById("show-one-img");
   const showoneimg = oneimg.querySelector("img");
   const hiddenInput = document.getElementById("value_img-hiden");
   const selected = hiddenInput.value;
+
   if (selected) {
     oneimg.classList.remove("d-none");
     noimg.classList.add("d-none");
-    showoneimg.src = imagebaseUrl + selected;
+    showoneimg.src = imageUrl +'product/'+ selected;
   } else {
     oneimg.classList.add("d-none");
     noimg.classList.remove("d-none");
   }
 }
-const imagetype = null;
+
 let uploadnum = ref(0);
 function showupdateimg() {
   uploadnum.value = uploadnum.value === 0 ? 1 : 0;

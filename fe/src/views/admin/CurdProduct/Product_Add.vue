@@ -34,7 +34,7 @@
                 <h2>Thêm sản phẩm sản phẩm</h2>
                 <div class="">
                   <h6 class="d-flex">
-                    <a href="">Trang chủ</a>
+                    <a class="text-danger" href="">Trang chủ</a>
                     <div class="mx-1">/</div>
                     Danh sách sản phẩm
                   </h6>
@@ -44,11 +44,11 @@
             <div class="mt-4" style="border-top: 1px solid #e1e1e1">
               <div class="w-100 row">
                 <div class="col-8" style="border-right: 1px solid #e1e1e1">
-                  <div class="p-3" style="box-sizing: border-box">
-                    <h4>Điền thông tin sản phẩm</h4>
+                  <div class="p-2" style="box-sizing: border-box">
                     <div class="form-group mt-3">
-                      <label for="usr"><b>Tên sản phẩm:</b></label>
+                      <label for="usr">Tên sản phẩm:</label>
                       <input
+                        placeholder="nhập tên sản phẩm"
                         type="text"
                         class="mt-1 form-control"
                         id="usr"
@@ -56,15 +56,16 @@
                       />
                     </div>
                     <div class="form-group mt-3 position-relative">
-                      <label for="usr"><b>Danh mục:</b></label>
+                      <label for="usr">Danh mục:</label>
                       <form
                         class="d-flex form-control mt-1 align-items-center position-relative"
-                        key=""
+                        for="myInputcate"
                         style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
                       >
                         <input
+                          placeholder="VD: Máy tính-Máy tính bảng-laptop"
                           autocomplete="off"
-                          class="form-control m-0 p-0 border-0"
+                          class="m-0 p-0 w-100 border-0"
                           type="text"
                           id="myInputcate"
                           v-on:click="
@@ -76,7 +77,7 @@
                         />
                         <button
                           type="button"
-                          class="btn top-0 end-0 btn-primary position-absolute"
+                          class="btn rounded-start-0 top-0 end-0 btn-danger position-absolute"
                         >
                           Thêm danh mục
                         </button>
@@ -88,55 +89,40 @@
                         style="left: 0"
                       >
                         <li>
-                          <div href="#" class="box-con">
-                            <input type="checkbox" name="" id="ttt" />
-                            <label class="mx-2" for="ttt"> Con cá 1</label>
+                          <div href="#" class="box-con w-100">
+                            <label class="w-100" for="">
+                              <input type="checkbox" name="" id="" /> Con cá 1
+                            </label>
                           </div>
                         </li>
                         <li>
-                          <div href="#" class="box-con">
-                            <input type="checkbox" name="" id="ttt" />
-                            <label class="mx-2" for="ttt"> Con cá 2</label>
+                          <div href="#" class="box-con w-100">
+                            <label class="w-100" for="">
+                              <input type="checkbox" name="" id="" /> Con cá 1
+                            </label>
                           </div>
                         </li>
                         <li>
-                          <div href="#" class="box-con">
-                            <input type="checkbox" name="" id="ttt" />
-                            <label class="mx-2" for="ttt"> Con cá 3 </label>
-                          </div>
-                        </li>
-                        <li>
-                          <div href="#" class="box-con">
-                            <input type="checkbox" name="" id="ttt" />
-                            <label class="mx-2" for="ttt"> Con cá 4</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div href="#" class="box-con">
-                            <input type="checkbox" name="" id="ttt" />
-                            <label class="mx-2" for="ttt"> Con cá</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div href="#" class="box-con">
-                            <input type="checkbox" name="" id="ttt" />
-                            <label class="mx-2" for="ttt"> Con cá</label>
+                          <div href="#" class="box-con w-100">
+                            <label class="w-100" for="">
+                              <input type="checkbox" name="" id="" /> Con cá 1
+                            </label>
                           </div>
                         </li>
                       </ul>
                     </div>
                     <br />
-                    <label class="my-1" for=""><b>Mô tả chi tiết</b></label>
+                    <label class="my-1" for="">Mô tả chi tiết</label>
                     <Adminwordtext />
                     <div class="form-group mt-3">
-                      <label for="usr"><b>Trạng thái sản phẩm:</b></label>
+                      <label for="usr">Trạng thái sản phẩm:</label>
                       <select name="" class="form-control mt-1" id="">
                         <option value="" class="">Chưa kích hoạt</option>
                         <option value="" class="">Kích hoạt</option>
                       </select>
                     </div>
                     <div class="form-group mt-3 d-flex align-items-center">
-                      <label for="usr"><b>Kích hoạt biến thể:</b></label>
+                      <label for="usr">Kích hoạt biến thể:</label>
                       <label
                         data-bs-toggle="collapse"
                         data-bs-target="#collapseExamplevari"
@@ -149,80 +135,49 @@
                       </label>
                     </div>
                     <div class="collapse mt-3" id="collapseExamplevari">
+                      <h6 class="d-flex">
+                        <div
+                          class="cursor-pointer link-danger"
+                          @click="variantcontroll.upstepvariant(1)"
+                          href=""
+                        >
+                          Thêm thuộc tính
+                        </div>
+                        <div class="mx-1">/</div>
+                        <div
+                          class=""
+                          :class="{
+                            'link-danger':
+                              variantcontroll.stepvariant == 2 ||
+                              variantcontroll.stepvariant == 3,
+                          }"
+                        >
+                          Tạo biến thể
+                        </div>
+                        <div class="mx-1">/</div>
+                        <div
+                          class=""
+                          :class="{
+                            'link-danger': variantcontroll.stepvariant == 3,
+                          }"
+                        >
+                          Thêm sản phẩm biến thể
+                        </div>
+                      </h6>
                       <div
                         class="card card-body"
                         style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
                       >
-                        <div class="d-none">
-                          <div class="" id="boxinputvariant">
-                            <div
-                              v-for="(item, index) in inputvariant"
-                              :key="index"
-                              class="form-group mt-3 d-flex align-items-center justify-content-between"
-                              id="inputbtnvari"
-                            >
-                              <input
-                                v-model="inputvariant[index]"
-                                placeholder="nhập biến thể sản phẩm"
-                                type="text"
-                                class="mt-1 form-control"
-                                id="usr"
-                                style="
-                                  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-                                  width: 95%;
-                                "
-                              />
-                              <div class="d-flex">
-                                <i
-                                  class="fa-solid fa-trash"
-                                  @click="deleteVariant(index)"
-                                  v-if="inputvariant.length > 1"
-                                ></i>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="mt-4 d-flex">
-                            <div
-                              @click="addInputVariant()"
-                              style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
-                              id="sumbit_img"
-                              type="button"
-                              class="btn"
-                            >
-                              + Thêm Biến thể
-                            </div>
-                            <div
-                              @click="submitVariants()"
-                              style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
-                              id="sumbit_img"
-                              type="button"
-                              class="btn mx-2"
-                            >
-                              Lưu
-                            </div>
-                          </div>
+                        <div v-show="variantcontroll.stepvariant == 1" class="">
+                          <StepOneVariant />
                         </div>
-
-                        <div class="">
-                          <select
-                            class="form-select"
-                            aria-label="Default select example"
-                          >
-                            <option selected>Tên biến thể</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </select>
-                          <div class="form-group mt-3">
-                            <label for="usr"><b>Tuy chọn biến thể</b></label>
-                            <input
-                              type="text"
-                              class="mt-1 form-control"
-                              id="usr"
-                              style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
-                            />
-                          </div>
+                        <div v-show="variantcontroll.stepvariant == 2" class="">
+                          <StepTwoVariant />
+                          <div class=""></div>
+                        </div>
+                        <div v-show="variantcontroll.stepvariant == 3" class="">
+                          <StepFinalVariant />
+                          <div class=""></div>
                         </div>
                       </div>
                     </div>
@@ -231,8 +186,10 @@
                 <div class="col-4">
                   <div class="p-2" style="box-sizing: border-box">
                     <div class="form-group mt-3">
-                      <label for=""><b>Số lượng tồn kho:</b></label>
+                      <label for="">Số lượng tồn kho:</label>
                       <input
+                        autocomplete="off"
+                        placeholder="VD: 12"
                         type="text"
                         class="mt-1 form-control"
                         id="usr"
@@ -241,14 +198,15 @@
                     </div>
 
                     <div class="form-group mt-3 position-relative">
-                      <label for="usr"><b>Hình ảnh sản phẩm</b></label
-                      ><br />
+                      <label for="usr">Hình ảnh sản phẩm</label><br />
                       <dragimg />
                       <input type="hidden" id="" name="selected_image" />
                     </div>
                     <div class="form-group mt-3">
-                      <label for=""><b>Giá cũ sản phẩm:</b></label>
+                      <label for="">Giá cũ sản phẩm:</label>
                       <input
+                        autocomplete="off"
+                        placeholder="Nhập giá tiền gốc"
                         type="text"
                         class="mt-1 form-control"
                         id="usr"
@@ -257,9 +215,10 @@
                     </div>
 
                     <div class="form-group mt-3">
-                      <label for=""><b>Giá mới sản phẩm:</b></label>
+                      <label for="">Giá mới sản phẩm:</label>
                       <input
                         type="text"
+                        placeholder="nhập giá tiền khuyến mãi (nếu có)"
                         class="mt-1 form-control"
                         id="usr"
                         style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
@@ -267,19 +226,65 @@
                     </div>
                     <br />
                     <div class="w-100">
-                      <button type="button" class="w-100 btn btn-primary">
+                      <button type="button" class="w-100 btn btn-danger">
                         Thêm sản phẩm
                       </button>
                     </div>
                     <hr />
                     <div class="form-group mt-3 position-relative">
-                      <label for="usr"><b>Hình ảnh thêm</b></label>
+                      <label for="usr">Hình ảnh thêm</label>
                       <dragimgextra />
                       <input
                         type="hidden"
                         id="value_img-hiden"
                         name="selected_image"
                       />
+                    </div>
+                    <div class="form-group">
+                      <label for="">Cân nặng sản phẩm (kg):</label>
+                      <input
+                        autocomplete="off"
+                        placeholder="Nhập Cân nặng sản phẩm"
+                        type="text"
+                        class="mt-1 form-control"
+                        id="usr"
+                        style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="">Kích cỡ (D-R-C) (cm):</label>
+                      <div class="d-flex">
+                        <div class="col-4 p-0">
+                          <input
+                            autocomplete="off"
+                            placeholder="Dài"
+                            type="text"
+                            class="mt-1 form-control"
+                            id="usr"
+                            style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
+                          />
+                        </div>
+                        <div class="col-4 px-1">
+                          <input
+                            autocomplete="off"
+                            placeholder="Rộng"
+                            type="text"
+                            class="mt-1 form-control"
+                            id="usr"
+                            style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
+                          />
+                        </div>
+                        <div class="col-4 p-0">
+                          <input
+                            autocomplete="off"
+                            placeholder="Cao"
+                            type="text"
+                            class="mt-1 form-control"
+                            id="usr"
+                            style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -297,61 +302,20 @@
 
   <script setup>
 import "@/assets/css/admincss/css/curdproduct/productadd.css";
+import "@/assets/css/bootstrap.min.css";
 import NavSuport from "@/components/admin/AdminLayout/NavSuport.vue";
 import { AdminLayout } from "@/storage/admin/layoutAdmin";
 import Adminwordtext from "@/components/admin/AdminLayout/textword.vue";
 import dragimg from "@/components/admin/AdminLayout/button/imagesupload/dragimg.vue";
 import dragimgextra from "@/components/admin/AdminLayout/button/imagesupload/dragextraimg.vue";
+import StepOneVariant from "@/components/admin/AdminLayout/variantstep/StepOneVariant.vue";
+import StepTwoVariant from "@/components/admin/AdminLayout/variantstep/StepTwoVariant.vue";
+import StepFinalVariant from "@/components/admin/AdminLayout/variantstep/StepFinalVariant.vue";
+import { variantcontrollerad } from "@/assets/js/adminjs/js/crudproduct/variantproad";
+const variantcontroll = variantcontrollerad();
 import { onMounted, watch, ref } from "vue";
 const Adminlayout = AdminLayout();
-
-const inputvariant = ref([]);
-
-// Load từ localStorage
-onMounted(() => {
-  const stored = localStorage.getItem("inputvariarr");
-  if (stored) {
-    try {
-      inputvariant.value = JSON.parse(stored);
-    } catch (e) {
-      console.error("Lỗi khi parse JSON từ localStorage", e);
-    }
-  }
-});
-
-watch(
-  inputvariant,
-  (newVal) => {
-    localStorage.setItem("inputvariarr", JSON.stringify(newVal));
-  },
-  { deep: true }
-);
-
-const addInputVariant = () => {
-  inputvariant.value.push("");
-};
-
-const deleteVariant = (index) => {
-  if (inputvariant.value.length > 1) {
-    inputvariant.value.splice(index, 1);
-  }
-};
-
-const submitVariants = () => {
-  const filtered = inputvariant.value
-    .map((item) => item.trim())
-    .filter((item) => item !== "");
-
-  if (filtered.length === 0) {
-    alert("Vui lòng nhập ít nhất một biến thể.");
-    return;
-  }
-
-  console.log("Các biến thể:", filtered);
-
-  localStorage.setItem("inputvariarr", JSON.stringify(filtered));
-  console.log(localStorage.getItem("inputvariarr", JSON.stringify(filtered)));
-};
+const stepvariant = ref(0);
 </script>
   
   

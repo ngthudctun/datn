@@ -34,7 +34,7 @@
                 <h2>Danh sách sản phẩm</h2>
                 <div class="">
                   <h6 class="d-flex">
-                    <a href="">Trang chủ</a>
+                    <a class="text-danger" href="">Trang chủ</a>
                     <div class="mx-1">/</div>
                     Danh sách sản phẩm
                   </h6>
@@ -47,7 +47,7 @@
                   <div class="row justify-content-center">
                     <div class="col-12 col-lg-6 row justify-content-center">
                       <div
-                        class="add_product py-2 rounded-start-1 text-center col-5 "
+                        class="btn btn-danger py-2 rounded-end-0 text-center col-5"
                       >
                         <router-link to="/admin/add-product">
                           <b class="text-white"> thêm sản phẩm</b>
@@ -55,13 +55,14 @@
                       </div>
 
                       <div
-                        class="rounded-end text-center col-7"
+                        class="rounded-end d-flex align-items-center col-7"
                         style="background-color: #b2acac42"
                       >
                         <form class="d-flex align-items-center">
                           <i class="fas fa-search"></i>
                           <input
                             class="form-control mx-2 border-0 p-0"
+                            style="background-color: rgb(227 230 237 / 0%)"
                             type=""
                             placeholder="Tìm kiếm sản phẩm"
                             aria-label=""
@@ -168,7 +169,7 @@
                             class="dropdown-menu border-1 text-center p-2"
                             style="min-width: 300px"
                           >
-                            <div class="dropdown-item">
+                            <div class="">
                               <div class="text-start">
                                 <h5><b>Lọc theo: </b></h5>
                                 <br />
@@ -253,10 +254,10 @@
                             />
                             <img
                               class="rounded-2 col-2"
-                              :src="$imagebaseUrl + 'images.jpg'"
+                              :src="$imageUrl + 'product/' + 'product-5.jpg'"
                               alt=""
-                              width=""
-                              height="50"
+                              width="100px"
+                              height="50px"
                             />
                             <div
                               class="h-100 col-7 px-3"
@@ -273,7 +274,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-2 row"><b>2.999,000 Đ</b></div>
+                          <div class="col-2 row">2.999,000 Đ</div>
                           <div
                             class="col-3 p-2 justify-content-center rounded d-flex"
                             style="flex-wrap: wrap"
@@ -282,31 +283,31 @@
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                           </div>
                           <div class="col-2 d-flex justify-content-center">
@@ -384,7 +385,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-2 row"><b>2.999,000 Đ</b></div>
+                          <div class="col-2 row">2.999,000 Đ</div>
                           <div
                             class="col-3 p-2 justify-content-center rounded d-flex"
                             style="flex-wrap: wrap"
@@ -393,31 +394,31 @@
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                           </div>
                           <div class="col-2 d-flex justify-content-center">
