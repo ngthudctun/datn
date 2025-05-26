@@ -8,13 +8,6 @@
                             <a href="./index.html"><img :src="$imageUrl + 'logo/logo.png'" alt="logo" heigh="31"/></a>
                         </div>
                         <p>Mục tiêu mang đến trải nghiệm mua sắm nhanh chóng, dễ dàng và tin cậy. Chúng tôi tập trung cung cấp sản phẩm chất lượng với giá tốt nhất, dịch vụ giao hàng nhanh và chính sách chăm sóc khách hàng linh hoạt, giúp bạn mua sắm an tâm và tiết kiệm thời gian. ShopNow cam kết luôn đặt lợi ích và sự hài lòng của khách hàng làm trọng tâm trong mọi hoạt động.</p>
-                        <div class="footer__payment">
-                            <a href="#"><img :src="$imageUrl + 'payment/payment-1.png'" alt="payment" /></a>
-                            <a href="#"><img :src="$imageUrl + 'payment/payment-2.png'" alt="payment" /></a>
-                            <a href="#"><img :src="$imageUrl + 'payment/payment-3.png'" alt="payment" /></a>
-                            <a href="#"><img :src="$imageUrl + 'payment/payment-4.png'" alt="payment" /></a>
-                            <a href="#"><img :src="$imageUrl + 'payment/payment-5.png'" alt="payment" /></a>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-5">
@@ -45,11 +38,11 @@
                     <div class="footer__newslatter">
                         <h6>Theo dõi ShopNow</h6>
                         <div class="footer__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
                         </div>
                     </div>
                 </div>

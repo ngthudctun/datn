@@ -11,9 +11,8 @@
     "
   >
     <nav class="row py-2 py-lg-3">
-      <div class="col-lg-3 col-12">
-        <div class="d-flex align-items-center justify-content-start h-100 mx-4">
-
+      <div class=" col-12 col-lg-3 ">
+        <div class="d-flex align-items-center justify-content-start h-100">
           <i
             class="fa-solid fa-bars d-lg-none"
             style="font-size: 24px; cursor: pointer"
@@ -62,8 +61,8 @@
         </ul>
       </div>
 
-      <div class="col-lg-3 col-5">
-        <div class="d-flex align-items-center justify-content-start h-100 mx-4">
+      <div class="col-5 col-lg-3">
+        <div class="d-flex align-items-center justify-content-start h-100 ">
           <div class="ms-2 d-none d-lg-flex">
             <b>Xin chào trường nguyễn</b>
           </div>
