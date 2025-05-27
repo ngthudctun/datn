@@ -2,7 +2,7 @@
 import { defineStore } from "pinia";
 
 export const useImageSelect = defineStore("imagegetselect", {
-  state: () => ({
+  state: () => ({ 
     selectedImage: null,
     extra_array: [],
   }),

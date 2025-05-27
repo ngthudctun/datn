@@ -11,25 +11,22 @@
     "
   >
     <nav class="row py-2 py-lg-3">
-      <div class="col-lg-3 col-7">
-        <div class="d-flex align-items-center justify-content-start h-100 mx-4">
+      <div class=" col-12 col-lg-3 ">
+        <div class="d-flex align-items-center justify-content-start h-100">
           <i
-            class="ti ti-menu-2 d-flex d-lg-none active-sidebar"
+            class="fa-solid fa-bars d-lg-none"
             style="font-size: 24px; cursor: pointer"
             id="active-sidebar"
             @click="Adminlayout.getadminorder()"
           ></i>
-          <div class="ms-2 d-flex justify-content-center align-items-center">
+          <div class="d-flex justify-content-center align-items-center">
             <img
-              class="mx-2 rounded"
-              :src="$imagebaseUrl + 'images.jpg'"
+              class="rounded"
+              :src="$imageUrl + 'logo/logo.png'"
               alt=""
-              width="60"
+              width="100%"
               height="100%"
             />
-            <div class="d-flex justify-content-center align-items-center size">
-              shop now
-            </div>
           </div>
         </div>
       </div>
@@ -49,7 +46,11 @@
             v-on:input="Adminlayout.myFunction('myInput', 'myUL')"
           />
         </form>
-        <ul id="myUL" class="position-absolute my-ul-list top-100 w-100" style="left: 0">
+        <ul
+          id="myUL"
+          class="position-absolute my-ul-list top-100 w-100"
+          style="left: 0"
+        >
           <li><a href="#">Trang chủ</a></li>
           <li><a href="#">Danh mục sản phẩm </a></li>
           <li><a href="#">Billy</a></li>
@@ -60,8 +61,8 @@
         </ul>
       </div>
 
-      <div class="col-lg-3 col-5">
-        <div class="d-flex align-items-center justify-content-start h-100 mx-4">
+      <div class="col-5 col-lg-3">
+        <div class="d-flex align-items-center justify-content-start h-100 ">
           <div class="ms-2 d-none d-lg-flex">
             <b>Xin chào trường nguyễn</b>
           </div>
@@ -72,7 +73,7 @@
 </template>
 
 <script setup>
-import { AdminLayout } from "@/storage/admin/layoutAdmin";
+import Barbtn from "@/components/admin/AdminLayout/button/Barbtn.vue";
+import { AdminLayout } from "@/storage/admin/layoutAdmin.js";
 const Adminlayout = AdminLayout();
-
 </script>

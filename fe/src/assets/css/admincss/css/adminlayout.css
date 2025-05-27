@@ -36,19 +36,23 @@
     padding: 0;
     margin: 0;
     z-index: 2000;
-
+    border: 1px solid #a6a6a6;
+    border-top: 0;
   }
 
   .my-ul-list .box-con {
     border: 1px solid #ddd;
-
+    width: 100%;
     background-color: #ffffff;
-    padding: 12px;
+    padding: 10px;
     text-decoration: none;
-    font-size: 18px;
     color: black;
     display: block;
     transition: background-color 0.3s ease;
+  }
+
+  .my-ul-list .box-con:hover {
+    background-color: #c9c9c9;
   }
 
   .my-ul-list li {
@@ -56,9 +60,7 @@
     display: none;
   }
 
-  .my-ul-list li .box-con:hover {
-    
-  }
+
 
   .my-ul-list li:active~.my-ul-list {
 

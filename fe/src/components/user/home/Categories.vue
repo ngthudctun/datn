@@ -104,14 +104,13 @@ export default {
     transform: scale(1.05);
 }
 
-.category-section:hover ::v-deep(.owl-nav button.owl-prev),
-.category-section:hover ::v-deep(.owl-nav button.owl-next) {
+.category-section:hover :deep(.owl-nav button.owl-prev),
+.category-section:hover :deep(.owl-nav button.owl-next) {
     opacity: 1;
 }
 
-
-::v-deep .owl-carousel .owl-nav button.owl-prev,
-::v-deep .owl-carousel .owl-nav button.owl-next {
+:deep(.owl-carousel .owl-nav button.owl-prev),
+:deep(.owl-carousel .owl-nav button.owl-next) {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -127,11 +126,12 @@ export default {
     background: #e1e1e1;
 }
 
-::v-deep .owl-carousel .owl-nav button.owl-prev {
+:deep(.owl-carousel .owl-nav button.owl-prev) {
     left: -50px;
 }
 
-::v-deep .owl-carousel .owl-nav button.owl-next {
+:deep(.owl-carousel .owl-nav button.owl-next) {
     right: -50px;
 }
+
 </style>

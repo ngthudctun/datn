@@ -15,12 +15,12 @@
             class="active-sidebar d-lg-none"
             v-on:click="Adminlayout.getadminorder()"
           >
-            OO
+            X
           </button>
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu text-primary">Home</span>
+              <span class="hide-menu text-danger">Home</span>
             </li>
             <li class="sidebar-item">
                 <router-link to="/admin/">
@@ -37,7 +37,7 @@
 
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu text-primary">Quản lý Sản phẩm</span>
+              <span class="hide-menu text-danger">Quản lý Sản phẩm</span>
             </li>
             <li class="sidebar-item">
               <router-link to="cateproduct">
@@ -57,7 +57,7 @@
 
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu text-primary">Quản lý Bài viết</span>
+              <span class="hide-menu text-danger">Quản lý Bài viết</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="./index.html" aria-expanded="false">
@@ -97,7 +97,7 @@
 
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu text-primary"
+              <span class="hide-menu text-danger"
                 >Quản lý hình ảnh, liên kết</span
               >
             </li>
@@ -183,7 +183,7 @@
 
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu text-primary">Cấu hình webside</span>
+              <span class="hide-menu text-danger">Cấu hình webside</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="./index.html" aria-expanded="false">

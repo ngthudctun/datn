@@ -34,7 +34,7 @@
                 <h2>Danh sách sản phẩm</h2>
                 <div class="">
                   <h6 class="d-flex">
-                    <a href="">Trang chủ</a>
+                    <a class="text-danger" href="">Trang chủ</a>
                     <div class="mx-1">/</div>
                     Danh sách sản phẩm
                   </h6>
@@ -47,7 +47,7 @@
                   <div class="row justify-content-center">
                     <div class="col-12 col-lg-6 row justify-content-center">
                       <div
-                        class="add_product py-2 rounded-start-1 text-center col-5 "
+                        class="btn btn-danger  rounded-end-0 text-center col-5"
                       >
                         <router-link to="/admin/add-product">
                           <b class="text-white"> thêm sản phẩm</b>
@@ -55,13 +55,14 @@
                       </div>
 
                       <div
-                        class="rounded-end text-center col-7"
+                        class="rounded-end d-flex align-items-center col-7"
                         style="background-color: #b2acac42"
                       >
                         <form class="d-flex align-items-center">
                           <i class="fas fa-search"></i>
                           <input
                             class="form-control mx-2 border-0 p-0"
+                            style="background-color: rgb(227 230 237 / 0%)"
                             type=""
                             placeholder="Tìm kiếm sản phẩm"
                             aria-label=""
@@ -76,9 +77,9 @@
                       <div
                         class="col-12 col-lg-4 d-flex justify-content-center"
                       >
-                        <div class="dropdown nlb-select col-12">
+                        <div class="dropdown nlb-select w-100">
                           <button
-                            class="btn btn-light border-0 w-100 dropdown-toggle text-center"
+                            class="btn w-100 btn-light border-0 w-100 dropdown-toggle text-center"
                             type="button"
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
@@ -96,36 +97,36 @@
                             </li>
                             <li>
                               <a class="dropdown-item" href="#"
-                                >Sản phẩm cũ nhất</a
+                                > cũ nhất</a
                               >
                             </li>
                           </ul>
                         </div>
                       </div>
                       <div
-                        class="col-12 col-lg-8 mt-2 mt-lg-0 d-flex justify-content-center"
+                        class="col-12 w-100 col-lg-8 mt-2 mt-lg-0 d-flex justify-content-center"
                       >
                         <div
                           class="dropdown nlb-select px-1 col-4"
                           style="box-sizing: border-box"
                         >
                           <button
-                            class="btn btn-light border-0 dropdown-toggle text-center w-100"
+                            class="btn w-100 btn-light border-0 dropdown-toggle text-center w-100"
                             type="button"
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                           >
-                            Lọc theo giá
+                           theo giá
                           </button>
                           <ul class="dropdown-menu border-1 text-center">
                             <li>
                               <a class="dropdown-item" href="#"
-                                >Giá thấp đến cao</a
+                                > thấp đến cao</a
                               >
                             </li>
                             <li>
                               <a class="dropdown-item" href="#"
-                                >Giá cao đến thấp</a
+                                > cao đến thấp</a
                               >
                             </li>
                           </ul>
@@ -162,13 +163,13 @@
                             aria-expanded="false"
                             @click.stop
                           >
-                            Thêm bộ lọc
+                            Thêm 
                           </button>
                           <ul
                             class="dropdown-menu border-1 text-center p-2"
                             style="min-width: 300px"
                           >
-                            <div class="dropdown-item">
+                            <div class="">
                               <div class="text-start">
                                 <h5><b>Lọc theo: </b></h5>
                                 <br />
@@ -200,7 +201,7 @@
                                 <div v-show="getSelect == 'option-2'" id="">
                                   <div class="">
                                     <div class="position-relative" @click.stop>
-                                      <sliderrange />
+                                      <Rageslider />
                                     </div>
                                   </div>
                                 </div>
@@ -241,7 +242,7 @@
                         </div>
                         <br />
                         <div
-                          class="py-3 row align-items-center"
+                          class="py-3 d-flex align-items-center"
                           style="min-width: 1100px"
                         >
                           <div class="col-4 d-flex align-items-center">
@@ -253,10 +254,10 @@
                             />
                             <img
                               class="rounded-2 col-2"
-                              :src="$imagebaseUrl + 'images.jpg'"
+                              :src="$imageUrl + 'product/' + 'product-5.jpg'"
                               alt=""
-                              width=""
-                              height="50"
+                              width="100px"
+                              height="50px"
                             />
                             <div
                               class="h-100 col-7 px-3"
@@ -273,7 +274,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-2 row"><b>2.999,000 Đ</b></div>
+                          <div class="col-2 row">2.999,000 Đ</div>
                           <div
                             class="col-3 p-2 justify-content-center rounded d-flex"
                             style="flex-wrap: wrap"
@@ -282,31 +283,31 @@
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                           </div>
                           <div class="col-2 d-flex justify-content-center">
@@ -335,9 +336,7 @@
                                 </div>
                                 <ul class="dropdown-menu">
                                   <li>
-                                    <router-link
-                                      :to="'/admin/product-editproduct/'"
-                                    >
+                                    <router-link :to="'/admin/'">
                                       <div class="dropdown-item">
                                         Chỉnh sửa
                                       </div></router-link
@@ -352,7 +351,7 @@
                           </div>
                         </div>
                         <div
-                          class="py-3 row align-items-center"
+                          class="py-3 d-flex align-items-center"
                           style="min-width: 1100px"
                         >
                           <div class="col-4 d-flex align-items-center">
@@ -364,7 +363,7 @@
                             />
                             <img
                               class="rounded-2 col-2"
-                              :src="$imagebaseUrl + 'images.jpg'"
+                              :src="$imageUrl + 'images.jpg'"
                               alt=""
                               width=""
                               height="50"
@@ -384,7 +383,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-2 row"><b>2.999,000 Đ</b></div>
+                          <div class="col-2 row">2.999,000 Đ</div>
                           <div
                             class="col-3 p-2 justify-content-center rounded d-flex"
                             style="flex-wrap: wrap"
@@ -393,31 +392,31 @@
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                             <div
                               class="border-1 border p-1 m-1 rounded-2"
                               style="background-color: #e3e6ed"
                             >
-                              <b>may tinh</b>
+                              may tinh
                             </div>
                           </div>
                           <div class="col-2 d-flex justify-content-center">
@@ -446,9 +445,7 @@
                                 </div>
                                 <ul class="dropdown-menu">
                                   <li>
-                                    <router-link
-                                      :to="'/admin/product-editproduct/'"
-                                    >
+                                    <router-link :to="'/admin/'">
                                       <div class="dropdown-item">
                                         Chỉnh sửa
                                       </div></router-link
@@ -482,7 +479,7 @@
 import "@/assets/js/adminjs/js/crudproduct/productlist.js";
 import "@/assets/css/admincss/css/curdproduct/productlist.css";
 import NavSuport from "@/components/admin/AdminLayout/NavSuport.vue";
-import sliderrange from "@/components/admin/AdminLayout/button/rageslider.vue";
+import Rageslider from "@/components/admin/AdminLayout/button/rageslider.vue";
 import { ref } from "vue";
 
 const getSelect = ref(0);
