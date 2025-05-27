@@ -199,7 +199,11 @@
 
                     <div class="form-group mt-3 position-relative">
                       <label for="usr">Hình ảnh sản phẩm</label><br />
-                      <dragimg />
+                      <dragimg
+                        type="prouduct"
+                        classify="proimg"
+                        :hideninp="'1'"
+                      />
                       <input type="hidden" id="" name="selected_image" />
                     </div>
                     <div class="form-group mt-3">
