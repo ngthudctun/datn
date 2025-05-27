@@ -34,7 +34,8 @@
 
 }
 
-.custum-file-upload {
+.custum-file-upload img {
+    margin-right: 5px;
     height: 100px;
     width: 100px;
     display: flex;
@@ -81,4 +82,57 @@ ul[role="listbox"] li {
     padding: 5px 0;
     margin: 5px 0;
     border-top: 1px solid rgba(0, 0, 0, 0.009);
+}
+
+/* The switch - the box around the slider */
+.custom-switch {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 2.5em;
+    height: 1em;
+}
+
+/* Hide default HTML checkbox */
+.custom-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.custom-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: #9fccfa;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.custom-slider:before {
+    position: absolute;
+    content: "";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1em;
+    width: 1em;
+    inset: 0;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.custom-switch input:checked+.custom-slider {
+    background: #0974f1;
+}
+
+.custom-switch input:focus+.custom-slider {
+    box-shadow: 0 0 1px #0974f1;
+}
+
+.custom-switch input:checked+.custom-slider:before {
+    transform: translateX(1.6em);
 }
