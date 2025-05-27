@@ -5,7 +5,7 @@ import router from './router'
 
 // Local CSS
 import './assets/css/bootstrap.min.css'
-import './assets/css/font-awesome.min.css'
+import './assets/icons/css/all.min.css'
 import './assets/css/elegant-icons.css'
 import './assets/css/jquery-ui.min.css'
 import './assets/css/magnific-popup.css'
