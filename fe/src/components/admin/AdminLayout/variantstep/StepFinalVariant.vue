@@ -31,7 +31,13 @@
           <div class="card card-body">
             <div class="row">
               <div class="col-2">
-                <div class=""><dragimg /></div>
+                <div class="">
+                  <dragimg
+                    type="post"
+                    classify="variantpro"
+                    :hideninp="'variant-' + groupIndex"
+                  />
+                </div>
                 <div class="form-group mt-3"></div>
               </div>
               <div class="col-10">
@@ -154,7 +160,6 @@
 }
 .dropdown-handle:active {
   background-color: rgb(203, 203, 203);
-
 }
 </style>
 

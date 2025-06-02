@@ -1,8 +1,3 @@
-
-
-
-
-
 <template>
   <div
     class="page-wrapper"
@@ -199,7 +194,11 @@
 
                     <div class="form-group mt-3 position-relative">
                       <label for="usr">Hình ảnh sản phẩm</label><br />
-                      <dragimg />
+                      <dragimg
+                        type="prouduct"
+                        classify="proimg"
+                        :hideninp="'1'"
+                      />
                       <input type="hidden" id="" name="selected_image" />
                     </div>
                     <div class="form-group mt-3">
@@ -315,10 +314,53 @@ import { variantcontrollerad } from "@/assets/js/adminjs/js/crudproduct/variantp
 const variantcontroll = variantcontrollerad();
 import { onMounted, watch, ref } from "vue";
 const Adminlayout = AdminLayout();
+
+const inputvariant = ref([]);
+
+// Load từ localStorage
+onMounted(() => {
+  const stored = localStorage.getItem("inputvariarr");
+  if (stored) {
+    try {
+      inputvariant.value = JSON.parse(stored);
+    } catch (e) {
+      console.error("Lỗi khi parse JSON từ localStorage", e);
+    }
+  }
+});
+
+watch(
+  inputvariant,
+  (newVal) => {
+    localStorage.setItem("inputvariarr", JSON.stringify(newVal));
+  },
+  { deep: true }
+);
+
+const addInputVariant = () => {
+  inputvariant.value.push("");
+};
+
+const deleteVariant = (index) => {
+  if (inputvariant.value.length > 1) {
+    inputvariant.value.splice(index, 1);
+  }
+};
+
+const submitVariants = () => {
+  const filtered = inputvariant.value
+    .map((item) => item.trim())
+    .filter((item) => item !== "");
+
+  if (filtered.length === 0) {
+    alert("Vui lòng nhập ít nhất một biến thể.");
+    return;
+  }
+
+  console.log("Các biến thể:", filtered);
+
+  localStorage.setItem("inputvariarr", JSON.stringify(filtered));
+  console.log(localStorage.getItem("inputvariarr", JSON.stringify(filtered)));
+};
 const stepvariant = ref(0);
 </script>
-  
-  
-  
-  
-  

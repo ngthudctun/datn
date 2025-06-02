@@ -36,7 +36,7 @@
                       <div
                         class="d-flex col-9 px-3 flex-column align-items-center justify-content-center"
                       >
-                        <div class="">cài đặt trang web</div>
+                        <div class="">cài đặt trang</div>
                         <b>xem thêm</b>
                       </div>
                     </div>
@@ -66,7 +66,7 @@
                       <div
                         class="d-flex col-9 px-3 flex-column align-items-center justify-content-center"
                       >
-                        <div class="">cài đặt trang web</div>
+                        <div class="">Cài đặt tài khoản</div>
                         <b>xem thêm</b>
                       </div>
                     </div>
@@ -81,7 +81,7 @@
                       <div
                         class="d-flex col-9 px-3 flex-column align-items-center justify-content-center"
                       >
-                        <div class="">cài đặt trang web</div>
+                        <div class="">Hộp thư đến</div>
                         <b>xem thêm</b>
                       </div>
                     </div>
@@ -125,7 +125,7 @@
 
                   <div class="col-12 py-1 col-lg-4">
                     <div
-                      class="d-flex bg-warning rounded border border-dark-light text-white px-1"
+                      class="d-flex bg-primary rounded border border-dark-light text-white px-1"
                     >
                       <div class="p-3 m-1 text h1 rounded text-white">
                         <i class="fa-solid fa-globe"></i>
@@ -192,7 +192,7 @@
                     <div class="d-flex rounded px-1">
                       <div class="col-3 p-3 m-1 text h1 rounded text-white">
                         <i
-                          class="fas fa-chart-bar bg-success p-2 rounded-5"
+                          class="fas fa-chart-bar bg-primary p-2 rounded-5"
                         ></i>
                       </div>
                       <div
@@ -283,20 +283,20 @@
                         </h5>
                         <div class="row align-items-center">
                           <div class="col-7">
-                            <h4 class="fw-semibold mb-3">$36,358</h4>
+                            <h4 class="fw-semibold mb-3">36,358 VND</h4>
 
                             <div class="d-flex align-items-center">
                               <div class="me-4">
                                 <span
                                   class="round-8 bg-primary rounded-circle me-2 d-inline-block"
                                 ></span>
-                                <span class="fs-2">2025</span>
+                                <span class="">2025</span>
                               </div>
                               <div>
                                 <span
                                   class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"
                                 ></span>
-                                <span class="fs-2">2024</span>
+                                <span class="">2024</span>
                               </div>
                             </div>
                           </div>

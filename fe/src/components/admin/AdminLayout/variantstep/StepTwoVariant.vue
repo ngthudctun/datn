@@ -42,13 +42,14 @@
         <div
           style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
           id=""
-          type="button "
-          class="btn mx-2"
+          type="button"
+          class="btn mx-2 pe-none"
           @click="sumbitThisStep(3)"
           :class="{
-            'btn-outline-secondary': variantcontroll?.inputvariant?.some(
-              (item) => item.value.length >= 1
-            ),
+            'btn-outline-secondary pe-auto':
+              variantcontroll?.inputvariant?.some(
+                (item) => item.value.length >= 1
+              ),
           }"
         >
           Lưu thuộc tính

@@ -15,7 +15,7 @@
             class="active-sidebar d-lg-none"
             v-on:click="Adminlayout.getadminorder()"
           >
-            OO
+            X
           </button>
           <ul id="sidebarnav">
             <li class="nav-small-cap">
