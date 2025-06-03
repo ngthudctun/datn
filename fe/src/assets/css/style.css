@@ -3323,8 +3323,8 @@ hr.style-eight {
     padding: 0;
     border: none;
     /* border-top: medium double #444444; */
-	border-top: 1px solid #e1e1e1;
-    color: #888;
+	border-top: 1px solid #9d9d9d;
+    color: #000000;
     text-align: center;
 	/* width: 65%; */
 	margin: 30px auto !important;
