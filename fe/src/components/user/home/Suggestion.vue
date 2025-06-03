@@ -10,10 +10,10 @@
             </div>
             <div class="row property__gallery g-1">
                 <router-link to="/cua-hang" class="col-lg-2 col-md-3 col-sm-6 p-1">
-                    <div class="product__item">
+                    <div class="product__item sale">
                         <div class="product__item__pic set-bg"
                             :style="{ backgroundImage: 'url(' + $imageUrl + 'product/product-1.jpg)' }">
-                            <div class="label new">New</div>
+                            <div class="label sale">Sale</div>
                             <ul class="product__hover">
                                 <li>
                                     <router-link to="img/product/product-1.jpg">
@@ -45,7 +45,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">$59.0</div>
+                            <div class="product__price">59.0 <span>59.0</span></div>
                         </div>
                     </div>
                 </router-link>
@@ -85,7 +85,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">$59.0</div>
+                            <div class="product__price">59.0</div>
                         </div>
                     </div>
                 </router-link>
@@ -125,7 +125,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">$59.0</div>
+                            <div class="product__price">59.0</div>
                         </div>
                     </div>
                 </router-link>
@@ -165,7 +165,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">$59.0</div>
+                            <div class="product__price">59.0</div>
                         </div>
                     </div>
                 </router-link>
@@ -205,7 +205,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">$59.0</div>
+                            <div class="product__price">59.0</div>
                         </div>
                     </div>
                 </router-link>
@@ -245,7 +245,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">$59.0</div>
+                            <div class="product__price">59.0</div>
                         </div>
                     </div>
                 </router-link>
@@ -285,7 +285,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">$59.0</div>
+                            <div class="product__price">59.0</div>
                         </div>
                     </div>
                 </router-link>
@@ -325,7 +325,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">$59.0</div>
+                            <div class="product__price">59.0</div>
                         </div>
                     </div>
                 </router-link>
@@ -365,7 +365,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">$59.0</div>
+                            <div class="product__price">59.0</div>
                         </div>
                     </div>
                 </router-link>
@@ -405,7 +405,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">$59.0</div>
+                            <div class="product__price">59.0</div>
                         </div>
                     </div>
                 </router-link>
@@ -445,7 +445,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">$59.0</div>
+                            <div class="product__price">59.0</div>
                         </div>
                     </div>
                 </router-link>
@@ -485,7 +485,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">$59.0</div>
+                            <div class="product__price">59.0</div>
                         </div>
                     </div>
                 </router-link>
