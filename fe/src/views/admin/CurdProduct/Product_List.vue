@@ -47,10 +47,12 @@
                   <div class="row justify-content-center">
                     <div class="col-12 col-lg-6 row justify-content-center">
                       <div
-                        class="btn btn-danger  rounded-end-0 text-center col-5"
+                        class="btn btn-danger rounded-end-0 text-center col-5"
                       >
-                        <router-link to="/admin/add-product">
-                          <b class="text-white"> thêm sản phẩm</b>
+                        <router-link to="/admin/them-san-pham">
+                          <div class="w-100">
+                            <b class="text-white"> thêm sản phẩm</b>
+                          </div>
                         </router-link>
                       </div>
 
@@ -96,9 +98,7 @@
                               <a class="dropdown-item" href="#"> mới nhất</a>
                             </li>
                             <li>
-                              <a class="dropdown-item" href="#"
-                                > cũ nhất</a
-                              >
+                              <a class="dropdown-item" href="#"> cũ nhất</a>
                             </li>
                           </ul>
                         </div>
@@ -116,17 +116,17 @@
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                           >
-                           theo giá
+                            theo giá
                           </button>
                           <ul class="dropdown-menu border-1 text-center">
                             <li>
-                              <a class="dropdown-item" href="#"
-                                > thấp đến cao</a
+                              <a class="dropdown-item" href="#">
+                                thấp đến cao</a
                               >
                             </li>
                             <li>
-                              <a class="dropdown-item" href="#"
-                                > cao đến thấp</a
+                              <a class="dropdown-item" href="#">
+                                cao đến thấp</a
                               >
                             </li>
                           </ul>
@@ -163,7 +163,7 @@
                             aria-expanded="false"
                             @click.stop
                           >
-                            Thêm 
+                            Thêm
                           </button>
                           <ul
                             class="dropdown-menu border-1 text-center p-2"
@@ -229,7 +229,9 @@
                               <b>Tên sản phẩm</b>
                             </div>
                           </div>
-                          <div class="col-2 row"><b>Giá sản phẩm</b></div>
+                          <div class="col-2 text-center">
+                            <b>Giá sản phẩm</b>
+                          </div>
                           <div
                             class="col-3 p-2 rounded d-flex justify-content-center"
                             style="flex-wrap: wrap"
@@ -240,7 +242,7 @@
                             <b>Trạng thái</b>
                           </div>
                         </div>
-                        <br />
+
                         <div
                           class="py-3 d-flex align-items-center"
                           style="min-width: 1100px"
@@ -274,7 +276,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-2 row">2.999,000 Đ</div>
+                          <div class="col-2 text-center">2.999,000 Đ</div>
                           <div
                             class="col-3 p-2 justify-content-center rounded d-flex"
                             style="flex-wrap: wrap"
@@ -336,7 +338,9 @@
                                 </div>
                                 <ul class="dropdown-menu">
                                   <li>
-                                    <router-link :to="'/admin/'">
+                                    <router-link
+                                      :to="'/admin/cap-nhat-san-pham'"
+                                    >
                                       <div class="dropdown-item">
                                         Chỉnh sửa
                                       </div></router-link
@@ -383,7 +387,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-2 row">2.999,000 Đ</div>
+                          <div class="col-2 text-center">2.999,000 Đ</div>
                           <div
                             class="col-3 p-2 justify-content-center rounded d-flex"
                             style="flex-wrap: wrap"

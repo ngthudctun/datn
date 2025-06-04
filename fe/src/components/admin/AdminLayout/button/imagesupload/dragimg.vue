@@ -3,10 +3,10 @@
     <div class="" v-show="props.type != 'post'">
       <label
         class="custum-file-upload d-none"
-        id="show-one-img"
+        :id="props.inputshowimg"
         data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasExample22one"
-        aria-controls="offcanvasExample22one"
+        :data-bs-target="'#' + props.hideninp"
+        :aria-controls="props.hideninp"
       >
         <img
           src=""
@@ -22,8 +22,9 @@
         class="custum-file-upload"
         id="no-img-input"
         data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasExample22one"
-        aria-controls="offcanvasExample22one"
+        :data-bs-target="'#' + props.hideninp"
+        :aria-controls="props.hideninp"
+        v-show="!images_firt"
       >
         <div class="icon">
           <img
@@ -37,13 +38,15 @@
     <input type="text" class="d-none" name="" id="images_product-one" />
     <div
       class="offcanvas offcanvas-start"
-      style="z-index: 2000; width: 90%"
+      style="z-index: 2000; width: 85%"
       tabindex="-1"
-      id="offcanvasExample22one"
+      :id="props.hideninp"
       aria-labelledby="offcanvasExampleLabel"
     >
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+          Thư mục hình ảnh
+        </h5>
         <button
           type="button"
           class="btn-close text-reset"
@@ -56,31 +59,33 @@
           class="row justify-content-center py-2 h-100 position-relative"
           style="border: 1px solid #e1e1e1; box-sizing: border-box"
         >
-          <div class="col-2">
-            <div
-              class="py-2 link-danger"
-              style="border-bottom: 1px solid #e1e1e1"
-            >
-              Hình ảnh sản phẩm
-            </div>
-            <div
-              class="py-2 link-danger"
-              style="border-bottom: 1px solid #e1e1e1"
-            >
-              Hình ảnh Danh mục
+          <div class="col-12 col-xl-2">
+            <div class="">
+              <div
+                class="py-2 link-danger"
+                style="border-bottom: 1px solid #e1e1e1"
+              >
+                Hình ảnh sản phẩm
+              </div>
+              <div
+                class="py-2 link-danger"
+                style="border-bottom: 1px solid #e1e1e1"
+              >
+                Hình ảnh Danh mục
+              </div>
             </div>
           </div>
 
           <div
-            class="col-7 d-flex justify-content-center flex-wrap pb-9"
+            class="col-12 col-xl-7 d-flex justify-content-center flex-wrap pb-9"
             style="
               border-right: 1px solid #e1e1e1;
               border-left: 1px solid #e1e1e1;
             "
           >
-            <div class="col-12">
-              <div class="w-100 d-flex justify-content-between">
-                <div class="col-3 position-relative">
+            <div class="w-100">
+              <div class="row d-flex flex-wrap justify-content-between">
+                <div class="col-12 col-xl-3 position-relative">
                   <select
                     class="mt-1 form-select"
                     aria-label="Default select example"
@@ -91,17 +96,20 @@
                     <option value="3">Three</option>
                   </select>
                 </div>
-                <div class="col-3 px-1" style="box-sizing: border-box">
+                <div
+                  class="col-12 col-md-6 col-xl-3"
+                  style="box-sizing: border-box"
+                >
                   <button
                     type="button"
                     @click="showupdateimg('show_all-img', 'uploadimg')"
-                    class="mt-1 btn btn-danger"
+                    class="mt-1 btn btn-danger w-100"
                   >
                     Thêm Hình ảnh
                   </button>
                 </div>
-                <div class="col-1"></div>
-                <div class="col-5">
+
+                <div class="col-12 col-md-6 col-xl-6">
                   <input
                     type="text"
                     class="mt-1 form-control"
@@ -111,36 +119,35 @@
                   />
                 </div>
               </div>
-              <div
-                class="row justify-content-center"
-                style="
-                  box-sizing: border-box;
-                  max-height: 500px;
-                  overflow: auto;
-                "
-              >
-                <div class="row mt-4" style="max-height: 500px; overflow: auto">
+              <div class="row justify-content-center">
+                <div class="mt-4">
                   <div class="mt-5" id="uploadimg" v-show="uploadnum == 1">
                     <uploadimage />
                   </div>
-                  <div class="row" id="show_all-img" v-show="uploadnum == 0">
+                  <div class="" v-show="uploadnum == 0">
                     <div
-                      class="col-3 mb-2"
-                      v-for="img in images"
-                      :key="img"
-                      @click="imageStore.toggleImageSelect(img)"
-                      style="position: relative; cursor: pointer"
+                      class="d-flex flex-wrap"
+                      id="show_all-img"
+                      style="max-height: 500px; overflow: auto"
                     >
-                      <img
-                        :src="$imageUrl + 'product/' + img"
-                        class="images_select-ss"
-                        style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)"
-                        width="100%"
-                        height="170px"
-                        :class="{
-                          'img-selected': imageStore.selectedImage === img,
-                        }"
-                      />
+                      <div
+                        class="col-6 col-md-3 col-xl-3 mb-2"
+                        v-for="img in images"
+                        :key="img"
+                        @click="toggleImageSelect(img)"
+                        style="position: relative; cursor: pointer"
+                      >
+                        <img
+                          :src="$imageUrl + 'product/' + img"
+                          class="images_select-ss"
+                          style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)"
+                          width="100%"
+                          height="170px"
+                          :class="{
+                            'img-selected': selectedImage === img,
+                          }"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -149,7 +156,10 @@
 
             <!--     -->
           </div>
-          <div class="col-3 rounded position-relative">
+          <div
+            class="col-12 col-xl-3 mt-3 m-xl-0 rounded position-relative"
+            v-show="uploadnum == 0"
+          >
             <label for="usr"><b>URL:</b></label>
 
             <input
@@ -212,7 +222,9 @@ const imageUrl = import.meta.env.VITE_IMAGE_BASE_URL;
 const props = defineProps({
   type: String,
   classify: String,
+  inputshowimg: String,
   hideninp: String,
+  groupIndex: Number,
 });
 console.log(props);
 const imageStore = useImageSelect();
@@ -224,21 +236,43 @@ const images = [
   "product-4.jpg",
   "product-5.jpg",
 ];
+
+const emit = defineEmits(["returnimg", "returnimgex"]);
 function submitImage() {
   console.log(props);
+
+  /* ("su dung cho bai post"); */
+
   const noimg = document.getElementById("no-img-input");
-  const oneimg = document.getElementById("show-one-img");
+  const oneimg = document.getElementById(props.inputshowimg);
   const showoneimg = oneimg.querySelector("img");
   const hiddenInput = document.getElementById("value_img-hiden");
   const selected = hiddenInput.value;
-
+  emit("returnimgex", {
+    groupIndex: props.groupIndex,
+    imageindex: imageUrl + "product/" + selected,
+  });
+  emit("returnimg", imageUrl + "product/" + selected);
   if (selected) {
     oneimg.classList.remove("d-none");
     noimg.classList.add("d-none");
-    showoneimg.src = imageUrl + "product/" + selected;
+    images_firt.value = imageUrl + "product/" + selected;
+    showoneimg.src = images_firt.value;
   } else {
     oneimg.classList.add("d-none");
     noimg.classList.remove("d-none");
+  }
+}
+const selectedImage = ref(null);
+function toggleImageSelect(img) {
+  const hiddenInput = document.getElementById("value_img-hiden");
+
+  if (selectedImage.value === img) {
+    selectedImage.value = null;
+    if (hiddenInput) hiddenInput.value = "";
+  } else {
+    selectedImage.value = img;
+    if (hiddenInput) hiddenInput.value = img;
   }
 }
 

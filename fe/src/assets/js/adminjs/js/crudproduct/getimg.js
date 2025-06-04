@@ -3,21 +3,9 @@ import { defineStore } from "pinia";
 
 export const useImageSelect = defineStore("imagegetselect", {
   state: () => ({
-    selectedImage: null,
     extra_array: [],
   }),
   actions: {
-    toggleImageSelect(img) {
-      const hiddenInput = document.getElementById("value_img-hiden");
-
-      if (this.selectedImage === img) {
-        this.selectedImage = null;
-        if (hiddenInput) hiddenInput.value = "";
-      } else {
-        this.selectedImage = img;
-        if (hiddenInput) hiddenInput.value = img;
-      }
-    },
     toggleExtraImage(img) {
       const index = this.extra_array.indexOf(img);
       document.getElementById("show_name_extra").value = img;

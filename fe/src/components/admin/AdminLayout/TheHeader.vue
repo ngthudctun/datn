@@ -3,33 +3,36 @@
 <template>
   <div class="">
     <aside
-      class="left-sidebar animation-sidebar top-0 d-none d-lg-flex"
+      class="left-sidebar animation-sidebar top-0 d-none d-xl-flex"
       style="z-index: 2000"
       id="sidebarch"
     >
       <!-- Sidebar scroll-->
       <div>
         <!-- Sidebar navigation-->
-        <nav class="sidebar-nav scroll-sidebar mt-4" data-simplebar="" style=" scrollbar-width: none; ">
-          <button
-            class="active-sidebar d-lg-none"
+        <nav
+          class="sidebar-nav scroll-sidebar mt-4"
+          data-simplebar=""
+          style="scrollbar-width: none"
+        >
+          <div
+            class="active-sidebar d-xl-none text-end"
             v-on:click="Adminlayout.getadminorder()"
           >
-            X
-          </button>
+            <b>X</b>
+          </div>
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu text-danger">Home</span>
             </li>
             <li class="sidebar-item">
-                <router-link to="/admin/">
+              <router-link to="/admin/">
                 <div class="sidebar-link">
                   <i class="ti ti-atom"></i>
-                <span class="hide-menu">Dashboard</span>
+                  <span class="hide-menu">Dashboard</span>
                 </div>
               </router-link>
-
             </li>
             <!-- ---------------------------------- -->
             <!-- Dashboard -->
@@ -40,19 +43,21 @@
               <span class="hide-menu text-danger">Quản lý Sản phẩm</span>
             </li>
             <li class="sidebar-item">
-              <router-link to="cateproduct">
+              <router-link to="danh-sach-san-pham">
                 <div class="sidebar-link">
                   <i class="ti ti-atom"></i>
-                  <span class="hide-menu">Danh mục sản phẩm</span>
+                  <span class="hide-menu">Danh Sách sản phẩm</span>
                 </div>
               </router-link>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./index.html" aria-expanded="false">
-                <i class="ti ti-atom"></i>
-                <span class="hide-menu">Danh sách sản phẩm</span>
-              </a>
+              <router-link to="danh-sach-danh-muc">
+                <div class="sidebar-link">
+                  <i class="ti ti-atom"></i>
+                  <span class="hide-menu">Danh Sách danh mục </span>
+                </div>
+              </router-link>
             </li>
 
             <li class="nav-small-cap">

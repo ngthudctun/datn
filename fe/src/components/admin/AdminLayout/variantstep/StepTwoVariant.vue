@@ -110,7 +110,6 @@ const storevari = ref([]);
 const selectedIndex = ref(null);
 let b = storevari.value?.some((item) => item.value.length >= 1);
 
-console.log(b);
 const deleteVariantValue = (variantIndex, valueIndex) => {
   variantcontroll.inputvariant[variantIndex].value.splice(valueIndex, 1);
 };
@@ -161,7 +160,7 @@ const sumbitThisStep = (value) => {
           variant_value: v.variant_value,
         }))
       );
-    console.log(prfiterflase);
+
     const prfitertrue = filteredtrue.map((item) =>
       item.value.map((v) => ({
         style_vari: v.style_vari,
@@ -177,9 +176,8 @@ const sumbitThisStep = (value) => {
           variantcontroll.prfitertrue.push([item[index]]);
         }
       });
-
-      console.log(variantcontroll.prfitertrue);
     }
+    console.log(variantcontroll.prfitertrue);
     /*     console.log(variantcontroll.prfitertrue, "true"); */
     variantcontroll.upstepvariant(value);
   } catch (error) {

@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
-
+import axios from './axios'
 // Local CSS
 import './assets/css/bootstrap.min.css'
 import './assets/icons/css/all.min.css'
@@ -34,6 +34,9 @@ const pinia = createPinia()
 // Biến toàn cục
 app.config.globalProperties.$imageUrl = import.meta.env.VITE_IMAGE_BASE_URL
 
+/* axios toan cuc */
+
+app.config.globalProperties.$axios = axios;
 app.use(pinia)
 app.use(router)
 app.mount('#app')

@@ -101,11 +101,12 @@
         </div>
 
         <div class="pt-0">
-          <div class="row bg-white py-3" style="">
+          <div class="row bg-white " style="">
             <div class="">
-              <div class="mt-1"><h5>Bảng điều khiển</h5></div>
-              <hr />
-              <div class="border-top mt-3">
+              <h5 class="card-title mt-2 fw-semibold">Bảng điều khiển</h5>
+
+            
+              <div class="border-top ">
                 <div class="row">
                   <div class="col-12 py-1 col-lg-4">
                     <div
@@ -169,7 +170,9 @@
         <div class="pt-0">
           <div class="row bg-white" style="">
             <div class="border py-2">
-              <div class="mt-1"><h5>Thống kê sô liệu</h5></div>
+              <h5 class="card-title mt-2 fw-semibold">Thống kê sô liệu</h5>
+
+              <div class="mt-1"><h5></h5></div>
               <div class="border-top mt-3">
                 <div class="row">
                   <div class="col-6 col-lg-3 py-1">
@@ -182,7 +185,7 @@
                       <div
                         class="d-flex col-9 px-3 flex-column align-items-start justify-content-center"
                       >
-                        <div class="">Đang online</div>
+                        <div class="">Số lượng theo dõi</div>
                         <b>123123</b>
                       </div>
                     </div>
@@ -198,7 +201,7 @@
                       <div
                         class="d-flex col-9 px-3 flex-column align-items-start justify-content-center"
                       >
-                        <div class="">Online trong ngày</div>
+                        <div class="">Số lượng đánh giá</div>
                         <b>123123</b>
                       </div>
                     </div>
@@ -342,7 +345,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 d-flex align-items-stretch">
+              <div class="col-lg-3 d-flex align-items-stretch">
                 <div class="card w-100">
                   <div class="card-body p-4">
                     <div class="mb-4">
@@ -355,21 +358,12 @@
                         <div
                           class="timeline-time text-dark flex-shrink-0 text-end"
                         >
-                          09:30
+                          10:30:23
                         </div>
                         <div
                           class="timeline-badge-wrap d-flex flex-column align-items-center"
-                        >
-                          <span
-                            class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"
-                          ></span>
-                          <span
-                            class="timeline-badge-border d-block flex-shrink-0"
-                          ></span>
-                        </div>
-                        <div class="">
-                          giao hàng thành công hóa đơn 50.000.000d
-                        </div>
+                        ></div>
+                        <div class="">bạn có hóa đơn hóa đơn #99</div>
                       </li>
                       <li
                         class="timeline-item d-flex position-relative overflow-hidden"
@@ -377,18 +371,15 @@
                         <div
                           class="timeline-time text-dark flex-shrink-0 text-end"
                         >
-                          10:00 am
+                          10:22:22
                         </div>
                         <div
                           class="timeline-badge-wrap d-flex flex-column align-items-center"
-                        >
-                          <span
-                            class="timeline-badge border-2 border border-info flex-shrink-0 my-8"
-                          ></span>
-                          <span
-                            class="timeline-badge-border d-block flex-shrink-0"
-                          ></span>
-                        </div>
+                        ></div>
+                        <div class="">giao hàng thanh công hóa đơn #98</div>
+                        <div
+                          class="timeline-badge-wrap d-flex flex-column align-items-center"
+                        ></div>
                       </li>
                       <li
                         class="timeline-item d-flex position-relative overflow-hidden"
@@ -397,7 +388,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-8 d-flex align-items-stretch">
+              <div class="col-lg-9 d-flex align-items-stretch">
                 <div class="card w-100">
                   <div class="card-body">
                     <div
@@ -445,9 +436,9 @@
                           <div class="row">
                             <div class="col-3 text-start">banh trang 123</div>
                             <div class="col-3 text-center">
-                              <div class="text-success"><b>553</b></div>
+                              <div class="text-success">553</div>
                             </div>
-                            <div class="col-2 text-center"><b>233</b></div>
+                            <div class="col-2 text-center">233</div>
                             <div class="col-3 text-center text-warning">
                               <i class="fa-solid fa-star"></i
                               ><i class="fa-solid fa-star"></i
@@ -496,7 +487,6 @@
               </div>
             </div>
             <div class=""></div>
-         
           </div>
         </div>
       </div>

@@ -25,10 +25,10 @@ export const useImageSelect = defineStore("imagegetselect", {
 
         this.extra_array.splice(index, 1);
       } else {
-        if (this.extra_array.length < 5) {
+        if (this.extra_array.length < 4) {
           this.extra_array.push(img);
         } else {
-          alert("Bạn chỉ được chọn tối đa 5 ảnh phụ.");
+          alert("Bạn chỉ được chọn tối đa 4 ảnh phụ.");
         }
       }
       const hiddenExtraInput = document.getElementById("value_extra_img_hidden");

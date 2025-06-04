@@ -81,14 +81,34 @@ const routes = [
                 component: () => import('@/views/admin/index.vue'),
             },
             {
-                path: "cateproduct",
-                name: "category-product",
+                path: "danh-sach-san-pham",
+                name: "listproduct",
                 component: () => import('@/views/admin/CurdProduct/Product_List.vue'),
             },
             {
-                path: "add-product",
+                path: "them-san-pham",
                 name: "add-product",
                 component: () => import('@/views/admin/CurdProduct/Product_Add.vue'),
+            },
+            {
+                path: "cap-nhat-san-pham",
+                name: "updateupdate-product",
+                component: () => import('@/views/admin/CurdProduct/Product_update.vue'),
+            },
+            {
+                path: "danh-sach-danh-muc",
+                name: "catelist",
+                component: () => import('@/views/admin/CrudCategory/Cate_List.vue'),
+            },
+            {
+                path: "them-danh-muc",
+                name: "add-cate",
+                component: () => import('@/views/admin/CrudCategory/Cate_add.vue'),
+            },
+            {
+                path: "cap-nhat-danh-muc",
+                name: "update-cate",
+                component: () => import('@/views/admin/CrudCategory/Cate_add.vue'),
             },
         ],
 

@@ -14,11 +14,12 @@
       <div class=" col-12 col-lg-3 ">
         <div class="d-flex align-items-center justify-content-start h-100">
           <i
-            class="fa-solid fa-bars d-lg-none"
+            class="fa-solid ms-3 fa-bars d-lg-none"
             style="font-size: 24px; cursor: pointer"
             id="active-sidebar"
             @click="Adminlayout.getadminorder()"
           ></i>
+          <input type="hidden"  name="" id="clickout">
           <div class="d-flex justify-content-center align-items-center">
             <img
               class="rounded"
@@ -39,6 +40,7 @@
           <i class="fas fa-search"></i>
           <input
             autocomplete="off"
+            placeholder="tìm kiếm chức năng "
             class="form-control border-0 ps-5"
             type="text"
             id="myInput"
@@ -64,7 +66,7 @@
       <div class="col-5 col-lg-3">
         <div class="d-flex align-items-center justify-content-start h-100 ">
           <div class="ms-2 d-none d-lg-flex">
-            <b>Xin chào trường nguyễn</b>
+            Xin chào trường nguyễn
           </div>
         </div>
       </div>
