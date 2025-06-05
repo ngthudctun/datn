@@ -214,9 +214,9 @@ function getvarivalue() {
 }
 
 function handleReturnImg(data) {
-  console.log(data["groupIndex"]);
-  variantpros.value[data["groupIndex"]].image;
-  variantpros.value[0].image = data["imageindex"];
+  console.log(data);
+  variantpros.value[data["groupIndex"]].image = data["imageindex"];
+  console.log(variantpros.value[0].image);
 }
 </script>
 
