@@ -6,5 +6,3 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::post('/banners', [BannerController::class, 'store']);
-
-
