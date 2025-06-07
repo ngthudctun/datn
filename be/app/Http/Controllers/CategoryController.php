@@ -26,7 +26,7 @@ class CategoryController extends Controller
         $category = Category::create($nameCategory);
         return response()->json($category);
     }
-    public function getCategoryById($categoryId) 
+    public function getCategoryById($categoryId)
     {
         $getCategoryById = Category::find($categoryId);
         return response()->json($getCategoryById);

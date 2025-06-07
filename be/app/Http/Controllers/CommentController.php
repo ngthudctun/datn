@@ -14,7 +14,7 @@ class CommentController extends Controller
     {
         //
     }
-    public function getAll() 
+    public function getAll()
     {
         $comments = Comment::join('users', 'comments.user_code', '=', 'users.id')
                    ->select('comments.*', 'users.name')
@@ -30,9 +30,9 @@ class CommentController extends Controller
         if($product && $user) {
             $validated['product_code'] = $product;
             $validated['user_code'] = $user;
-        
+
             $comment = Comment::create($validated);
-        
+
             return response()->json([
                 'message' => 'Bình luận đã được gửi thành công!',
                 'data' => $comment
@@ -41,10 +41,10 @@ class CommentController extends Controller
         return response()->json([
             'message' => 'Bình luận chưa được gửi thành công!'
         ], 404);
-        
+
     }
-    
-    
+
+
     /**
      * Show the form for creating a new resource.
      */
