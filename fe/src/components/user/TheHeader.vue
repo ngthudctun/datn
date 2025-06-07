@@ -4,11 +4,11 @@
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
             <li><a href="#"><span class="fal fa-heart"></span>
-                <div class="tip">2</div>
-            </a></li>
+                    <div class="tip">2</div>
+                </a></li>
             <li><a href="#"><span class="fal fa-cart-shopping"></span>
-                <div class="tip">2</div>
-            </a></li>
+                    <div class="tip">2</div>
+                </a></li>
             <li><span class="fal fa-user"></span></li>
         </ul>
         <div class="offcanvas__logo">
@@ -24,7 +24,7 @@
         <div class="header__banner"><img :src="$imageUrl + 'banner/header__banner.webp'" alt=""></div>
     </div>
     <header class="header">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
@@ -36,42 +36,30 @@
                         <form action="#">
                             <input type="text" placeholder="Tìm sản phẩm, thương hiệu và tên cửa hàng">
                             <button type="submit" class="site-btn"><span
-                                    class="icon_search search-switch fa-regular fa-magnifying-glass"></span></button>
+                                    class="fa-light fa-magnifying-glass"></span></button>
                         </form>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__right">
-                        <div class="header__right__auth">
-                            <a href="login.html">Đăng nhập</a>
-                            <a href="register.html">Đăng kí</a>
-                        </div>
-
                         <ul class="header__right__widget">
                             <li>
-                                <a class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a>
                                     <i class="fa-light fa-bell"></i>
                                     <div class="tip">2</div>
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
                             </li>
-                            <li><a href="#"><span class="icon_cart_alt fa-light fa-cart-shopping"></span>
+                            <li><a href="#"><span class="fa-light fa-heart"></span>
+                                    <div class="tip">2</div>
+                                </a></li>
+                            <li><a href="#"><span class="fa-light fa-cart-shopping"></span>
                                     <div class="tip">2</div>
                                 </a></li>
                             <li>
-                                <a class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a>
                                     <span class="fa-light fa-user"></span>
                                     <div class="tip">2</div>
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
                             </li>
                         </ul>
                     </div>

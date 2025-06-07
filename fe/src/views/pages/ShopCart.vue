@@ -8,10 +8,10 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
+                                    <th>Sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Tổng</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -33,11 +33,13 @@
                                     <td class="cart__price">$ 150.0</td>
                                     <td class="cart__quantity">
                                         <div class="pro-qty">
+                                            <span class="dec qtybtn">-</span>
                                             <input type="text" value="1">
+                                            <span class="inc qtybtn">+</span>
                                         </div>
                                     </td>
                                     <td class="cart__total">$ 300.0</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
+                                    <td class="cart__close"><span class="fa-light fa-xmark"></span></td>
                                 </tr>
                                 <tr>
                                     <td class="cart__product__item">
@@ -56,7 +58,9 @@
                                     <td class="cart__price">$ 170.0</td>
                                     <td class="cart__quantity">
                                         <div class="pro-qty">
+                                            <span class="dec qtybtn">-</span>
                                             <input type="text" value="1">
+                                            <span class="inc qtybtn">+</span>
                                         </div>
                                     </td>
                                     <td class="cart__total">$ 170.0</td>
@@ -79,7 +83,9 @@
                                     <td class="cart__price">$ 85.0</td>
                                     <td class="cart__quantity">
                                         <div class="pro-qty">
+                                            <span class="dec qtybtn">-</span>
                                             <input type="text" value="1">
+                                            <span class="inc qtybtn">+</span>
                                         </div>
                                     </td>
                                     <td class="cart__total">$ 170.0</td>
@@ -102,7 +108,9 @@
                                     <td class="cart__price">$ 55.0</td>
                                     <td class="cart__quantity">
                                         <div class="pro-qty">
+                                            <span class="dec qtybtn">-</span>
                                             <input type="text" value="1">
+                                            <span class="inc qtybtn">+</span>
                                         </div>
                                     </td>
                                     <td class="cart__total">$ 110.0</td>
@@ -110,18 +118,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="cart__btn">
-                        <a href="#">Continue Shopping</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="cart__btn update__btn">
-                        <a href="#"><span class="icon_loading"></span> Update cart</a>
                     </div>
                 </div>
             </div>

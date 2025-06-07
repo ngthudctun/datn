@@ -16,7 +16,7 @@
                                 <button type="submit" class="site-btn">Đăng kí</button>
                                 <hr class="style-eight">
                                 <div class="auth__social">
-                                    <a href="#"><i class="fa fa-google"></i> - Đăng kí bằng Google</a>
+                                    <a href="#"><i class="fa-brands fa-google"></i> - Đăng kí bằng Google</a>
                                 </div>
                                 <p class="text-dark">Bằng việc đăng kí, bạn đã đồng ý với ShopNow về <br><a class="primary-color" href="terms.html">điều khoản dịch vụ</a> & <a class="primary-color" href="privacy.html">chính sách bảo mật</a></p>
                                 <p>Bạn đã có tài khoản? <a class="primary-color" href="login.html">Đăng nhập</a></p>

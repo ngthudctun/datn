@@ -123,7 +123,7 @@ export default {
     z-index: 10;
     opacity: 0;
     transition: all .3s ease;
-    background: #e1e1e1;
+    background: var(--gradient-gray);
 }
 
 :deep(.owl-carousel .owl-nav button.owl-prev) {

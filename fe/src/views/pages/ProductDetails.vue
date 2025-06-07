@@ -51,13 +51,15 @@
                             <div class="quantity">
                                 <span>Quantity:</span>
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <span class="dec qtybtn">-</span>
+                                    <input type="text" value="1" data-min="1" data-max="999">
+                                    <span class="inc qtybtn">+</span>
                                 </div>
                             </div>
-                            <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+                            <a href="#" class="cart-btn"><span class="fa-light fa-cart-shopping"></span> Add to cart</a>
                             <ul>
-                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
+                                <li><a href="#"><span class="fa-light fa-heart"></span></a></li>
+                                <li><a href="#"><span class="fa-light fa-sliders"></span></a></li>
                             </ul>
                         </div>
                         <div class="product__details__widget">
@@ -283,8 +285,7 @@
 
 <script>
 export default {
-    name: 'ProductDetail'
+    name: 'ProductDetail',
 }
 </script>
-
 <style></style>
