@@ -3,5 +3,5 @@ use App\Http\Controllers\Admin\CrudProductController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::resource('/productsadmin', [CrudProductController::class, 'store']);
+Route::resource('productsadmin', CrudProductController::class);
 
