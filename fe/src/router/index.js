@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 // Import các trang
 import Home from '@/views/pages/Home.vue'
-import Shop from '@/views/pages/Shop.vue'
+import Store from '@/views/pages/Store.vue'
 import ProductDetails from '@/views/pages/ProductDetails.vue'
 import ShopCart from '@/views/pages/ShopCart.vue'
 import Checkout from '@/views/pages/Checkout.vue'
@@ -26,8 +26,13 @@ const routes = [
             },
             {
                 path: 'cua-hang',
-                name: 'Shop',
-                component: Shop,
+                name: 'Store',
+                component: Store,
+            },
+            {
+                path: 'cua-hang/:slug',
+                name: 'StoreSlug',
+                component: Store,
             },
             {
                 path: 'chi-tiet-san-pham',

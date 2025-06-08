@@ -5,3 +5,25 @@
 .dropdown-menu{
     min-width: 10px !important;
 }
+
+.review .rating{
+    text-transform: lowercase;
+}
+
+.review .rating i {
+	font-size: 14px;
+	background: var(--gradient-yellow);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	display: inline-block;
+	margin-right: 4px;
+}
+
+.pro-qty .dec,
+.pro-qty .inc {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+}

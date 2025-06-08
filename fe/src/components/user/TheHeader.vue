@@ -12,7 +12,7 @@
             <li><span class="fal fa-user"></span></li>
         </ul>
         <div class="offcanvas__logo">
-            <a href="./index.html"><img :src="$imageUrl + 'logo.png'" alt=""></a>
+            <router-link to="/"><img :src="$imageUrl + 'logo.png'" alt=""></router-link>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html"><img :src="$imageUrl + 'logo/logo.png'" alt=""></a>
+                        <router-link to="/"><img :src="$imageUrl + 'logo/logo.png'" alt=""></router-link>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-7">

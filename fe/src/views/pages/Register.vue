@@ -6,20 +6,20 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="auth__form">
                         <div class="section-title">
-                            <h4>Đăng kí</h4>
+                            <h4>Đăng ký</h4>
                         </div>
                         <form action="#">
                             <input type="text" placeholder="Email, Số điện thoại">
                             <input type="password" placeholder="Mật khẩu">
                             <input type="password" placeholder="Xác nhận mật khẩu">
                             <div class="text-center mt-3">
-                                <button type="submit" class="site-btn">Đăng kí</button>
+                                <button type="submit" class="site-btn">Đăng ký</button>
                                 <hr class="style-eight">
                                 <div class="auth__social">
-                                    <a href="#"><i class="fa-brands fa-google"></i> - Đăng kí bằng Google</a>
+                                    <a href="#"><i class="fa-brands fa-google"></i> - Đăng ký bằng Google</a>
                                 </div>
-                                <p class="text-dark">Bằng việc đăng kí, bạn đã đồng ý với ShopNow về <br><a class="primary-color" href="terms.html">điều khoản dịch vụ</a> & <a class="primary-color" href="privacy.html">chính sách bảo mật</a></p>
-                                <p>Bạn đã có tài khoản? <a class="primary-color" href="login.html">Đăng nhập</a></p>
+                                <p class="text-dark">Bằng việc đăng ký, bạn đã đồng ý với ShopNow về <br><router-link class="primary-color" to="/dieu-khoan-dich-vu">điều khoản dịch vụ</router-link> & <router-link class="primary-color" to="/chinh-sach-bao-mat">chính sách bảo mật</router-link></p>
+                                <p>Bạn đã có tài khoản? <router-link class="primary-color" to="/dang-nhap">Đăng nhập</router-link></p>
                             </div>
                         </form>
                     </div>

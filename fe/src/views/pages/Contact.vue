@@ -6,30 +6,30 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="contact__content">
                         <div class="contact__address">
-                            <h5>Contact info</h5>
+                            <h5>Thông tin liên hệ</h5>
                             <ul>
                                 <li>
-                                    <h6><i class="fa fa-map-marker"></i> Address</h6>
-                                    <p>160 Pennsylvania Ave NW, Washington, Castle, PA 16101-5161</p>
+                                    <h6><i class="fa fa-map-marker"></i> Địa chỉ</h6>
+                                    <p>Thành phố Hồ Chí Minh</p>
                                 </li>
                                 <li>
-                                    <h6><i class="fa fa-phone"></i> Phone</h6>
-                                    <p><span>125-711-811</span><span>125-668-886</span></p>
+                                    <h6><i class="fa fa-phone"></i> Điện thoại</h6>
+                                    <p><span>123-456-789</span><span>123-456-789</span></p>
                                 </li>
                                 <li>
-                                    <h6><i class="fa fa-headphones"></i> Support</h6>
-                                    <p>Support.photography@gmail.com</p>
+                                    <h6><i class="fa fa-headphones"></i> Hỗ trợ</h6>
+                                    <p>support.shopnow@gmail.com</p>
                                 </li>
                             </ul>
                         </div>
                         <div class="contact__form">
-                            <h5>SEND MESSAGE</h5>
+                            <h5>Gửi tin nhắn</h5>
                             <form action="#">
-                                <input type="text" placeholder="Name">
+                                <input type="text" placeholder="Tên">
                                 <input type="text" placeholder="Email">
-                                <input type="text" placeholder="Website">
-                                <textarea placeholder="Message"></textarea>
-                                <button type="submit" class="site-btn">Send Message</button>
+                                <input type="text" placeholder="Số điện thoại">
+                                <textarea placeholder="Tin nhắn"></textarea>
+                                <button type="submit" class="site-btn">Gửi tin nhắn</button>
                             </form>
                         </div>
                     </div>

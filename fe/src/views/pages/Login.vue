@@ -11,14 +11,14 @@
                         <form action="#">
                             <input type="text" placeholder="Email, số điện thoại">
                             <input type="password" placeholder="Mật khẩu">
-                            <a href="">Quên mật khẩu?</a>
+                            <router-link to="/quen-mat-khau">Quên mật khẩu?</router-link>
                             <div class="text-center mt-3">
                                 <button type="submit" class="site-btn">Đăng nhập</button>
                                 <hr class="style-eight">
                                 <div class="auth__social">
                                     <a href="#"><i class="fa-brands fa-google"></i> - Đăng nhập bằng Google</a>
                                 </div>
-                                <p>Bạn mới biết đến ShopNow? <a class="primary-color" href="register.html">Đăng kí</a></p>
+                                <p>Bạn mới biết đến ShopNow? <router-link class="primary-color" to="dang-ky">Đăng ký</router-link></p>
                             </div>
                         </form>
                     </div>

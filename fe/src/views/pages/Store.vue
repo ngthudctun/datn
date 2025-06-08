@@ -7,7 +7,7 @@
                     <div class="shop__sidebar">
                         <div class="sidebar__categories">
                             <div class="section-title">
-                                <h4>Categories</h4>
+                                <h4>Danh mục</h4>
                             </div>
                             <div class="categories__accordion">
                                 <div class="accordion" id="accordionExample">
@@ -101,111 +101,131 @@
                         </div>
                         <div class="sidebar__filter">
                             <div class="section-title">
-                                <h4>Shop by price</h4>
+                                <h4>Lọc theo giá</h4> <span></span>
                             </div>
+
                             <div class="filter-range-wrap">
-                                <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="33" data-max="99"></div>
+                                <div ref="slider" class="price-range"></div>
+
                                 <div class="range-slider">
                                     <div class="price-input">
-                                        <p>Price:</p>
-                                        <input type="text" id="minamount">
-                                        <input type="text" id="maxamount">
+                                        <input type="text" :value="formatPrice(minPrice)" readonly>
+                                        <input type="text" :value="formatPrice(maxPrice)" readonly>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">Filter</a>
+
+                            <a href="#" @click.prevent="applyFilter">Filter</a>
                         </div>
-                        <div class="sidebar__sizes">
+                        <div class="sidebar__color">
                             <div class="section-title">
-                                <h4>Shop by size</h4>
+                                <h4>Màu sắc</h4>
                             </div>
-                            <div class="size__list">
-                                <label for="xxs">
-                                    xxs
-                                    <input type="checkbox" id="xxs">
+                            <div class="size__list color__list">
+                                <label for="black">
+                                    Đen
+                                    <input type="checkbox" id="black">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label for="xs">
-                                    xs
-                                    <input type="checkbox" id="xs">
+                                <label for="whites">
+                                    Trắng
+                                    <input type="checkbox" id="whites">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label for="xss">
-                                    xs-s
-                                    <input type="checkbox" id="xss">
+                                <label for="reds">
+                                    Đỏ
+                                    <input type="checkbox" id="reds">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label for="s">
-                                    s
-                                    <input type="checkbox" id="s">
+                                <label for="greys">
+                                    Xám
+                                    <input type="checkbox" id="greys">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label for="m">
-                                    m
-                                    <input type="checkbox" id="m">
+                                <label for="blues">
+                                    Xanh dương
+                                    <input type="checkbox" id="blues">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label for="ml">
-                                    m-l
-                                    <input type="checkbox" id="ml">
+                                <label for="beige">
+                                    Be
+                                    <input type="checkbox" id="beige">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label for="l">
-                                    l
-                                    <input type="checkbox" id="l">
+                                <label for="greens">
+                                    Xanh lá
+                                    <input type="checkbox" id="greens">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label for="xl">
-                                    xl
-                                    <input type="checkbox" id="xl">
+                                <label for="yellows">
+                                    Vàng
+                                    <input type="checkbox" id="yellows">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
                         </div>
                         <div class="sidebar__color">
                             <div class="section-title">
-                                <h4>Shop by size</h4>
+                                <h4>Đánh giá</h4>
                             </div>
-                            <div class="size__list color__list">
-                                <label for="black">
-                                    Blacks
-                                    <input type="checkbox" id="black">
+                            <div class="size__list review">
+                                <label for="rating-5">
+                                    <span class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </span>
+                                    <input type="checkbox" id="rating-5">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label for="whites">
-                                    Whites
-                                    <input type="checkbox" id="whites">
+                                <label for="rating-4">
+                                    <span class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa-light fa-star"></i>
+                                        trở lên
+                                    </span>
+                                    <input type="checkbox" id="rating-4">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label for="reds">
-                                    Reds
-                                    <input type="checkbox" id="reds">
+                                <label for="rating-3">
+                                    <span class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa-light fa-star"></i>
+                                        <i class="fa-light fa-star"></i>
+                                        trở lên
+                                    </span>
+                                    <input type="checkbox" id="rating-3">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label for="greys">
-                                    Greys
-                                    <input type="checkbox" id="greys">
+                                <label for="rating-2">
+                                    <span class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa-light fa-star"></i>
+                                        <i class="fa-light fa-star"></i>
+                                        <i class="fa-light fa-star"></i>
+                                        <i class="fa-light fa-star"></i>
+                                        trở lên
+                                    </span>
+                                    <input type="checkbox" id="rating-2">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label for="blues">
-                                    Blues
-                                    <input type="checkbox" id="blues">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="beige">
-                                    Beige Tones
-                                    <input type="checkbox" id="beige">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="greens">
-                                    Greens
-                                    <input type="checkbox" id="greens">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="yellows">
-                                    Yellows
-                                    <input type="checkbox" id="yellows">
+                                <label for="rating-1">
+                                    <span class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa-light fa-star"></i>
+                                        <i class="fa-light fa-star"></i>
+                                        <i class="fa-light fa-star"></i>
+                                        <i class="fa-light fa-star"></i>
+                                        trở lên
+                                    </span>
+                                    <input type="checkbox" id="rating-1">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -219,7 +239,8 @@
                                 <div class="product__item__pic set-bg" data-setbg="img/shop/shop-1.jpg">
                                     <div class="label new">New</div>
                                     <ul class="product__hover">
-                                        <li><a href="img/shop/shop-1.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                        <li><a href="img/shop/shop-1.jpg" class="image-popup"><span
+                                                    class="arrow_expand"></span></a></li>
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                         <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                                     </ul>
@@ -241,7 +262,8 @@
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="img/shop/shop-2.jpg">
                                     <ul class="product__hover">
-                                        <li><a href="img/shop/shop-2.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                        <li><a href="img/shop/shop-2.jpg" class="image-popup"><span
+                                                    class="arrow_expand"></span></a></li>
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                         <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                                     </ul>
@@ -263,7 +285,8 @@
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="img/shop/shop-3.jpg">
                                     <ul class="product__hover">
-                                        <li><a href="img/shop/shop-3.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                        <li><a href="img/shop/shop-3.jpg" class="image-popup"><span
+                                                    class="arrow_expand"></span></a></li>
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                         <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                                     </ul>
@@ -285,7 +308,8 @@
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="img/shop/shop-4.jpg">
                                     <ul class="product__hover">
-                                        <li><a href="img/shop/shop-4.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                        <li><a href="img/shop/shop-4.jpg" class="image-popup"><span
+                                                    class="arrow_expand"></span></a></li>
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                         <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                                     </ul>
@@ -308,7 +332,8 @@
                                 <div class="product__item__pic set-bg" data-setbg="img/shop/shop-5.jpg">
                                     <div class="label">Sale</div>
                                     <ul class="product__hover">
-                                        <li><a href="img/shop/shop-5.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                        <li><a href="img/shop/shop-5.jpg" class="image-popup"><span
+                                                    class="arrow_expand"></span></a></li>
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                         <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                                     </ul>
@@ -330,7 +355,8 @@
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="img/shop/shop-6.jpg">
                                     <ul class="product__hover">
-                                        <li><a href="img/shop/shop-6.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                        <li><a href="img/shop/shop-6.jpg" class="image-popup"><span
+                                                    class="arrow_expand"></span></a></li>
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                         <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                                     </ul>
@@ -352,7 +378,8 @@
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="img/shop/shop-7.jpg">
                                     <ul class="product__hover">
-                                        <li><a href="img/shop/shop-7.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                        <li><a href="img/shop/shop-7.jpg" class="image-popup"><span
+                                                    class="arrow_expand"></span></a></li>
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                         <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                                     </ul>
@@ -375,7 +402,8 @@
                                 <div class="product__item__pic set-bg" data-setbg="img/shop/shop-8.jpg">
                                     <div class="label stockout stockblue">Out Of Stock</div>
                                     <ul class="product__hover">
-                                        <li><a href="img/shop/shop-8.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                        <li><a href="img/shop/shop-8.jpg" class="image-popup"><span
+                                                    class="arrow_expand"></span></a></li>
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                         <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                                     </ul>
@@ -398,7 +426,8 @@
                                 <div class="product__item__pic set-bg" data-setbg="img/shop/shop-9.jpg">
                                     <div class="label">Sale</div>
                                     <ul class="product__hover">
-                                        <li><a href="img/shop/shop-9.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                        <li><a href="img/shop/shop-9.jpg" class="image-popup"><span
+                                                    class="arrow_expand"></span></a></li>
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                         <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                                     </ul>
@@ -418,9 +447,9 @@
                         </div>
                         <div class="col-lg-12 text-center">
                             <div class="pagination__option">
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
+                                <a class="active" href="#">1</a>
+                                <a class="" href="#">2</a>
+                                <a class="" href="#">3</a>
                                 <a href="#"><i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
@@ -434,8 +463,38 @@
 
 <script>
 export default {
-    name: 'Shop'
+    name: 'Store',
+    data() {
+        return {
+            min: 3000,
+            max: 100000,
+            minPrice: 30000,
+            maxPrice: 100000
+        }
+    },
+    mounted() {
+        // Khởi tạo jQuery UI slider
+        $(this.$refs.slider).slider({
+            range: true,
+            min: this.min,
+            max: this.max,
+            values: [this.min, this.max],
+            slide: (event, ui) => {
+                this.minPrice = ui.values[0];
+                this.maxPrice = ui.values[1];
+            }
+        });
+    },
+    methods: {
+        formatPrice(value) {
+            return Math.round(value / 1000) + 'K';
+        },
+        applyFilter() {
+            console.log(`Lọc từ ${this.minPrice} đến ${this.maxPrice}`);
+        }
+    }
 }
+
 </script>
 
 <style></style>
