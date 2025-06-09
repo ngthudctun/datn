@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -13,7 +14,8 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
+        $logins = User::all();
+        return response()->json($logins);
     }
 
     /**
@@ -38,9 +40,9 @@ class LoginController extends Controller
             "email.unique" => "Email đã tồn tại",
             "password.confirmed" => "Mật khẩu không trùng khớp"
         ]);
-        $validated['password'] = hash::make($validated['password']);
-        $user = User::create($validated);
-        return response()->json($user, 201);
+        $validated['password'] = Hash::make($validated['password']);
+        $logins = User::create($validated);
+        return response()->json($logins, 201);
     }
 
     /**
