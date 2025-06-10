@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->string('category_name');
             $table->foreignId('category_parent_id')->nullable()->constrained('categories')->nullOnDelete();
             $table->string('slug')->nullable();
+            $table->string('image')->nullable(); // ➕ Thêm dòng này
             $table->timestamps();
         });
     }
