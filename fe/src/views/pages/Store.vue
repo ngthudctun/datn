@@ -115,7 +115,7 @@
                                 </div>
                             </div>
 
-                            <a href="#" @click.prevent="applyFilter">Filter</a>
+                            <a href="#" @click.prevent="applyFilter">LỌC</a>
                         </div>
                         <div class="sidebar__color">
                             <div class="section-title">
@@ -187,7 +187,7 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                         <i class="fa-light fa-star"></i>
-                                        trở lên
+                                        
                                     </span>
                                     <input type="checkbox" id="rating-4">
                                     <span class="checkmark"></span>
@@ -199,7 +199,7 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa-light fa-star"></i>
                                         <i class="fa-light fa-star"></i>
-                                        trở lên
+                                        
                                     </span>
                                     <input type="checkbox" id="rating-3">
                                     <span class="checkmark"></span>
@@ -207,11 +207,11 @@
                                 <label for="rating-2">
                                     <span class="rating">
                                         <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
                                         <i class="fa-light fa-star"></i>
                                         <i class="fa-light fa-star"></i>
                                         <i class="fa-light fa-star"></i>
-                                        <i class="fa-light fa-star"></i>
-                                        trở lên
+                                        
                                     </span>
                                     <input type="checkbox" id="rating-2">
                                     <span class="checkmark"></span>
@@ -223,7 +223,7 @@
                                         <i class="fa-light fa-star"></i>
                                         <i class="fa-light fa-star"></i>
                                         <i class="fa-light fa-star"></i>
-                                        trở lên
+                                        
                                     </span>
                                     <input type="checkbox" id="rating-1">
                                     <span class="checkmark"></span>

@@ -5,33 +5,28 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="product__details__pic">
-                        <div class="product__details__pic__left product__thumb nice-scroll">
-                            <a class="pt active" href="#product-1">
-                                <img :src="$imageUrl + 'product/details/thumb-1.jpg'" alt="">
-                            </a>
-                            <a class="pt" href="#product-2">
-                                <img :src="$imageUrl + 'product/details/thumb-2.jpg'" alt="">
-                            </a>
-                            <a class="pt" href="#product-3">
-                                <img :src="$imageUrl + 'product/details/thumb-3.jpg'" alt="">
-                            </a>
-                            <a class="pt" href="#product-4">
-                                <img :src="$imageUrl + 'product/details/thumb-4.jpg'" alt="">
-                            </a>
-                        </div>
+                        <!-- Phần ảnh chính: full width -->
+                        <!-- Ảnh lớn -->
                         <div class="product__details__slider__content">
                             <div class="product__details__pic__slider owl-carousel">
-                                <img data-hash="product-1" class="product__big__img"
-                                    :src="$imageUrl + 'product/details/product-1.jpg'" alt="">
-                                <img data-hash="product-2" class="product__big__img"
-                                    :src="$imageUrl + 'product/details/product-3.jpg'" alt="">
-                                <img data-hash="product-3" class="product__big__img"
-                                    :src="$imageUrl + 'product/details/product-2.jpg'" alt="">
-                                <img data-hash="product-4" class="product__big__img"
-                                    :src="$imageUrl + 'product/details/product-4.jpg'" alt="">
+                                <div v-for="(thumb, index) in thumbs" :key="index"
+                                    :data-hash="'product-' + (index + 1)">
+                                    <img class="product__big__img" :src="$imageUrl + thumb.replace('thumb', 'product')"
+                                        :alt="'Ảnh lớn ' + (index + 1)" />
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Ảnh nhỏ (thumbnail) -->
+                        <div class="product__details__pic__thumbs nice-scroll">
+                            <a v-for="(thumb, index) in thumbs" :key="index" :href="'#product-' + (index + 1)"
+                                class="pt" :class="{ active: index === activeIndex }" @click.prevent="setActive(index)">
+                                <img :src="$imageUrl + thumb" :alt="'Thumbnail ' + (index + 1)" />
+                            </a>
+                        </div>
+
                     </div>
+
                 </div>
                 <div class="col-lg-6">
                     <div class="product__details__text">
@@ -42,26 +37,16 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <span>( 138 reviews )</span>
+                            <span>
+                                (
+                                <a href="#" @click.prevent="goToTab">138 reviews</a>
+                                )
+                            </span>
+
                         </div>
                         <div class="product__details__price">$ 75.0 <span>$ 83.0</span></div>
                         <p>Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret fugit, sed quia consequuntur
                             magni lores eos qui ratione voluptatem sequi nesciunt.</p>
-                        <div class="product__details__button">
-                            <div class="quantity">
-                                <span>Quantity:</span>
-                                <div class="pro-qty">
-                                    <span class="dec qtybtn">-</span>
-                                    <input type="text" value="1" data-min="1" data-max="999">
-                                    <span class="inc qtybtn">+</span>
-                                </div>
-                            </div>
-                            <a href="#" class="cart-btn"><span class="fa-light fa-cart-shopping"></span> Add to cart</a>
-                            <ul>
-                                <li><a href="#"><span class="fa-light fa-heart"></span></a></li>
-                                <li><a href="#"><span class="fa-light fa-sliders"></span></a></li>
-                            </ul>
-                        </div>
                         <div class="product__details__widget">
                             <ul>
                                 <li>
@@ -118,16 +103,31 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="product__details__button mt-3">
+                            <div class="quantity d-flex gap-2 mb-5">
+                                <span>Quantity:</span>
+                                <div class="pro-qty">
+                                    <span class="dec qtybtn" @click="decrease">-</span>
+                                    <input type="text" v-model.number="quantity" :min="min" :max="max" />
+                                    <span class="inc qtybtn" @click="increase">+</span>
+                                </div>
+                                <ul>
+                                    <li><a href="#"><span class="fa-light fa-heart"></span></a></li>
+                                </ul>
+                            </div>
+                            <button href="#" class="buy-btn"><span class="fa-light fa-buy-shopping"></span> Mua
+                                ngay</button>
+                            <button href="#" class="cart-btn"><span class="fa-light fa-cart-shopping"></span> Thêm vào
+                                giỏ
+                                hàng</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <div class="product__details__tab">
+                    <div id="product__details__tab" class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Description</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Specification</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Reviews ( 2 )</a>
@@ -136,19 +136,6 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <h6>Description</h6>
-                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
-                                    quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
-                                    Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
-                                    voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed quia ipsu
-                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Nulla
-                                    consequat massa quis enim.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                    quis, sem.</p>
-                            </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <h6>Specification</h6>
                                 <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
                                     quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
                                     Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
@@ -283,9 +270,72 @@
     <!-- Product Details Section End -->
 </template>
 
-<script>
-export default {
-    name: 'ProductDetail',
+<script setup>
+import { ref, onMounted, nextTick } from 'vue'
+
+// --- Số lượng sản phẩm ---
+const quantity = ref(1)
+const min = 1
+const max = 999
+
+function decrease() {
+    if (quantity.value > min) quantity.value--
 }
+
+function increase() {
+    if (quantity.value < max) quantity.value++
+}
+
+// --- Cuộn đến phần đánh giá ---
+function goToTab() {
+    const tabSection = document.querySelector('#product__details__tab')
+    if (tabSection) {
+        tabSection.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    const tabTrigger = document.querySelector('[data-toggle="tab"][href="#tabs-3"]')
+    if (tabTrigger) {
+        tabTrigger.click()
+    }
+}
+
+// --- Hình ảnh sản phẩm và carousel ---
+const activeIndex = ref(0)
+const thumbs = [
+    'product/details/thumb-1.jpg',
+    'product/details/thumb-2.jpg',
+    'product/details/thumb-3.jpg',
+    'product/details/thumb-4.jpg'
+]
+
+// --- Khi click vào ảnh thumbnail ---
+function setActive(index) {
+    activeIndex.value = index
+    $('.product__details__pic__slider').trigger('to.owl.carousel', [index, 300])
+}
+
+onMounted(() => {
+    nextTick(() => {
+        const $slider = $('.product__details__pic__slider')
+
+        $slider.owlCarousel({
+            items: 1,
+            loop: false, // để dễ quản lý chỉ số slide
+            nav: true,
+            dots: false,
+            autoplay: false,
+        })
+
+        // Lắng nghe sự kiện chuyển slide của Owl Carousel
+        $slider.on('changed.owl.carousel', function (event) {
+            if (typeof event.item.index !== 'undefined') {
+                activeIndex.value = event.item.index
+            }
+        })
+    })
+})
 </script>
+
+
+
 <style></style>
