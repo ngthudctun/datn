@@ -14,7 +14,7 @@ class AuthController extends Controller
      */
     public function index()
     {
-    $users = Auth::all();
+    $users = User::all();
     return response()->json($users);
     }
 
@@ -57,4 +57,10 @@ class AuthController extends Controller
             "user" => $users
         ], 201);
     }
+    public function logout(Request $request)
+    {
+    $request->user()->tokens()->delete();
+    return response()->json(['message' => 'Đăng xuất thành công']);
+    }
+
 }

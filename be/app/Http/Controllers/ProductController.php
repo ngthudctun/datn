@@ -16,8 +16,8 @@ class ProductController extends Controller
     }
     public function getAll()
     {
-        $product = Product::all();
-        return response()->json($product);
+        $products = Product::all();
+        return response()->json($products);
     }
     public function getById($id) {
         $product = Product::find($id);
