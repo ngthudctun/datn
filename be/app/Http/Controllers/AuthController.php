@@ -9,24 +9,37 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+    $users = Auth::all();
+    return response()->json($users);
+    }
+
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-        if (!Auth::attempt($credentials)) {
-            return response()->json([
-                'message' => 'Email hoặc mật khẩu không đúng'
-            ], 401);
-        }
-        $user = Auth::user();
+    $credentials = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
 
-        // Trả về thông tin user
+    if (!Auth::attempt($credentials)) {
         return response()->json([
-            'message' => 'Đăng nhập thành công',
-            'user' => $user
-        ]);
+            'message' => 'Email hoặc mật khẩu không đúng'
+        ], 401);
+    }
+
+    $users = Auth::user();
+
+    $token = $users->createToken('api-token')->plainTextToken;
+
+    return response()->json([
+        'message' => 'Đăng nhập thành công',
+        'user' => $users,
+        'token' => $token
+    ]);
     }
     public function createUser(Request $request) {
         $validated = $request->validate([
@@ -38,10 +51,10 @@ class AuthController extends Controller
             "password.confirmed" => "Mật khẩu không trùng khớp"
         ]);
         $validated['password'] = Hash::make($validated['password']);
-        $user = User::create($validated);
+        $users = User::create($validated);
         return response()->json([
             "message" => "Đăng kí thành công",
-            "user" => $user
+            "user" => $users
         ], 201);
     }
 }
