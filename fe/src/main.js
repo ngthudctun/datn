@@ -35,6 +35,7 @@ const pinia = createPinia()
 app.config.globalProperties.$imageUrl = import.meta.env.VITE_IMAGE_BASE_URL
 
 /* axios toan cuc */
+// app.config.globalProperties.$axios = axios;
 app.config.globalProperties.$axios = axios;
 app.use(pinia)
 app.use(router)

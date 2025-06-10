@@ -31,7 +31,7 @@
 :root {
 	--color--primary: #ca1515;
 	/* Đỏ đậm */
-	--gradient-primary: linear-gradient(45deg, #FF4444, #CA1515);
+	--gradient-primary: linear-gradient(45deg, #CA1515, #FF4444);
 
 	/* Xanh lá */
 	--gradient-green: linear-gradient(45deg, #36A300, #66D633);
@@ -1835,6 +1835,11 @@ ol {
 	margin-left: 20px;
 }
 
+.product__details__pic__slider img {
+	max-height: 400px;
+	object-fit: contain;
+}
+
 .product__details__pic__slider.owl-carousel .owl-nav button {
 	position: absolute;
 	left: 10px;
@@ -1842,19 +1847,7 @@ ol {
 	font-size: 22px;
 	color: #111111;
 	width: 40px;
-	height: 40px;function goToTab() {
-    // Scroll xuống phần tab
-    const tabSection = document.querySelector('#product__details__tab')
-    if (tabSection) {
-        tabSection.scrollIntoView({ behavior: 'smooth' })
-    }
-
-    // Bật tab reviews (#tabs-1)
-    const tabTrigger = document.querySelector('[data-bs-toggle="tab"][href="#tabs-1"]')
-    if (tabTrigger) {
-        tabTrigger.click() // dùng Bootstrap's tab trigger
-    }
-}
+	height: 40px;
 	background: rgba(255, 255, 255, 0.7);
 	border-radius: 50%;
 	line-height: 44px;
@@ -1866,6 +1859,107 @@ ol {
 .product__details__pic__slider.owl-carousel .owl-nav button.owl-next {
 	left: auto;
 	right: 30px;
+}
+
+/* Container chính cho thumbnails */
+.product__details__pic__thumbs {
+	display: flex;
+	gap: 10px;
+	/* Khoảng cách giữa các thumbnail */
+	padding: 10px 0;
+	overflow-x: auto;
+	/* Cho phép scroll ngang nếu có nhiều ảnh */
+	scroll-behavior: smooth;
+}
+
+/* Styling cho mỗi thumbnail link */
+.product__details__pic__thumbs .pt {
+	flex-shrink: 0;
+	/* Không cho phép co lại */
+	width: 80px;
+	/* Chiều rộng cố định */
+	height: 80px;
+	/* Chiều cao cố định */
+	border: 2px solid transparent;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	cursor: pointer;
+	position: relative;
+}
+
+/* Styling cho hình ảnh trong thumbnail */
+.product__details__pic__thumbs .pt img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+}
+
+/* Hover effect */
+.product__details__pic__thumbs .pt:hover {
+	border-color: #ddd;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product__details__pic__thumbs .pt:hover img {
+	transform: scale(1.05);
+}
+
+/* Active state - thumbnail được chọn */
+.product__details__pic__thumbs .pt.active {
+	border-color: var(--color--primary);
+	/* Màu border khi active */
+	box-shadow: var(--box-shadow);
+	transform: translateY(-2px);
+}
+
+.product__details__pic__thumbs .pt.active img {
+	transform: scale(1.02);
+}
+
+/* Custom scrollbar cho nice-scroll */
+.product__details__pic__thumbs.nice-scroll::-webkit-scrollbar {
+	height: 6px;
+}
+
+.product__details__pic__thumbs.nice-scroll::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 3px;
+}
+
+.product__details__pic__thumbs.nice-scroll::-webkit-scrollbar-thumb {
+	background: #ccc;
+	border-radius: 3px;
+}
+
+.product__details__pic__thumbs.nice-scroll::-webkit-scrollbar-thumb:hover {
+	background: #999;
+}
+
+/* Responsive - điều chỉnh kích thước trên mobile */
+@media (max-width: 768px) {
+	.product__details__pic__thumbs .pt {
+		width: 60px;
+		height: 60px;
+	}
+
+	.product__details__pic__thumbs {
+		gap: 8px;
+	}
+}
+
+/* Variant với thumbnail nhỏ hơn */
+.product__details__pic__thumbs.small .pt {
+	width: 60px;
+	height: 60px;
+}
+
+/* Variant với thumbnail lớn hơn */
+.product__details__pic__thumbs.large .pt {
+	width: 100px;
+	height: 100px;
 }
 
 .product__details__text h3 {
@@ -1924,7 +2018,6 @@ ol {
 }
 
 .quantity {
-	float: left;
 	margin-right: 10px;
 	margin-bottom: 10px;
 }
@@ -1973,8 +2066,7 @@ ol {
 	margin-bottom: 25px;
 }
 
-.product__details__button .cart-btn {
-	display: inline-block;
+.product__details__button .buy-btn {
 	font-size: 14px;
 	color: #ffffff;
 	background: var(--gradient-primary);
@@ -1982,18 +2074,40 @@ ol {
 	text-transform: uppercase;
 	padding: 14px 30px 15px;
 	border-radius: 50px;
-	float: left;
 	margin-right: 10px;
 	margin-bottom: 10px;
+	border: none !important;
+
+	&:hover {
+		opacity: .8;;
+	}
+}
+
+.product__details__button .cart-btn {
+	font-size: 14px;
+	color: #000;
+	background: var(--gradient-gray);
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: 14px 30px 15px;
+	border-radius: 50px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border: none !important;
+	transition: 1s;
+
+	&:hover {
+		opacity: .8;;
+	}
 }
 
 .product__details__button ul {
-	float: left;
+	/* float: right; */
 }
 
 .product__details__button ul li {
 	list-style: none;
-	display: inline-block;
+	/* display: inline-block; */
 	margin-right: 5px;
 }
 
@@ -2010,6 +2124,11 @@ ol {
 	line-height: 50px;
 	text-align: center;
 	padding-top: 1px;
+	transition: all .3s ease;
+}
+
+.product__details__button ul li a:hover {
+	background: var(--gradient-white);
 }
 
 .product__details__button ul li a span {
@@ -4200,10 +4319,10 @@ hr.style-eight:after {
 		top: 0;
 	}
 
-	.product__details__button .cart-btn {
+	/* .product__details__button .cart-btn {
 		float: none;
 		margin-right: 0;
-	}
+	} */
 
 	.product__details__button ul {
 		float: none;

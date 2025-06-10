@@ -6,34 +6,25 @@
                 <div class="col-lg-6">
                     <div class="product__details__pic">
                         <!-- Phần ảnh chính: full width -->
+                        <!-- Ảnh lớn -->
                         <div class="product__details__slider__content">
                             <div class="product__details__pic__slider owl-carousel">
-                                <img data-hash="product-1" class="product__big__img"
-                                    :src="$imageUrl + 'product/details/product-1.jpg'" alt="">
-                                <img data-hash="product-2" class="product__big__img"
-                                    :src="$imageUrl + 'product/details/product-2.jpg'" alt="">
-                                <img data-hash="product-3" class="product__big__img"
-                                    :src="$imageUrl + 'product/details/product-3.jpg'" alt="">
-                                <img data-hash="product-4" class="product__big__img"
-                                    :src="$imageUrl + 'product/details/product-4.jpg'" alt="">
+                                <div v-for="(thumb, index) in thumbs" :key="index"
+                                    :data-hash="'product-' + (index + 1)">
+                                    <img class="product__big__img" :src="$imageUrl + thumb.replace('thumb', 'product')"
+                                        :alt="'Ảnh lớn ' + (index + 1)" />
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Thumbnail ảnh con: bên dưới ảnh chính -->
+                        <!-- Ảnh nhỏ (thumbnail) -->
                         <div class="product__details__pic__thumbs nice-scroll">
-                            <a class="pt active" href="#product-1">
-                                <img :src="$imageUrl + 'product/details/thumb-1.jpg'" alt="">
-                            </a>
-                            <a class="pt" href="#product-2">
-                                <img :src="$imageUrl + 'product/details/thumb-2.jpg'" alt="">
-                            </a>
-                            <a class="pt" href="#product-3">
-                                <img :src="$imageUrl + 'product/details/thumb-3.jpg'" alt="">
-                            </a>
-                            <a class="pt" href="#product-4">
-                                <img :src="$imageUrl + 'product/details/thumb-4.jpg'" alt="">
+                            <a v-for="(thumb, index) in thumbs" :key="index" :href="'#product-' + (index + 1)"
+                                class="pt" :class="{ active: index === activeIndex }" @click.prevent="setActive(index)">
+                                <img :src="$imageUrl + thumb" :alt="'Thumbnail ' + (index + 1)" />
                             </a>
                         </div>
+
                     </div>
 
                 </div>
@@ -56,21 +47,6 @@
                         <div class="product__details__price">$ 75.0 <span>$ 83.0</span></div>
                         <p>Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret fugit, sed quia consequuntur
                             magni lores eos qui ratione voluptatem sequi nesciunt.</p>
-                        <div class="product__details__button">
-                            <div class="quantity">
-                                <span>Quantity:</span>
-                                <div class="pro-qty" ref="qtyBox">
-                                    <span class="dec qtybtn">-</span>
-                                    <input type="text" value="1" data-min="1" data-max="999" />
-                                    <span class="inc qtybtn">+</span>
-                                </div>
-                            </div>
-                            <a href="#" class="cart-btn"><span class="fa-light fa-cart-shopping"></span> Add to cart</a>
-                            <ul>
-                                <li><a href="#"><span class="fa-light fa-heart"></span></a></li>
-                                <li><a href="#"><span class="fa-light fa-sliders"></span></a></li>
-                            </ul>
-                        </div>
                         <div class="product__details__widget">
                             <ul>
                                 <li>
@@ -126,6 +102,24 @@
                                     <p>Free shipping</p>
                                 </li>
                             </ul>
+                        </div>
+                        <div class="product__details__button mt-3">
+                            <div class="quantity d-flex gap-2 mb-5">
+                                <span>Quantity:</span>
+                                <div class="pro-qty">
+                                    <span class="dec qtybtn" @click="decrease">-</span>
+                                    <input type="text" v-model.number="quantity" :min="min" :max="max" />
+                                    <span class="inc qtybtn" @click="increase">+</span>
+                                </div>
+                                <ul>
+                                    <li><a href="#"><span class="fa-light fa-heart"></span></a></li>
+                                </ul>
+                            </div>
+                            <button href="#" class="buy-btn"><span class="fa-light fa-buy-shopping"></span> Mua
+                                ngay</button>
+                            <button href="#" class="cart-btn"><span class="fa-light fa-cart-shopping"></span> Thêm vào
+                                giỏ
+                                hàng</button>
                         </div>
                     </div>
                 </div>
@@ -276,55 +270,72 @@
     <!-- Product Details Section End -->
 </template>
 
-
 <script setup>
 import { ref, onMounted, nextTick } from 'vue'
 
-const qtyBox = ref(null)
+// --- Số lượng sản phẩm ---
+const quantity = ref(1)
+const min = 1
+const max = 999
+
+function decrease() {
+    if (quantity.value > min) quantity.value--
+}
+
+function increase() {
+    if (quantity.value < max) quantity.value++
+}
+
+// --- Cuộn đến phần đánh giá ---
 function goToTab() {
-    // Scroll xuống phần tab
     const tabSection = document.querySelector('#product__details__tab')
     if (tabSection) {
         tabSection.scrollIntoView({ behavior: 'smooth' })
     }
 
-    // Bật tab reviews (#tabs-1)
     const tabTrigger = document.querySelector('[data-toggle="tab"][href="#tabs-3"]')
     if (tabTrigger) {
-        tabTrigger.click() // dùng Bootstrap's tab trigger
+        tabTrigger.click()
     }
 }
-onMounted(async () => {
-    await nextTick() // chờ DOM và ref gán xong
 
-    // ✅ Kiểm tra tồn tại
-    if (qtyBox.value) {
-        const container = qtyBox.value
-        const input = container.querySelector('input')
-        const min = parseInt(input.dataset.min || 1)
-        const max = parseInt(input.dataset.max || 999)
+// --- Hình ảnh sản phẩm và carousel ---
+const activeIndex = ref(0)
+const thumbs = [
+    'product/details/thumb-1.jpg',
+    'product/details/thumb-2.jpg',
+    'product/details/thumb-3.jpg',
+    'product/details/thumb-4.jpg'
+]
 
-        container.querySelector('.dec').addEventListener('click', () => {
-            let value = parseInt(input.value) || min
-            if (value > min) input.value = value - 1
+// --- Khi click vào ảnh thumbnail ---
+function setActive(index) {
+    activeIndex.value = index
+    $('.product__details__pic__slider').trigger('to.owl.carousel', [index, 300])
+}
+
+onMounted(() => {
+    nextTick(() => {
+        const $slider = $('.product__details__pic__slider')
+
+        $slider.owlCarousel({
+            items: 1,
+            loop: false, // để dễ quản lý chỉ số slide
+            nav: true,
+            dots: false,
+            autoplay: false,
         })
 
-        container.querySelector('.inc').addEventListener('click', () => {
-            let value = parseInt(input.value) || min
-            if (value < max) input.value = value + 1
+        // Lắng nghe sự kiện chuyển slide của Owl Carousel
+        $slider.on('changed.owl.carousel', function (event) {
+            if (typeof event.item.index !== 'undefined') {
+                activeIndex.value = event.item.index
+            }
         })
-    }
-
-    // Gọi Owl Carousel
-    $('.product__details__pic__slider').owlCarousel({
-        items: 1,
-        loop: true,
-        nav: true,
-        dots: true,
-        autoplay: false
     })
 })
 </script>
+
 
 
 <style></style>
