@@ -10,10 +10,10 @@ class BrandSeeder extends Seeder
     public function run(): void
     {
         $brands = [
-            ['brand_name' => 'Coolmate', 'slug' => 'coolmate'],
-            ['brand_name' => 'Levents', 'slug' => 'levents'],
-            ['brand_name' => 'Routine', 'slug' => 'routine'],
-            ['brand_name' => 'Hades Studio', 'slug' => 'hades-studio'],
+            ['brand_name' => 'Coolmate'],
+            ['brand_name' => 'Levents'],
+            ['brand_name' => 'Routine'],
+            ['brand_name' => 'Hades Studio'],
         ];
 
         foreach ($brands as $brand) {

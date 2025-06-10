@@ -8,7 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
-use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\ProductController as APIProductController;
 use Illuminate\Support\Facades\Request;
 
 Route::apiResource('categories', CategoryController::class);
@@ -32,7 +32,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('/products', [ProductController::class, 'index']);
-Route::post('/products', [ProductController::class, 'store']);
-Route::put('/products/{product}', [ProductController::class, 'update']);
-Route::delete('/products/{product}', [ProductController::class, 'destroy']);
+Route::get('/products', [APIProductController::class, 'index']);
+Route::post('/products', [APIProductController::class, 'store']);
+Route::put('/products/{product}', [APIProductController::class, 'update']);
+Route::delete('/products/{product}', [APIProductController::class, 'destroy']);
