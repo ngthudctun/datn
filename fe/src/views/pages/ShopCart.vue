@@ -89,8 +89,6 @@
 <script setup>
 import { reactive, computed } from 'vue'
 
-const $imageUrl = '/images/' // hoặc theo giá trị của bạn
-
 const products = reactive([
   {
     id: 1,

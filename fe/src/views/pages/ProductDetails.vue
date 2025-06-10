@@ -5,7 +5,22 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="product__details__pic">
-                        <div class="product__details__pic__left product__thumb nice-scroll">
+                        <!-- Phần ảnh chính: full width -->
+                        <div class="product__details__slider__content">
+                            <div class="product__details__pic__slider owl-carousel">
+                                <img data-hash="product-1" class="product__big__img"
+                                    :src="$imageUrl + 'product/details/product-1.jpg'" alt="">
+                                <img data-hash="product-2" class="product__big__img"
+                                    :src="$imageUrl + 'product/details/product-2.jpg'" alt="">
+                                <img data-hash="product-3" class="product__big__img"
+                                    :src="$imageUrl + 'product/details/product-3.jpg'" alt="">
+                                <img data-hash="product-4" class="product__big__img"
+                                    :src="$imageUrl + 'product/details/product-4.jpg'" alt="">
+                            </div>
+                        </div>
+
+                        <!-- Thumbnail ảnh con: bên dưới ảnh chính -->
+                        <div class="product__details__pic__thumbs nice-scroll">
                             <a class="pt active" href="#product-1">
                                 <img :src="$imageUrl + 'product/details/thumb-1.jpg'" alt="">
                             </a>
@@ -19,19 +34,8 @@
                                 <img :src="$imageUrl + 'product/details/thumb-4.jpg'" alt="">
                             </a>
                         </div>
-                        <div class="product__details__slider__content">
-                            <div class="product__details__pic__slider owl-carousel">
-                                <img data-hash="product-1" class="product__big__img"
-                                    :src="$imageUrl + 'product/details/product-1.jpg'" alt="">
-                                <img data-hash="product-2" class="product__big__img"
-                                    :src="$imageUrl + 'product/details/product-3.jpg'" alt="">
-                                <img data-hash="product-3" class="product__big__img"
-                                    :src="$imageUrl + 'product/details/product-2.jpg'" alt="">
-                                <img data-hash="product-4" class="product__big__img"
-                                    :src="$imageUrl + 'product/details/product-4.jpg'" alt="">
-                            </div>
-                        </div>
                     </div>
+
                 </div>
                 <div class="col-lg-6">
                     <div class="product__details__text">
@@ -42,7 +46,12 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <span>( 138 reviews )</span>
+                            <span>
+                                (
+                                <a href="#" @click.prevent="goToTab">138 reviews</a>
+                                )
+                            </span>
+
                         </div>
                         <div class="product__details__price">$ 75.0 <span>$ 83.0</span></div>
                         <p>Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret fugit, sed quia consequuntur
@@ -50,9 +59,9 @@
                         <div class="product__details__button">
                             <div class="quantity">
                                 <span>Quantity:</span>
-                                <div class="pro-qty">
+                                <div class="pro-qty" ref="qtyBox">
                                     <span class="dec qtybtn">-</span>
-                                    <input type="text" value="1" data-min="1" data-max="999">
+                                    <input type="text" value="1" data-min="1" data-max="999" />
                                     <span class="inc qtybtn">+</span>
                                 </div>
                             </div>
@@ -121,13 +130,10 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <div class="product__details__tab">
+                    <div id="product__details__tab" class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Description</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Specification</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Reviews ( 2 )</a>
@@ -136,19 +142,6 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <h6>Description</h6>
-                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
-                                    quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
-                                    Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
-                                    voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed quia ipsu
-                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Nulla
-                                    consequat massa quis enim.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                    quis, sem.</p>
-                            </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <h6>Specification</h6>
                                 <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
                                     quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
                                     Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
@@ -283,9 +276,55 @@
     <!-- Product Details Section End -->
 </template>
 
-<script>
-export default {
-    name: 'ProductDetail',
+
+<script setup>
+import { ref, onMounted, nextTick } from 'vue'
+
+const qtyBox = ref(null)
+function goToTab() {
+    // Scroll xuống phần tab
+    const tabSection = document.querySelector('#product__details__tab')
+    if (tabSection) {
+        tabSection.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    // Bật tab reviews (#tabs-1)
+    const tabTrigger = document.querySelector('[data-toggle="tab"][href="#tabs-3"]')
+    if (tabTrigger) {
+        tabTrigger.click() // dùng Bootstrap's tab trigger
+    }
 }
+onMounted(async () => {
+    await nextTick() // chờ DOM và ref gán xong
+
+    // ✅ Kiểm tra tồn tại
+    if (qtyBox.value) {
+        const container = qtyBox.value
+        const input = container.querySelector('input')
+        const min = parseInt(input.dataset.min || 1)
+        const max = parseInt(input.dataset.max || 999)
+
+        container.querySelector('.dec').addEventListener('click', () => {
+            let value = parseInt(input.value) || min
+            if (value > min) input.value = value - 1
+        })
+
+        container.querySelector('.inc').addEventListener('click', () => {
+            let value = parseInt(input.value) || min
+            if (value < max) input.value = value + 1
+        })
+    }
+
+    // Gọi Owl Carousel
+    $('.product__details__pic__slider').owlCarousel({
+        items: 1,
+        loop: true,
+        nav: true,
+        dots: true,
+        autoplay: false
+    })
+})
 </script>
+
+
 <style></style>

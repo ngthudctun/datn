@@ -5,7 +5,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-7">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="./index.html"><img :src="$imageUrl + 'logo/logo.png'" alt="logo" heigh="31"/></a>
+                            <router-link to="/"><img :src="$imageUrl + 'logo/logo.png'" alt="logo" heigh="31"/></router-link>
                         </div>
                         <p>Mục tiêu mang đến trải nghiệm mua sắm nhanh chóng, dễ dàng và tin cậy. Chúng tôi tập trung cung cấp sản phẩm chất lượng với giá tốt nhất, dịch vụ giao hàng nhanh và chính sách chăm sóc khách hàng linh hoạt, giúp bạn mua sắm an tâm và tiết kiệm thời gian. ShopNow cam kết luôn đặt lợi ích và sự hài lòng của khách hàng làm trọng tâm trong mọi hoạt động.</p>
                     </div>

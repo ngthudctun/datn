@@ -115,7 +115,7 @@
                                 </div>
                             </div>
 
-                            <a href="#" @click.prevent="applyFilter">Filter</a>
+                            <a href="#" @click.prevent="applyFilter">LỌC</a>
                         </div>
                         <div class="sidebar__color">
                             <div class="section-title">

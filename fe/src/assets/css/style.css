@@ -47,6 +47,8 @@
 
 	/* Đen */
 	--gradient-black: linear-gradient(45deg, #111111, #555555);
+
+	--box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 
@@ -991,6 +993,10 @@ ol {
 	line-height: 30px;
 }
 
+.footer__widget ul li a:hover {
+	color: var(--color--primary);
+}
+
 .footer__newslatter {
 	margin-bottom: 30px;
 }
@@ -1055,6 +1061,7 @@ ol {
 	border-radius: 50%;
 	margin-right: 6px;
 	margin-bottom: 5px;
+	box-shadow: var(--box-shadow);
 }
 
 .footer__social a:last-child {
@@ -1755,9 +1762,9 @@ ol {
 
 .pagination__option a:hover,
 .pagination__option a.active {
-	background: var(--gradient-black);
+	background: var(--gradient-gray);
 	/* border-color: #0d0d0d; */
-	color: #ffffff;
+	color: #000;
 }
 
 /*---------------------
@@ -1771,14 +1778,23 @@ ol {
 
 .product__details__pic {
 	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
 
+
 .product__details__pic__left {
-	width: 22%;
-	max-height: 574px;
-	float: left;
-	overflow-y: auto;
+	width: 100%;
+	max-height: unset;
+	float: none;
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	overflow-x: auto;
+	overflow-y: hidden;
 }
+
 
 .product__details__pic__left .pt {
 	display: block;
@@ -1814,7 +1830,7 @@ ol {
 }
 
 .product__details__slider__content {
-	width: calc(78% - 20px);
+	width: 100%;
 	float: left;
 	margin-left: 20px;
 }
@@ -1826,17 +1842,30 @@ ol {
 	font-size: 22px;
 	color: #111111;
 	width: 40px;
-	height: 40px;
+	height: 40px;function goToTab() {
+    // Scroll xuống phần tab
+    const tabSection = document.querySelector('#product__details__tab')
+    if (tabSection) {
+        tabSection.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    // Bật tab reviews (#tabs-1)
+    const tabTrigger = document.querySelector('[data-bs-toggle="tab"][href="#tabs-1"]')
+    if (tabTrigger) {
+        tabTrigger.click() // dùng Bootstrap's tab trigger
+    }
+}
 	background: rgba(255, 255, 255, 0.7);
 	border-radius: 50%;
 	line-height: 44px;
 	text-align: center;
 	margin-top: -20px;
+	box-shadow: var(--box-shadow);
 }
 
 .product__details__pic__slider.owl-carousel .owl-nav button.owl-next {
 	left: auto;
-	right: 10px;
+	right: 30px;
 }
 
 .product__details__text h3 {
