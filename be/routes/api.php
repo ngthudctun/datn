@@ -8,6 +8,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ApiWishlistController;
 use App\Http\Controllers\API\ProductController as APIProductController;
 use Illuminate\Support\Facades\Request;
 
@@ -25,9 +27,15 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'sendResetLink']);
 Route::get('/reset-password', [ForgotPasswordController::class, 'resetPassword']);
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/latest', [ProductController::class, 'latestFive']);
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('/cart/toggle', CartController::class);
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/wishlist/toggle', [ApiWishlistController::class, 'toggle']);
+    Route::get('/wishlist', [ApiWishlistController::class, 'index']);
+});
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -37,3 +45,4 @@ Route::get('/products', [APIProductController::class, 'index']);
 Route::post('/products', [APIProductController::class, 'store']);
 Route::put('/products/{product}', [APIProductController::class, 'update']);
 Route::delete('/products/{product}', [APIProductController::class, 'destroy']);
+Route::get('/products/latest', [ProductController::class, 'latestFive']);
