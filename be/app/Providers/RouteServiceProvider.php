@@ -19,7 +19,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        parent::boot();
 
         // Load file routes/api.php
         Route::middleware('api')
