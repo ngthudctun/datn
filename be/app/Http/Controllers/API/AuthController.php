@@ -14,7 +14,7 @@ class AuthController extends Controller
      */
     public function index()
     {
-    $users = User::all();
+    $users = User::paginate(5);
     return response()->json($users);
     }
 
@@ -43,7 +43,7 @@ class AuthController extends Controller
     }
     public function createUser(Request $request) {
         $validated = $request->validate([
-            // 'name' => 'required|string|max:255',
+            // 'username' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:1|confirmed',
         ], [

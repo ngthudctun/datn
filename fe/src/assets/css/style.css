@@ -2845,6 +2845,9 @@ ol {
 	font-size: 14px;
 	padding-left: 20px;
 	color: #666666;
+	&:focus{
+		border-color: var(--color--primary);
+	}
 }
 
 .checkout__form .checkout__form__input input::-webkit-input-placeholder {

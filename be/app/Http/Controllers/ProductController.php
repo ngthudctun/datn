@@ -12,23 +12,25 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
-    }
-    public function getAll()
-    {
-        $products = Product::all();
+        $products = Product::paginate(5);
         return response()->json($products);
     }
     public function getById($id) {
-        $product = Product::find($id);
-        return response()->json($product);
+        $products = Product::find($id);
+        return response()->json($products);
     }
     public function getRelatedById($id) {
-        $product = Product::find($id);
-        $relatedProducts = Product::where('category_code', $product->category_code)
+        $products = Product::find($id);
+        $relatedProducts = Product::where('category_code', $products->category_code)
         ->where('id', '!=', $id)
         ->get();
         return response()->json($relatedProducts);
+    }
+    public function latestFive()    
+    {
+        $products = Product::orderBy('created_at', 'desc')->take(5)->get();
+
+        return response()->json($products);
     }
     /**
      * Show the form for creating a new resource.
