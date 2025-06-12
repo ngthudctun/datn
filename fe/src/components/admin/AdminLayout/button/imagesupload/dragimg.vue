@@ -138,7 +138,7 @@
                         style="position: relative; cursor: pointer"
                       >
                         <img
-                          :src="$imageUrl + 'product/' + img"
+                          :src="$imageUrl + img"
                           class="images_select-ss"
                           style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)"
                           width="100%"
@@ -218,6 +218,7 @@
 import { useImageSelect } from "@/assets/js/adminjs/dragimg.js";
 import { onMounted, ref } from "vue";
 import uploadimage from "./uploadimagesAd.vue";
+import axios from "axios";
 const imageUrl = import.meta.env.VITE_IMAGE_BASE_URL;
 const props = defineProps({
   type: String,
@@ -229,13 +230,33 @@ const props = defineProps({
 console.log(props);
 const imageStore = useImageSelect();
 const images_firt = ref(null);
-const images = [
-  "product-2.jpg",
-  "product-1.jpg",
-  "product-3.jpg",
-  "product-4.jpg",
-  "product-5.jpg",
-];
+const images = ref([]);
+const getListCateSell = async () => {
+  try {
+    const response = await axios.get(`/api/seller-image-gate`, {
+      params: {
+        type: "product",
+      },
+    });
+    images.value = response.data; // Cập nhật dữ liệu
+    console.log(images.value);
+  } catch (error) {
+    console.error("Lỗi khi gọi API:", error);
+  }
+};
+/* const GetPaniCate = async (link) => {
+  try {
+    console.log(link);
+    const response = await axios.get(link);
+    catelist.value = response.data; // Cập nhật dữ liệu
+  } catch (error) {
+    console.error("Lỗi khi gọi API:", error);
+  }
+}; */
+
+onMounted(() => {
+  getListCateSell(); // Gọi API khi component được mount
+});
 
 const emit = defineEmits(["returnimg", "returnimgex"]);
 function submitImage() {
@@ -252,11 +273,11 @@ function submitImage() {
     groupIndex: props.groupIndex,
     imageindex: imageUrl + "product/" + selected,
   });
-  emit("returnimg", imageUrl + "product/" + selected);
+  emit("returnimg", selected);
   if (selected) {
     oneimg.classList.remove("d-none");
     noimg.classList.add("d-none");
-    images_firt.value = imageUrl + "product/" + selected;
+    images_firt.value = imageUrl + selected;
     showoneimg.src = images_firt.value;
   } else {
     oneimg.classList.add("d-none");
@@ -274,6 +295,7 @@ function toggleImageSelect(img) {
     selectedImage.value = img;
     if (hiddenInput) hiddenInput.value = img;
   }
+  console.log(img);
 }
 
 let uploadnum = ref(0);

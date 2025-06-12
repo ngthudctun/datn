@@ -31,7 +31,7 @@
                   <h6 class="d-flex">
                     <a class="text-danger" href="">Trang chủ</a>
                     <div class="mx-1">/</div>
-                   cập nhật danh mục
+                    cập nhật danh mục
                   </h6>
                 </div>
               </div>
@@ -46,7 +46,8 @@
                     <div class="form-group mt-3">
                       <label for="usr">Tên danh mục:</label>
                       <input
-                      value="máy tính"
+                        v-model="category_name"
+                        value="máy tính"
                         placeholder="nhập tên sản phẩm"
                         type="text"
                         class="mt-1 form-control"
@@ -54,12 +55,90 @@
                         style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
                       />
                     </div>
-                
-                
 
-                  
-                    <label class="my-1" for="">Mô tả chi tiết</label>
-                    <Adminwordtext />
+                    <div class="form-group mt-3 position-relative">
+                      <label for="usr">Danh mục cha:</label>
+                      <form
+                        class="d-flex form-control mt-1 align-items-center position-relative"
+                        for="myInputcate"
+                        style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
+                      >
+                        <input
+                          placeholder="VD: Máy tính-Máy tính bảng-laptop"
+                          autocomplete="off"
+                          class="m-0 p-0 w-100 border-0"
+                          type="text"
+                          id="myInputcate"
+                          v-on:click="
+                            Adminlayout.myFunction('myInputcate', 'myULcate')
+                          "
+                          v-on:input="
+                            Adminlayout.myFunction('myInputcate', 'myULcate')
+                          "
+                        />
+                        <button
+                          type="button"
+                          class="btn rounded-start-0 top-0 end-0 btn-danger position-absolute"
+                        >
+                          Thêm danh mục
+                        </button>
+                      </form>
+
+                      <ul
+                        id="myULcate"
+                        class="position-absolute my-ul-list top-100 w-100"
+                        style="left: 0"
+                      >
+                        <li>
+                          <div href="#" class="box-con w-100">
+                            <label class="w-100" for="idcate-1">
+                              <input
+                                type="radio"
+                                class="list_cate"
+                                name="category_product"
+                                id="idcate-1"
+                                value="Con cá 1"
+                                v-on:click="Adminlayout.clickout('myULcate')"
+                                v-on:change="categoryget(1)"
+                              />
+                              Con cá 1
+                            </label>
+                          </div>
+                        </li>
+                        <li>
+                          <div href="#" class="box-con w-100">
+                            <label class="w-100" for="idcate-2">
+                              <input
+                                type="radio"
+                                class="list_cate"
+                                name="category_product"
+                                id="idcate-2"
+                                value="Con cá 2"
+                                v-on:click="Adminlayout.clickout('myULcate')"
+                                v-on:change="categoryget(2)"
+                              />
+                              Con cá 2
+                            </label>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="d-flex flex-wrap">
+                        <div
+                          v-if="category_parent_name != null"
+                          class="me-2 p-1 rounded d-flex align-items-center"
+                          style="background-color: #e1e1e1"
+                        >
+                          <i
+                            v-on:click="deletecateselect()"
+                            class="fa-solid fa-trash px-2 link-secondary"
+                            style="border-right: 1px solid"
+                          ></i>
+                          <div id="showcate_select" class="px-2">
+                            {{ category_parent_name }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <div class="form-group mt-3">
                       <label for="usr">Trạng thái danh mục:</label>
                       <select name="" class="form-control mt-1" id="">
@@ -67,7 +146,7 @@
                         <option value="" class="">Kích hoạt</option>
                       </select>
                     </div>
-              
+
                     <div class="collapse mt-3" id="collapseExamplevari">
                       <h6 class="d-flex">
                         <div
@@ -119,11 +198,11 @@
                 </div>
                 <div class="col-12 col-lg-4">
                   <div class="p-2" style="box-sizing: border-box">
-                
                     <div class="form-group mt-3">
                       <label for="">Slug</label>
                       <input
-                      value="may-tinh"
+                        v-model="slug"
+                        value="may-tinh"
                         autocomplete="off"
                         placeholder="VD: may-tinh"
                         type="text"
@@ -136,23 +215,24 @@
                     <div class="form-group mt-3 position-relative">
                       <label for="usr">Hình ảnh danh mục</label><br />
                       <dragimg
-                        type="product"
+                        type="categories"
                         classify="variantpro"
                         inputshowimg="imageindex"
                         hideninp="lableindex"
+                        @returnimg="reimg"
                       />
                       <input type="hidden" id="" name="selected_image" />
                     </div>
-            
-
-               
-              
                   </div>
-                       <div class="w-100">
-                      <button type="button" class="w-100 btn btn-danger">
-                        Thêm danh mục
-                      </button>
-                    </div>
+                  <div class="w-100">
+                    <button
+                      type="button"
+                      @click="uploadcate()"
+                      class="w-100 btn btn-danger"
+                    >
+                      Thêm danh mục
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -180,54 +260,50 @@ import StepFinalVariant from "@/components/admin/AdminLayout/variantstep/StepFin
 import { variantcontrollerad } from "@/assets/js/adminjs/js/crudproduct/variantproad";
 const variantcontroll = variantcontrollerad();
 import { onMounted, watch, ref } from "vue";
+import axios from "axios";
 const Adminlayout = AdminLayout();
 
 const inputvariant = ref([]);
 
-// Load từ localStorage
-onMounted(() => {
-  const stored = localStorage.getItem("inputvariarr");
-  if (stored) {
-    try {
-      inputvariant.value = JSON.parse(stored);
-    } catch (e) {
-      console.error("Lỗi khi parse JSON từ localStorage", e);
+const category_name = ref("");
+const image = ref("");
+const category_parent_name = ref(null);
+const category_parent_id = ref(null);
+const slug = ref("");
+function reimg(img) {
+  image.value = img;
+}
+const uploadcate = async () => {
+  const formData = new FormData();
+  formData.append("category_name", category_name.value);
+  formData.append("category_parent_id", category_parent_id.value);
+  formData.append("image", image.value);
+  formData.append("slug", slug.value || "");
+
+  try {
+    const response = await axios.post(`/api/seller-category`, formData);
+    console.log(response);
+    /*  errors.value = {}; */
+  } catch (error) {
+    {
+      console.log(error.response.data);
     }
   }
-});
-
-watch(
-  inputvariant,
-  (newVal) => {
-    localStorage.setItem("inputvariarr", JSON.stringify(newVal));
-  },
-  { deep: true }
-);
-
-const addInputVariant = () => {
-  inputvariant.value.push("");
 };
 
-const deleteVariant = (index) => {
-  if (inputvariant.value.length > 1) {
-    inputvariant.value.splice(index, 1);
-  }
-};
-
-const submitVariants = () => {
-  const filtered = inputvariant.value
-    .map((item) => item.trim())
-    .filter((item) => item !== "");
-
-  if (filtered.length === 0) {
-    alert("Vui lòng nhập ít nhất một biến thể.");
-    return;
-  }
-
-  console.log("Các biến thể:", filtered);
-
-  localStorage.setItem("inputvariarr", JSON.stringify(filtered));
-  console.log(localStorage.getItem("inputvariarr", JSON.stringify(filtered)));
-};
+onMounted(() => {});
+function categoryget(valuenum) {
+  var inputshowcatevalue = document.getElementById("idcate-" + valuenum).value;
+  category_parent_name.value = inputshowcatevalue;
+  category_parent_id.value = valuenum;
+  console.log(category_parent_id.value);
+}
+function deletecateselect() {
+  document.querySelectorAll('input[type="radio"].list_cate').forEach((r) => {
+    r.checked = false;
+  });
+  category_parent_name.value = null;
+  category_parent_id.value = null;
+}
 const stepvariant = ref(0);
 </script>

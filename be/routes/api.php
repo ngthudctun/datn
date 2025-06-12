@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ImageSelected;
+use App\Http\Controllers\Admin\SellerCateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CategoryController;
@@ -31,8 +33,14 @@ Route::get('/products', [ProductController::class, 'getAll']);
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-
-Route::get('/products', [APIProductController::class, 'index']);
 Route::post('/products', [APIProductController::class, 'store']);
 Route::put('/products/{product}', [APIProductController::class, 'update']);
 Route::delete('/products/{product}', [APIProductController::class, 'destroy']);
+
+
+
+
+
+/* api của truong */
+Route::resource('seller-category', SellerCateController::class);
+Route::get('seller-image-gate', [ImageSelected::class, 'index']);
