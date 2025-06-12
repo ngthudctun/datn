@@ -79,54 +79,22 @@
                       <div
                         class="col-12 col-lg-6 d-flex justify-content-center"
                       >
-                        <div class="dropdown nlb-select w-100">
-                          <button
-                            class="btn w-100 btn-light border-0 w-100 dropdown-toggle text-center"
-                            type="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            bán chạy nhất
-                          </button>
-                          <ul class="dropdown-menu border-1 text-center">
-                            <li>
-                              <a class="dropdown-item" href="#">
-                                bán chạy nhất</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="#"> mới nhất</a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="#"> cũ nhất</a>
-                            </li>
-                          </ul>
-                        </div>
+                        <select class="form-select w-100 text-center border-1">
+                          <option>mới nhất</option>
+                          <option>cũ nhất</option>
+                        </select>
                       </div>
                       <div
                         class="col-12 w-100 col-lg-6 mt-2 mt-lg-0 d-flex justify-content-center"
                       >
-                        <div
-                          class="dropdown w-100 nlb-select px-1"
+                        <select
+                          class="form-select w-100 text-center border-1 px-1"
                           style="box-sizing: border-box"
                         >
-                          <button
-                            class="btn w-100 btn-light border-0 dropdown-toggle text-center w-100"
-                            type="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            Trạng thái
-                          </button>
-                          <ul class="dropdown-menu border-1 text-center">
-                            <li>
-                              <a class="dropdown-item" href="#">Đã ẩn</a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="#">Kích hoạt</a>
-                            </li>
-                          </ul>
-                        </div>
+                          <option selected disabled>Trạng thái</option>
+                          <option value="hidden">Đã ẩn</option>
+                          <option value="active">Kích hoạt</option>
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -160,6 +128,8 @@
                         </div>
 
                         <div
+                          v-for="(item, index) in catelist.data"
+                          :key="index"
                           class="py-3 d-flex align-items-center"
                           style="min-width: 1100px"
                         >
@@ -172,7 +142,7 @@
                             />
                             <img
                               class="rounded-2 col-2"
-                              :src="$imageUrl + 'product/' + 'product-5.jpg'"
+                              :src="$imageUrl + item.image"
                               alt=""
                               width="100px"
                               height="50px"
@@ -182,24 +152,30 @@
                               style="box-sizing: border-box"
                             >
                               <div class="text-break text-max-1">
-                                danh mục sản phẩm
+                                {{ item.category_name }}
                               </div>
                             </div>
                           </div>
-                          <div class="col-2 text-center">23/12/2000</div>
+                          <div class="col-2 text-center">
+                            {{ formatDate(item.updated_at) }}
+                          </div>
                           <div
                             class="col-3 p-2 justify-content-center rounded d-flex"
                             style="flex-wrap: wrap"
                           >
-                            <a href=""> 22 sản phẩm</a>
+                            <a href=""> {{ item.products_count }} sản phẩm</a>
                           </div>
+                          
                           <div class="col-2 d-flex justify-content-center">
                             <label class="switch">
-                              <label class="nlb-toggle-switch">
+                              <label
+                                class="nlb-toggle-switch"
+                                @click="changestatus(item.id)"
+                              >
                                 <input
                                   type="checkbox"
                                   class="nlb-toggle-input"
-                                  :checked="getcheck()"
+                                  :checked="getcheck(item.delete_at)"
                                 />
                                 <span class="nlb-slider"></span>
                               </label>
@@ -237,6 +213,24 @@
                         </div>
                       </li>
                     </ul>
+                    <ul class="pagination">
+                      <li
+                        v-for="(link, index) in catelist.links"
+                        :key="index"
+                        class="page-item"
+                        :class="{
+                          active: link.active,
+                          disabled: link.url === null,
+                        }"
+                      >
+                        <a
+                          class="page-link"
+                          href="#"
+                          @click.prevent="GetPaniCate(link.url)"
+                          v-html="link.label"
+                        ></a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -256,15 +250,55 @@ import "@/assets/js/adminjs/js/crudproduct/productlist.js";
 import "@/assets/css/admincss/css/curdproduct/productlist.css";
 import NavSuport from "@/components/admin/AdminLayout/NavSuport.vue";
 import Rageslider from "@/components/admin/AdminLayout/button/rageslider.vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import axios from "axios";
+import Categories from "@/components/user/home/Categories.vue";
+import dayjs from "dayjs";
+
+const formatDate = (datetime) => {
+  return dayjs(datetime).format("DD/MM/YYYY HH:mm");
+};
+
+const catelist = ref([]);
+
+const getListCateSell = async () => {
+  try {
+    const response = await axios.get(`/api/seller-category`);
+    catelist.value = response.data; // Cập nhật dữ liệu
+    console.log(catelist.value);
+  } catch (error) {
+    console.error("Lỗi khi gọi API:", error);
+  }
+};
+const GetPaniCate = async (link) => {
+  try {
+    console.log(link);
+    const response = await axios.get(link);
+    catelist.value = response.data; // Cập nhật dữ liệu
+  } catch (error) {
+    console.error("Lỗi khi gọi API:", error);
+  }
+};
+
+onMounted(() => {
+  getListCateSell(); // Gọi API khi component được mount
+});
 
 const getSelect = ref(0);
 const getselectop = (value) => {
   getSelect.value = value;
   console.log(getSelect.value);
 };
-const getcheck = (value) => {
-  if (value == null) {
+const getcheck = (checkvalue) => {
+  if (!checkvalue) {
+    console.log(checkvalue);
+    return true;
+  } else {
+    return false;
+  }
+};
+const changestatus = (value) => {
+  if (value) {
     return false;
   } else {
     return true;

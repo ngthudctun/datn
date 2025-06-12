@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->string('slug')->nullable();
             $table->string('image')->nullable(); // ➕ Thêm dòng này
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
