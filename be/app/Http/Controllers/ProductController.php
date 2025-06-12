@@ -12,7 +12,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(5);
+        $products = Product::paginate(12);
         return response()->json($products);
     }
     public function getById($id) {
@@ -28,7 +28,7 @@ class ProductController extends Controller
     }
     public function latestFive()    
     {
-        $products = Product::orderBy('created_at', 'desc')->take(5)->get();
+        $products = Product::orderBy('created_at', 'desc')->take(8)->get();
 
         return response()->json($products);
     }
