@@ -5,7 +5,6 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Cache\RateLimiting\Limit;
-use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 
 class AppServiceProvider extends ServiceProvider

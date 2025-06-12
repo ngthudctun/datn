@@ -14,7 +14,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        $logins = User::all();
+        $logins = User::paginate(5);
         return response()->json($logins);
     }
 

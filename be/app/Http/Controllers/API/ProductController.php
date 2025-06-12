@@ -11,7 +11,8 @@ class ProductController extends Controller
     // Danh sách sản phẩm
     public function index()
     {
-        return Product::all();
+       $products = Product::paginate(5);
+        return response()->json($products);
     }
 
     // Thêm sản phẩm mới
@@ -19,7 +20,7 @@ class ProductController extends Controller
     {
         $data = $request->validate([
             'product_name' => 'required|string|max:255',
-            'image' => 'nullable|string', 
+            'image' => 'nullable|string',
             'description' => 'nullable|string',
             'short_description' => 'nullable|string',
             'slug' => 'required|string|unique:products,slug',

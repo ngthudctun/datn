@@ -39,11 +39,11 @@ class UserController extends Controller
             "email.unique" => "Email đã tồn tại",
             "password.confirmed" => "Mật khẩu không trùng khớp"
         ]);
-        $validated['password'] = hash::make($validated['password']);
+        $validated['password'] = Hash::make($validated['password']);
         $user = User::create($validated);
         return response()->json($user, 201);
     }
-    // public function ($user_code, Request $request) 
+    // public function ($user_code, Request $request)
     // {
     //     $validated = $request->validate([[
     //         'name' => 'required|string|max:255',
