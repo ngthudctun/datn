@@ -54,9 +54,6 @@ Route::delete('/products/{product}', [APIProductController::class, 'destroy']);
 
 
 
-
-
-
 /* api của truong */
 Route::apiResource('seller-category', SellerCateController::class);
 Route::get('seller-image-gate', [ImageSelected::class, 'index']);
@@ -71,4 +68,11 @@ Route::get('/products/latest', [ProductController::class, 'latestFive']);
 // API của Tuấn
 Route::resource('discounts', DiscountController::class);
 Route::get('/products/{productId}/discount', [DiscountController::class, 'getByProduct']);
+Route::get('/products/latest', [ProductController::class, 'latestFive']);
+
+
+
+Route::resource('seller-category', SellerCateController::class);
+Route::get('seller-image-gate', [ImageSelected::class, 'index']);
+
 

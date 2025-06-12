@@ -81,6 +81,7 @@
                       <div
                         class="col-12 col-lg-6 d-flex justify-content-center"
                       >
+<<<<<<< HEAD
                         <select
                           v-on:change="getListCateSell()"
                           v-model="filtertime"
@@ -88,12 +89,18 @@
                         >
                           <option value="newest">mới nhất</option>
                           <option value="oldest">cũ nhất</option>
+=======
+                        <select class="form-select w-100 text-center border-1">
+                          <option>mới nhất</option>
+                          <option>cũ nhất</option>
+>>>>>>> 74732299 (add-model)
                         </select>
                       </div>
                       <div
                         class="col-12 w-100 col-lg-6 mt-2 mt-lg-0 d-flex justify-content-center"
                       >
                         <select
+<<<<<<< HEAD
                           v-on:change="getListCateSell()"
                           v-model="filtertrash"
                           class="form-select w-100 text-center border-1 px-1"
@@ -101,6 +108,14 @@
                         >
                           <option value="1">Kích hoạt</option>
                           <option value="2">Đã ẩn</option>
+=======
+                          class="form-select w-100 text-center border-1 px-1"
+                          style="box-sizing: border-box"
+                        >
+                          <option selected disabled>Trạng thái</option>
+                          <option value="hidden">Đã ẩn</option>
+                          <option value="active">Kích hoạt</option>
+>>>>>>> 74732299 (add-model)
                         </select>
                       </div>
                     </div>
@@ -172,14 +187,22 @@
                           >
                             <a href=""> {{ item.products_count }} sản phẩm</a>
                           </div>
+                          
                           <div class="col-2 d-flex justify-content-center">
                             <label class="switch">
-                              <label class="nlb-toggle-switch">
+                              <label
+                                class="nlb-toggle-switch"
+                                @click="changestatus(item.id)"
+                              >
                                 <input
                                   type="checkbox"
                                   class="nlb-toggle-input"
+<<<<<<< HEAD
                                   @click="changestatus(item.id)"
                                   :checked="getcheck(item.status)"
+=======
+                                  :checked="getcheck(item.delete_at)"
+>>>>>>> 74732299 (add-model)
                                 />
                                 <span class="nlb-slider"></span>
                               </label>
@@ -219,7 +242,11 @@
                         </div>
                       </li>
                     </ul>
+<<<<<<< HEAD
                     <ul class="pagination d-flex justify-content-end mt-2 px-5" style="box-sizing: border-box;">
+=======
+                    <ul class="pagination">
+>>>>>>> 74732299 (add-model)
                       <li
                         v-for="(link, index) in catelist.links"
                         :key="index"
@@ -232,6 +259,7 @@
                         <a
                           class="page-link"
                           href="#"
+<<<<<<< HEAD
                           @click.prevent="
                             link.url
                               ? GetPaniCate(
@@ -242,6 +270,9 @@
                                 )
                               : null
                           "
+=======
+                          @click.prevent="GetPaniCate(link.url)"
+>>>>>>> 74732299 (add-model)
                           v-html="link.label"
                         ></a>
                       </li>
@@ -266,17 +297,25 @@ import "@/assets/css/admincss/css/curdproduct/productlist.css";
 import NavSuport from "@/components/admin/AdminLayout/NavSuport.vue";
 import Rageslider from "@/components/admin/AdminLayout/button/rageslider.vue";
 import { ref, onMounted } from "vue";
+<<<<<<< HEAD
 
 import { useShowtoast } from "@/assets/js/toast";
 import axios from "axios";
 import Categories from "@/components/user/home/Categories.vue";
 import dayjs from "dayjs";
 const toastStore = useShowtoast();
+=======
+import axios from "axios";
+import Categories from "@/components/user/home/Categories.vue";
+import dayjs from "dayjs";
+
+>>>>>>> 74732299 (add-model)
 const formatDate = (datetime) => {
   return dayjs(datetime).format("DD/MM/YYYY HH:mm");
 };
 
 const catelist = ref([]);
+<<<<<<< HEAD
 const filtertime = ref("newest");
 const filtertrash = ref(1);
 const filtersearch = ref(null);
@@ -291,12 +330,19 @@ const getListCateSell = async () => {
       },
     });
 
+=======
+
+const getListCateSell = async () => {
+  try {
+    const response = await axios.get(`/api/seller-category`);
+>>>>>>> 74732299 (add-model)
     catelist.value = response.data; // Cập nhật dữ liệu
     console.log(catelist.value);
   } catch (error) {
     console.error("Lỗi khi gọi API:", error);
   }
 };
+<<<<<<< HEAD
 const decodeHtml = (html) => {
   const txt = document.createElement("textarea");
   txt.innerHTML = html;
@@ -314,6 +360,13 @@ const GetPaniCate = async (link, status, sort, search) => {
     const response = await axios.get(url.toString());
 
     catelist.value = response.data;
+=======
+const GetPaniCate = async (link) => {
+  try {
+    console.log(link);
+    const response = await axios.get(link);
+    catelist.value = response.data; // Cập nhật dữ liệu
+>>>>>>> 74732299 (add-model)
   } catch (error) {
     console.error("Lỗi khi gọi API:", error);
   }
@@ -328,10 +381,25 @@ const getselectop = (value) => {
   getSelect.value = value;
   console.log(getSelect.value);
 };
+<<<<<<< HEAD
 
 const getcheck = (checkvalue) => {
   console.log(checkvalue);
   if (checkvalue == 1) {
+=======
+const getcheck = (checkvalue) => {
+  if (!checkvalue) {
+    console.log(checkvalue);
+    return true;
+  } else {
+    return false;
+  }
+};
+const changestatus = (value) => {
+  if (value) {
+    return false;
+  } else {
+>>>>>>> 74732299 (add-model)
     return true;
   } else {
     return false;

@@ -212,7 +212,10 @@ import { useImageSelect } from "@/assets/js/adminjs/dragimg.js";
 import { onMounted, ref, watch } from "vue";
 import uploadimage from "./uploadimagesAd.vue";
 import axios from "axios";
+<<<<<<< HEAD
 import { baseImageUrl } from "@/config/constans";
+=======
+>>>>>>> 74732299 (add-model)
 const imageUrl = import.meta.env.VITE_IMAGE_BASE_URL;
 const props = defineProps({
   type: String,
@@ -223,11 +226,15 @@ const props = defineProps({
   haveImage: String,
 });
 const images_firt = ref(null);
+<<<<<<< HEAD
 
 const imageStore = useImageSelect();
 
 const images = ref([]);
 const hiddenInput = ref(null);
+=======
+const images = ref([]);
+>>>>>>> 74732299 (add-model)
 const getListCateSell = async () => {
   try {
     const response = await axios.get(`/api/seller-image-gate`, {
@@ -236,10 +243,30 @@ const getListCateSell = async () => {
       },
     });
     images.value = response.data; // Cập nhật dữ liệu
+<<<<<<< HEAD
+=======
+    console.log(images.value);
+>>>>>>> 74732299 (add-model)
   } catch (error) {
     console.error("Lỗi khi gọi API:", error);
   }
 };
+<<<<<<< HEAD
+=======
+/* const GetPaniCate = async (link) => {
+  try {
+    console.log(link);
+    const response = await axios.get(link);
+    catelist.value = response.data; // Cập nhật dữ liệu
+  } catch (error) {
+    console.error("Lỗi khi gọi API:", error);
+  }
+}; */
+
+onMounted(() => {
+  getListCateSell(); // Gọi API khi component được mount
+});
+>>>>>>> 74732299 (add-model)
 
 const emit = defineEmits(["returnimg", "returnimgex"]);
 function submitImage() {
@@ -253,7 +280,14 @@ function submitImage() {
   });
   emit("returnimg", selected);
   if (selected) {
+<<<<<<< HEAD
     images_firt.value = selected;
+=======
+    oneimg.classList.remove("d-none");
+    noimg.classList.add("d-none");
+    images_firt.value = imageUrl + selected;
+    showoneimg.src = images_firt.value;
+>>>>>>> 74732299 (add-model)
   } else {
     images_firt.value = null;
   }
@@ -267,6 +301,7 @@ function toggleImageSelect(img) {
   } else {
     selectedImage.value = img;
   }
+  console.log(img);
 }
 
 let uploadnum = ref(0);

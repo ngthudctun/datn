@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+<<<<<<< HEAD
 use GrahamCampbell\ResultType\Success;
+=======
+>>>>>>> 74732299 (add-model)
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -15,6 +18,7 @@ class SellerCateController extends Controller
     /**
      * Display a listing of the resource.
      */
+<<<<<<< HEAD
     public function index(Request $request)
     {
         $query = Category::query()->withCount('products');
@@ -66,6 +70,14 @@ class SellerCateController extends Controller
     }
 
 
+=======
+    public function index()
+    {
+        $cateall = Category::withTrashed()->withCount('products')->paginate(4);
+        return response()->json($cateall);
+    }
+
+>>>>>>> 74732299 (add-model)
     /**
      * Show the form for creating a new resource.
      */
@@ -79,6 +91,7 @@ class SellerCateController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         try {
             // Validate dữ liệu đầu vào
             $validated = $request->validate([
@@ -106,6 +119,25 @@ class SellerCateController extends Controller
 
             return response()->json([
                 'type' => 'success',
+=======
+
+        try {
+            /*             dd((int)$request->category_parent_id);
+ */
+            $request->validate([
+                'category_name' => 'required|string|max:255|unique:categories,category_name',
+                'image' => 'nullable|string|max:255',
+            ]);
+
+            $category = Category::create([
+                'category_name' => $request->category_name,
+                'image' => $request->image,
+                'category_parent_id' => (int)$request->category_parent_id,
+                'slug' => $request->slug
+            ]);
+
+            return response()->json([
+>>>>>>> 74732299 (add-model)
                 'message' => 'Tạo danh mục thành công',
                 'data' => $category
             ], 201);
@@ -127,6 +159,7 @@ class SellerCateController extends Controller
      */
     public function show(string $id)
     {
+<<<<<<< HEAD
         try {
             // Lấy danh mục cùng với thông tin danh mục cha (chỉ lấy id, category_name)
             $category = Category::with('parent:id,category_name')->findOrFail((int)$id);
@@ -155,6 +188,11 @@ class SellerCateController extends Controller
 
 
 
+=======
+        //
+    }
+
+>>>>>>> 74732299 (add-model)
     /**
      * Show the form for editing the specified resource.
      */
@@ -168,6 +206,7 @@ class SellerCateController extends Controller
      */
     public function update(Request $request, string $id)
     {
+<<<<<<< HEAD
         try {
 
             // Tìm danh mục cần cập nhật
@@ -239,5 +278,16 @@ class SellerCateController extends Controller
             'message' => $message,
             'type' => 'success'
         ]);
+=======
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+>>>>>>> 74732299 (add-model)
     }
 }

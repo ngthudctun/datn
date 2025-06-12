@@ -56,7 +56,11 @@
                       <input
                         v-model="category_name"
                         value="máy tính"
+<<<<<<< HEAD
                         placeholder="nhập tên danh mục"
+=======
+                        placeholder="nhập tên sản phẩm"
+>>>>>>> 74732299 (add-model)
                         type="text"
                         class="mt-1 form-control"
                         id="usr"
@@ -65,7 +69,11 @@
                     </div>
 
                     <div class="form-group mt-3 position-relative">
+<<<<<<< HEAD
                       <label for="usr" class="d-flex">Danh mục cha: </label>
+=======
+                      <label for="usr">Danh mục cha:</label>
+>>>>>>> 74732299 (add-model)
                       <form
                         class="d-flex form-control mt-1 align-items-center position-relative"
                         for="myInputcate"
@@ -84,11 +92,21 @@
                             Adminlayout.myFunction('myInputcate', 'myULcate')
                           "
                         />
+<<<<<<< HEAD
+=======
+                        <button
+                          type="button"
+                          class="btn rounded-start-0 top-0 end-0 btn-danger position-absolute"
+                        >
+                          Thêm danh mục
+                        </button>
+>>>>>>> 74732299 (add-model)
                       </form>
 
                       <ul
                         id="myULcate"
                         class="position-absolute my-ul-list top-100 w-100"
+<<<<<<< HEAD
                         style="left: 0; overflow-y: auto"
                       >
                         <li
@@ -97,16 +115,48 @@
                         >
                           <div href="#" class="box-con w-100">
                             <label class="w-100" :for="'idcate-' + item.id">
+=======
+                        style="left: 0"
+                      >
+                        <li>
+                          <div href="#" class="box-con w-100">
+                            <label class="w-100" for="idcate-1">
+>>>>>>> 74732299 (add-model)
                               <input
                                 type="radio"
                                 class="list_cate"
                                 name="category_product"
+<<<<<<< HEAD
                                 :id="'idcate-' + item.id"
                                 :value="item.category_name"
                                 v-on:click="Adminlayout.clickout('myULcate')"
                                 v-on:change="categoryget(item.id)"
                               />
                               {{ item.category_name }}
+=======
+                                id="idcate-1"
+                                value="Con cá 1"
+                                v-on:click="Adminlayout.clickout('myULcate')"
+                                v-on:change="categoryget(1)"
+                              />
+                              Con cá 1
+                            </label>
+                          </div>
+                        </li>
+                        <li>
+                          <div href="#" class="box-con w-100">
+                            <label class="w-100" for="idcate-2">
+                              <input
+                                type="radio"
+                                class="list_cate"
+                                name="category_product"
+                                id="idcate-2"
+                                value="Con cá 2"
+                                v-on:click="Adminlayout.clickout('myULcate')"
+                                v-on:change="categoryget(2)"
+                              />
+                              Con cá 2
+>>>>>>> 74732299 (add-model)
                             </label>
                           </div>
                         </li>
@@ -234,6 +284,7 @@ const uploadcate = async () => {
   formData.append("slug", slug.value || "");
   formData.append("status", status.value || "");
 
+<<<<<<< HEAD
   try {
     const response = await axios.post(`/api/seller-category`, formData);
     if (response) {
@@ -272,6 +323,35 @@ const getparent = async () => {
 
 onMounted(() => {});
 getparent();
+=======
+const category_name = ref("");
+const image = ref("");
+const category_parent_name = ref(null);
+const category_parent_id = ref(null);
+const slug = ref("");
+function reimg(img) {
+  image.value = img;
+}
+const uploadcate = async () => {
+  const formData = new FormData();
+  formData.append("category_name", category_name.value);
+  formData.append("category_parent_id", category_parent_id.value);
+  formData.append("image", image.value);
+  formData.append("slug", slug.value || "");
+
+  try {
+    const response = await axios.post(`/api/seller-category`, formData);
+    console.log(response);
+    /*  errors.value = {}; */
+  } catch (error) {
+    {
+      console.log(error.response.data);
+    }
+  }
+};
+
+onMounted(() => {});
+>>>>>>> 74732299 (add-model)
 function categoryget(valuenum) {
   var inputshowcatevalue = document.getElementById("idcate-" + valuenum).value;
   category_parent_name.value = inputshowcatevalue;
@@ -285,4 +365,8 @@ function deletecateselect() {
   category_parent_name.value = null;
   category_parent_id.value = null;
 }
+<<<<<<< HEAD
+=======
+const stepvariant = ref(0);
+>>>>>>> 74732299 (add-model)
 </script>
