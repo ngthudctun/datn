@@ -26,7 +26,7 @@
           <div class="px-lg-2" style="box-sizing: border-box">
             <div class="">
               <div class="ps-3" style="box-sizing: border-box">
-                <h2>Cập nhật danh mục</h2>
+                <h2>Thêm danh mục</h2>
                 <div class="">
                   <h6 class="d-flex">
                     <a class="text-danger" href="">Trang chủ</a>
@@ -44,11 +44,19 @@
                 >
                   <div class="p-2" style="box-sizing: border-box">
                     <div class="form-group mt-3">
-                      <label for="usr">Tên danh mục:</label>
+                      <label for="usr" class="d-flex"
+                        >Tên danh mục:
+                        <div
+                          v-if="erroraray && erroraray['category_name']"
+                          class="text-danger mx-2"
+                        >
+                          {{ erroraray["category_name"][0] }}
+                        </div></label
+                      >
                       <input
                         v-model="category_name"
                         value="máy tính"
-                        placeholder="nhập tên sản phẩm"
+                        placeholder="nhập tên danh mục"
                         type="text"
                         class="mt-1 form-control"
                         id="usr"
@@ -57,7 +65,7 @@
                     </div>
 
                     <div class="form-group mt-3 position-relative">
-                      <label for="usr">Danh mục cha:</label>
+                      <label for="usr" class="d-flex">Danh mục cha: </label>
                       <form
                         class="d-flex form-control mt-1 align-items-center position-relative"
                         for="myInputcate"
@@ -76,48 +84,29 @@
                             Adminlayout.myFunction('myInputcate', 'myULcate')
                           "
                         />
-                        <button
-                          type="button"
-                          class="btn rounded-start-0 top-0 end-0 btn-danger position-absolute"
-                        >
-                          Thêm danh mục
-                        </button>
                       </form>
 
                       <ul
                         id="myULcate"
                         class="position-absolute my-ul-list top-100 w-100"
-                        style="left: 0"
+                        style="left: 0; overflow-y: auto"
                       >
-                        <li>
+                        <li
+                          v-for="(item, index) in category_parent_arr"
+                          :key="index"
+                        >
                           <div href="#" class="box-con w-100">
-                            <label class="w-100" for="idcate-1">
+                            <label class="w-100" :for="'idcate-' + item.id">
                               <input
                                 type="radio"
                                 class="list_cate"
                                 name="category_product"
-                                id="idcate-1"
-                                value="Con cá 1"
+                                :id="'idcate-' + item.id"
+                                :value="item.category_name"
                                 v-on:click="Adminlayout.clickout('myULcate')"
-                                v-on:change="categoryget(1)"
+                                v-on:change="categoryget(item.id)"
                               />
-                              Con cá 1
-                            </label>
-                          </div>
-                        </li>
-                        <li>
-                          <div href="#" class="box-con w-100">
-                            <label class="w-100" for="idcate-2">
-                              <input
-                                type="radio"
-                                class="list_cate"
-                                name="category_product"
-                                id="idcate-2"
-                                value="Con cá 2"
-                                v-on:click="Adminlayout.clickout('myULcate')"
-                                v-on:change="categoryget(2)"
-                              />
-                              Con cá 2
+                              {{ item.category_name }}
                             </label>
                           </div>
                         </li>
@@ -141,9 +130,14 @@
                     </div>
                     <div class="form-group mt-3">
                       <label for="usr">Trạng thái danh mục:</label>
-                      <select name="" class="form-control mt-1" id="">
-                        <option value="" class="">Chưa kích hoạt</option>
-                        <option value="" class="">Kích hoạt</option>
+                      <select
+                        v-model="status"
+                        name=""
+                        class="form-control mt-1"
+                        id=""
+                      >
+                        <option value="2" class="">Chưa kích hoạt</option>
+                        <option value="1" class="">Kích hoạt</option>
                       </select>
                     </div>
 
@@ -156,43 +150,7 @@
                         >
                           Thêm thuộc tính
                         </div>
-                        <div class="mx-1">/</div>
-                        <div
-                          class=""
-                          :class="{
-                            'link-danger':
-                              variantcontroll.stepvariant == 2 ||
-                              variantcontroll.stepvariant == 3,
-                          }"
-                        >
-                          Tạo biến thể
-                        </div>
-                        <div class="mx-1">/</div>
-                        <div
-                          class=""
-                          :class="{
-                            'link-danger': variantcontroll.stepvariant == 3,
-                          }"
-                        >
-                          Thêm sản phẩm biến thể
-                        </div>
                       </h6>
-                      <div
-                        class="card card-body"
-                        style="box-shadow: 0 0 2px rgba(0, 0, 0, 0.5)"
-                      >
-                        <div v-show="variantcontroll.stepvariant == 1" class="">
-                          <StepOneVariant />
-                        </div>
-                        <div v-show="variantcontroll.stepvariant == 2" class="">
-                          <StepTwoVariant />
-                          <div class=""></div>
-                        </div>
-                        <div v-show="variantcontroll.stepvariant == 3" class="">
-                          <StepFinalVariant />
-                          <div class=""></div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -251,25 +209,20 @@ import "@/assets/css/admincss/css/curdproduct/productadd.css";
 import "@/assets/css/bootstrap.min.css";
 import NavSuport from "@/components/admin/AdminLayout/NavSuport.vue";
 import { AdminLayout } from "@/storage/admin/layoutAdmin";
-import Adminwordtext from "@/components/admin/AdminLayout/textword.vue";
 import dragimg from "@/components/admin/AdminLayout/button/imagesupload/dragimg.vue";
-import dragimgextra from "@/components/admin/AdminLayout/button/imagesupload/dragextraimg.vue";
-import StepOneVariant from "@/components/admin/AdminLayout/variantstep/StepOneVariant.vue";
-import StepTwoVariant from "@/components/admin/AdminLayout/variantstep/StepTwoVariant.vue";
-import StepFinalVariant from "@/components/admin/AdminLayout/variantstep/StepFinalVariant.vue";
-import { variantcontrollerad } from "@/assets/js/adminjs/js/crudproduct/variantproad";
-const variantcontroll = variantcontrollerad();
+import Swal from "sweetalert2";
 import { onMounted, watch, ref } from "vue";
 import axios from "axios";
 const Adminlayout = AdminLayout();
-
+const category_parent_arr = ref(null);
 const inputvariant = ref([]);
-
+const erroraray = ref(null);
 const category_name = ref("");
 const image = ref("");
 const category_parent_name = ref(null);
-const category_parent_id = ref(null);
+const category_parent_id = ref(0);
 const slug = ref("");
+const status = ref(1);
 function reimg(img) {
   image.value = img;
 }
@@ -279,19 +232,46 @@ const uploadcate = async () => {
   formData.append("category_parent_id", category_parent_id.value);
   formData.append("image", image.value);
   formData.append("slug", slug.value || "");
+  formData.append("status", status.value || "");
 
   try {
     const response = await axios.post(`/api/seller-category`, formData);
-    console.log(response);
+    if (response) {
+      Swal.fire({
+        icon:  response.data.type,
+        title: response.data.message,
+        text: "bạn sẽ được chuyển hướng sau 2 giây",
+        timer: 2000,
+        showConfirmButton: true,
+      });
+
+      setTimeout(() => {
+        erroraray.value = null;
+        window.location.href = "/admin/danh-sach-danh-muc";
+      }, 2000);
+    }
+  } catch (error) {
+    {
+      erroraray.value = error.response.data.errors;
+      console.log(erroraray.value);
+    }
+  }
+};
+const getparent = async () => {
+  try {
+    const response = await axios.get(`/api/seller-category-parent`);
+    category_parent_arr.value = response.data.cateparent;
+    console.log(category_parent_arr.value);
     /*  errors.value = {}; */
   } catch (error) {
     {
-      console.log(error.response.data);
+      console.log(error);
     }
   }
 };
 
 onMounted(() => {});
+getparent();
 function categoryget(valuenum) {
   var inputshowcatevalue = document.getElementById("idcate-" + valuenum).value;
   category_parent_name.value = inputshowcatevalue;
@@ -305,5 +285,4 @@ function deletecateselect() {
   category_parent_name.value = null;
   category_parent_id.value = null;
 }
-const stepvariant = ref(0);
 </script>
