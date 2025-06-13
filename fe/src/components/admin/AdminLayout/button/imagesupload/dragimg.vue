@@ -1,15 +1,24 @@
 <template>
   <div class="">
-    <div class="" v-show="props.type != 'post'">
+    <div v-show="props.type != 'post'">
       <label
-        class="custum-file-upload d-none"
+        class="custum-file-upload"
         :id="props.inputshowimg"
         data-bs-toggle="offcanvas"
         :data-bs-target="'#' + props.hideninp"
         :aria-controls="props.hideninp"
       >
         <img
-          src=""
+          v-if="images_firt"
+          :src="$imageUrl + images_firt"
+          class="border border-black"
+          width="100%"
+          height="100px"
+          alt=""
+        />
+        <img
+          v-if="!images_firt"
+          src="https://static.vecteezy.com/system/resources/previews/000/335/346/non_2x/line-black-icon-vector.jpg"
           class="border border-black"
           width="100%"
           height="100px"
@@ -18,22 +27,6 @@
       </label>
 
       <!-- Placeholder khi chưa chọn ảnh -->
-      <label
-        class="custum-file-upload"
-        id="no-img-input"
-        data-bs-toggle="offcanvas"
-        :data-bs-target="'#' + props.hideninp"
-        :aria-controls="props.hideninp"
-        v-show="!images_firt"
-      >
-        <div class="icon">
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/000/335/346/non_2x/line-black-icon-vector.jpg"
-            width="50px"
-            alt=""
-          />
-        </div>
-      </label>
     </div>
     <input type="text" class="d-none" name="" id="images_product-one" />
     <div
@@ -216,9 +209,10 @@
 </style>
 <script setup>
 import { useImageSelect } from "@/assets/js/adminjs/dragimg.js";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import uploadimage from "./uploadimagesAd.vue";
 import axios from "axios";
+import { baseImageUrl } from "@/config/constans";
 const imageUrl = import.meta.env.VITE_IMAGE_BASE_URL;
 const props = defineProps({
   type: String,
@@ -226,11 +220,14 @@ const props = defineProps({
   inputshowimg: String,
   hideninp: String,
   groupIndex: Number,
+  haveImage: String,
 });
-console.log(props);
-const imageStore = useImageSelect();
 const images_firt = ref(null);
+
+const imageStore = useImageSelect();
+
 const images = ref([]);
+const hiddenInput = ref(null);
 const getListCateSell = async () => {
   try {
     const response = await axios.get(`/api/seller-image-gate`, {
@@ -239,67 +236,67 @@ const getListCateSell = async () => {
       },
     });
     images.value = response.data; // Cập nhật dữ liệu
-    console.log(images.value);
   } catch (error) {
     console.error("Lỗi khi gọi API:", error);
   }
 };
-/* const GetPaniCate = async (link) => {
-  try {
-    console.log(link);
-    const response = await axios.get(link);
-    catelist.value = response.data; // Cập nhật dữ liệu
-  } catch (error) {
-    console.error("Lỗi khi gọi API:", error);
-  }
-}; */
-
-onMounted(() => {
-  getListCateSell(); // Gọi API khi component được mount
-});
 
 const emit = defineEmits(["returnimg", "returnimgex"]);
 function submitImage() {
-  console.log(props);
-
   /* ("su dung cho bai post"); */
 
   const noimg = document.getElementById("no-img-input");
-  const oneimg = document.getElementById(props.inputshowimg);
-  const showoneimg = oneimg.querySelector("img");
-  const hiddenInput = document.getElementById("value_img-hiden");
-  const selected = hiddenInput.value;
+  const selected = selectedImage.value;
   emit("returnimgex", {
     groupIndex: props.groupIndex,
     imageindex: imageUrl + "product/" + selected,
   });
   emit("returnimg", selected);
   if (selected) {
-    oneimg.classList.remove("d-none");
-    noimg.classList.add("d-none");
-    images_firt.value = imageUrl + selected;
-    showoneimg.src = images_firt.value;
+    images_firt.value = selected;
   } else {
-    oneimg.classList.add("d-none");
-    noimg.classList.remove("d-none");
+    images_firt.value = null;
   }
 }
-const selectedImage = ref(null);
-function toggleImageSelect(img) {
-  const hiddenInput = document.getElementById("value_img-hiden");
 
+const selectedImage = ref(null);
+
+function toggleImageSelect(img) {
   if (selectedImage.value === img) {
     selectedImage.value = null;
-    if (hiddenInput) hiddenInput.value = "";
   } else {
     selectedImage.value = img;
-    if (hiddenInput) hiddenInput.value = img;
   }
-  console.log(img);
 }
 
 let uploadnum = ref(0);
 function showupdateimg() {
   uploadnum.value = uploadnum.value === 0 ? 1 : 0;
 }
+function handleHaveImageChange(newVal) {
+  if (newVal) {
+    selectedImage.value = newVal;
+    images_firt.value = newVal;
+    console.log("➡ haveImage:", newVal);
+  } else {
+    selectedImage.value = null;
+    images_firt.value = null;
+  }
+}
+watch(
+  () => props.haveImage,
+  (newVal) => {
+    handleHaveImageChange(newVal);
+  },
+  { immediate: true }
+);
+onMounted(() => {
+  getListCateSell();
+  if (props.haveImage) {
+    selectedImage.value = props.haveImage;
+    images_firt.value = props.haveImage;
+    console.log("prop", props.haveImage);
+    console.log("tttt", images_firt.value);
+  }
+});
 </script>

@@ -21,6 +21,32 @@ class AuthController extends Controller
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
+    $credentials = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    if (!Auth::attempt($credentials)) {
+        return response()->json([
+            'message' => 'Email hoặc mật khẩu không đúng'
+        ], 401);
+    }
+
+    $users = Auth::user();
+
+    $token = $users->createToken('api-token')->plainTextToken;
+
+    return response()->json([
+        'message' => 'Đăng nhập thành công',
+        'user' => $users,
+        'token' => $token
+    ]);
+    }
+    public function createUser(Request $request) {
+        $validated = $request->validate([
+            'username' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:1|confirmed',
         ], [
             'email.required' => 'Vui lòng nhập email',
             'email.email' => 'Email không đúng định dạng',
