@@ -94,6 +94,32 @@ class AuthController extends Controller
         if ($request->user()) {
             $request->user()->currentAccessToken()->delete();
 
+
+    public function createUser(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed',
+        ], [
+            'email.unique' => 'Email đã tồn tại',
+            'password.confirmed' => 'Mật khẩu không trùng khớp',
+            'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự'
+        ]);
+
+        $validated['password'] = Hash::make($validated['password']);
+        $user = User::create($validated);
+
+        return response()->json([
+            'message' => 'Đăng ký thành công',
+            'user' => new UserResource($user)
+        ], 201);
+    }
+
+    public function logout(Request $request)
+    {
+        if ($request->user()) {
+            $request->user()->currentAccessToken()->delete();
+
             return response()->json(['message' => 'Đăng xuất thành công']);
         }
 

@@ -21,10 +21,8 @@ Route::apiResource('products', ProductController::class);
 
 /*API cua trung */
 
-
 // Đức Tuấn
 use App\Http\Controllers\DiscountController;
-
 Route::apiResource('categories', CategoryController::class);
 Route::apiResource('banners', BannerController::class);
 Route::apiResource('logins', LoginController::class);
@@ -54,6 +52,7 @@ Route::delete('/products/{product}', [APIProductController::class, 'destroy']);
 
 
 
+
 /* api của truong */
 Route::apiResource('seller-category', SellerCateController::class);
 Route::get('seller-image-gate', [ImageSelected::class, 'index']);
@@ -76,3 +75,6 @@ Route::resource('seller-category', SellerCateController::class);
 Route::get('seller-image-gate', [ImageSelected::class, 'index']);
 
 
+/* api của truong */
+Route::apiResource('seller-category', SellerCateController::class);
+Route::get('seller-image-gate', [ImageSelected::class, 'index']);
