@@ -21,8 +21,9 @@ class ForgotPasswordController extends Controller
     // Gửi email reset mật khẩu
     public function sendResetLink(Request $request)
     {
-        $request->validate(['email' => 'required|email']);
 
+        $tt =  $request->validate(['email' => 'required|email']);
+    
         $status = Password::sendResetLink(
             $request->only('email')
         );

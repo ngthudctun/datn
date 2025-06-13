@@ -54,6 +54,7 @@ Route::delete('/products/{product}', [APIProductController::class, 'destroy']);
 /* api của truong */
 Route::resource('seller-category', SellerCateController::class);
 Route::get('seller-image-gate', [ImageSelected::class, 'index']);
-
+Route::patch('seller-category-change-status', [SellerCateController::class, 'changeStatus']);
+Route::get('seller-category-parent', [SellerCateController::class, 'getParentcate']);
 /* api của truong */
 Route::get('/products/latest', [ProductController::class, 'latestFive']);
