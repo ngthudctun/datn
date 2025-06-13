@@ -52,7 +52,7 @@ Route::resource('seller-category', SellerCateController::class);
 Route::get('seller-image-gate', [ImageSelected::class, 'index']);
 
 
-/* api của truong */
 Route::apiResource('seller-category', SellerCateController::class);
 Route::get('seller-image-gate', [ImageSelected::class, 'index']);
+
 
