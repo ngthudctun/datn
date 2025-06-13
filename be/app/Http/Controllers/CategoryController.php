@@ -13,13 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        $category = Category::all();
-        return response()->json($category); 
-=======
         $category = Category::paginate(5);
         return response()->json($category);
->>>>>>> cf51866537043403ce2f1d2f72f1e66566ba8f83
     }
     public function getAllCategory() {
         $getCategories = Category::all();

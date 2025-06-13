@@ -59,3 +59,4 @@ class ForgotPasswordController extends Controller
             : response()->json(['message' => 'Token không hợp lệ hoặc email sai'], 400);
     }
 }
+    

@@ -238,9 +238,9 @@ const uploadcate = async () => {
     const response = await axios.post(`/api/seller-category`, formData);
     if (response) {
       Swal.fire({
-        icon: "success",
-        title: response.data.type,
-        text: response.data.message,
+        icon:  response.data.type,
+        title: response.data.message,
+        text: "bạn sẽ được chuyển hướng sau 2 giây",
         timer: 2000,
         showConfirmButton: true,
       });

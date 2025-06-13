@@ -15,29 +15,31 @@ use App\Http\Controllers\ApiWishlistController;
 use App\Http\Controllers\API\ProductController as APIProductController;
 use Illuminate\Support\Facades\Request;
 
+/* api của trung */
+
+Route::get('/products/latest', [ProductController::class, 'latestFive']);
+Route::apiResource('products', ProductController::class);
+
+/*API cua trung */
 Route::apiResource('categories', CategoryController::class);
 Route::apiResource('banners', BannerController::class);
 Route::apiResource('logins', LoginController::class);
 
-Route::post('/register', [AuthController::class, 'createUser']);
-Route::post('/login', [AuthController::class, 'login'])->name('login');
-
+/*API cua trung */
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users', [AuthController::class, 'index']);
-    Route::post('/logout', [AuthController::class, 'logout']);
-});
-
-Route::get('/forgot-password', [ForgotPasswordController::class, 'sendResetLink']);
-Route::get('/reset-password', [ForgotPasswordController::class, 'resetPassword']);
-
-Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/logout', [AuthController::class, 'logout']);
+    Route::get('/register', [AuthController::class, 'createUser']);
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
     Route::apiResource('/cart/toggle', CartController::class);
-});
-
-Route::middleware('auth:sanctum')->group(function () {
     Route::get('/wishlist/toggle', [ApiWishlistController::class, 'toggle']);
     Route::get('/wishlist', [ApiWishlistController::class, 'index']);
 });
+
+/*API cua trung */
+Route::get('/forgot-password', [ForgotPasswordController::class, 'sendResetLink']);
+Route::get('/reset-password', [ForgotPasswordController::class, 'resetPassword']);
+
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -45,11 +47,6 @@ Route::get('/user', function (Request $request) {
 Route::post('/products', [APIProductController::class, 'store']);
 Route::put('/products/{product}', [APIProductController::class, 'update']);
 Route::delete('/products/{product}', [APIProductController::class, 'destroy']);
-
-
-
-
-
 
 /* api của truong */
 Route::resource('seller-category', SellerCateController::class);
