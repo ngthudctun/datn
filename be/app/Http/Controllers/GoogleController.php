@@ -18,7 +18,6 @@ class GoogleController extends Controller
         try {
             $googleUser = Socialite::driver('google')->stateless()->user();
 
-            // Tìm hoặc tạo user
             $user = User::firstOrCreate(
                 ['email' => $googleUser->getEmail()],
                 ['name' => $googleUser->getName()]
@@ -26,7 +25,7 @@ class GoogleController extends Controller
 
             Auth::login($user);
 
-            return redirect('/home'); // hoặc bất kỳ đâu
+            return redirect('/home'); /
 
         } catch (\Exception $e) {
             return redirect('/login')->with('error', 'Đăng nhập Google thất bại!');
