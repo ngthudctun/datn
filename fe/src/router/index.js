@@ -13,6 +13,7 @@ import Contact from '@/views/pages/Contact.vue'
 import Login from '@/views/pages/Login.vue'
 import Register from '@/views/pages/Register.vue'
 import ForgotPassword from '@/views/pages/ForgotPassword.vue'
+import User from '@/views/pages/User.vue'
 
 const routes = [
     {
@@ -78,6 +79,11 @@ const routes = [
                 path: 'quen-mat-khau',
                 name: 'ForgotPassword',
                 component: ForgotPassword,
+            },
+            {
+                path: 'user',
+                name: 'user',
+                component: User,
             },
         ],
     },

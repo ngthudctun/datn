@@ -1,29 +1,39 @@
-.dropdown-menu li{
+.dropdown-menu li {
     width: 100% !important;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     min-width: 10px !important;
 }
 
-.review .rating{
+.review .rating {
     text-transform: lowercase;
 }
 
 .review .rating i {
-	font-size: 14px;
-	background: var(--gradient-yellow);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	display: inline-block;
-	margin-right: 4px;
+    font-size: 14px;
+    background: var(--gradient-yellow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    margin-right: 4px;
 }
 
 .pro-qty .dec,
 .pro-qty .inc {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
+}
+
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.invalid-feedback {
+    color: #dc3545  !important;
+    font-size: 0.875rem;
 }

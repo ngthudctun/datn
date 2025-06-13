@@ -7,212 +7,46 @@
                         <h4>Sản phẩm mới</h4>
                     </div>
                 </div>
-                <!-- <div class="col-lg-8 col-md-8">
-                    <ul class="filter__controls">
-                        <li class="active" data-filter="*">All</li>
-                        <li data-filter=".women">Women’s</li>
-                        <li data-filter=".men">Men’s</li>
-                        <li data-filter=".kid">Kid’s</li>
-                        <li data-filter=".accessories">Accessories</li>
-                        <li data-filter=".cosmetic">Cosmetics</li>
-                    </ul>
-                </div> -->
             </div>
             <div class="row property__gallery">
-                <div class="col-lg-3 col-md-4 col-sm-6 mix women">
-                    <router-link to="/cua-hang" class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg"
-                            :style="{ backgroundImage: 'url(' + $imageUrl + 'product/product-1.jpg)' }">
-                            <div class="label new">New</div>
+                <div v-for="product in products" :key="product.id" class="col-lg-3 col-md-4 col-sm-6 mix"
+                    :class="getCategoryClass(product.category_id)">
+                    <router-link :to="'/san-pham/' + product.slug" class="product__item">
+                        <div class="product__item__pic set-bg"
+                            :style="{ backgroundImage: 'url(' + $imageUrl + product.image + ')' }">
+                            <div v-if="isNewProduct(product.created_at)" class="label new">New</div>
                             <ul class="product__hover">
                                 <li>
-                                    <router-link to="img/product/product-1.jpg">
-                                        <span class="fa-light fa-heart"></span>
+                                    <WishlistButton :product-id="product.id"
+                                        :initial-wishlisted="product.is_wishlisted" />
+                                </li>
+                                <li>
+                                    <router-link to="/gio-hang">
+                                        <span class="fa-light fa-cart-shopping"></span>
                                     </router-link>
                                 </li>
-                                <li><router-link to="/"><span class="fa-light fa-cart-shopping"></span></router-link>
+                                <li>
+                                    <router-link :to="'/thanh-toan/' + product.slug">
+                                        <span class="fal fa-credit-card"></span>
+                                    </router-link>
                                 </li>
-                                <li><router-link to="/"><span class="fal fa-credit-card"></span></router-link></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
-                            <h6><router-link to="/">Buttons tweed blazerButtons tweed blazerButtons tweed
-                                    blazerButtons tweed blazerButtons tweed blazerButtons tweed blazerButtons tweed
-                                    blazerButtons tweed blazerButtons tweed blazer</router-link></h6>
+                            <h6>
+                                <router-link :to="'/san-pham/' + product.slug">{{ truncateName(product.product_name)
+                                    }}</router-link>
+                            </h6>
                             <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                                <!-- Giả định rating không có trong dữ liệu, mặc định 5 sao -->
+                                <i v-for="star in 5" :key="star" class="fa fa-star"></i>
                             </div>
-                            <div class="product__price">$ 59.0</div>
+                            <div class="product__price">
+                                <!-- Giả định giá không có trong dữ liệu, cần thêm trường price -->
+                                {{ product.price ? (product.price | formatPrice) : 'Liên hệ' }}
+                            </div>
                         </div>
                     </router-link>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix men">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                            <ul class="product__hover">
-                                <li><router-link to="img/product/product-2.jpg">
-                                        <span class="fa-light fa-heart"></span></router-link></li>
-                                <li><router-link to="/"><span class="icon_heart_alt"></span></router-link></li>
-                                <li><router-link to="/"><span class="icon_bag_alt"></span></router-link></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><router-link to="/">Flowy striped skirt</router-link></h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 49.0</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix accessories">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                            <div class="label stockout">out of stock</div>
-                            <ul class="product__hover">
-                                <li><router-link to="img/product/product-3.jpg"><span
-                                            class="arrow_expand"></span></router-link></li>
-                                <li><router-link to="/"><span class="icon_heart_alt"></span></router-link></li>
-                                <li><router-link to="/"><span class="icon_bag_alt"></span></router-link></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><router-link to="/">Cotton T-Shirt</router-link></h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix cosmetic">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">
-                            <ul class="product__hover">
-                                <li><router-link to="img/product/product-4.jpg"><span
-                                            class="arrow_expand"></span></router-link></li>
-                                <li><router-link to="/"><span class="icon_heart_alt"></span></router-link></li>
-                                <li><router-link to="/"><span class="icon_bag_alt"></span></router-link></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><router-link to="/">Slim striped pocket shirt</router-link></h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix kid">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-5.jpg">
-                            <ul class="product__hover">
-                                <li><router-link to="img/product/product-5.jpg"><span
-                                            class="arrow_expand"></span></router-link></li>
-                                <li><router-link to="/"><span class="icon_heart_alt"></span></router-link></li>
-                                <li><router-link to="/"><span class="icon_bag_alt"></span></router-link></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><router-link to="/">Fit micro corduroy shirt</router-link></h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-                    <div class="product__item sale">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-6.jpg">
-                            <div class="label sale">Sale</div>
-                            <ul class="product__hover">
-                                <li><router-link to="img/product/product-6.jpg"><span
-                                            class="arrow_expand"></span></router-link></li>
-                                <li><router-link to="/"><span class="icon_heart_alt"></span></router-link></li>
-                                <li><router-link to="/"><span class="icon_bag_alt"></span></router-link></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><router-link to="/">Tropical Kimono</router-link></h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 49.0 <span>$ 59.0</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
-                            <ul class="product__hover">
-                                <li><router-link to="img/product/product-7.jpg"><span
-                                            class="arrow_expand"></span></router-link></li>
-                                <li><router-link to="/"><span class="icon_heart_alt"></span></router-link></li>
-                                <li><router-link to="/"><span class="icon_bag_alt"></span></router-link></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><router-link to="/">Contrasting sunglasses</router-link></h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-                    <div class="product__item sale">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-8.jpg">
-                            <div class="label">Sale</div>
-                            <ul class="product__hover">
-                                <li><router-link to="img/product/product-8.jpg"><span
-                                            class="arrow_expand"></span></router-link></li>
-                                <li><router-link to="/"><span class="icon_heart_alt"></span></router-link></li>
-                                <li><router-link to="/"><span class="icon_bag_alt"></span></router-link></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><router-link to="/">Water resistant backpack</router-link></h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 49.0 <span>$ 59.0</span></div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -220,9 +54,60 @@
 </template>
 
 <script>
+import axios from 'axios';
+import WishlistButton from '@/components/user/button/WishlistButton.vue';
+
 export default {
     name: 'New',
-}
+    components: {
+        WishlistButton
+    },
+    data() {
+        return {
+            products: [], // Lưu danh sách sản phẩm từ API
+            isLoading: false
+        };
+    },
+    created() {
+        this.fetchLatestProducts();
+    },
+    methods: {
+        async fetchLatestProducts() {
+            this.isLoading = true;
+            try {
+                const response = await axios.get('/api/products/latest');
+                this.products = response.data;
+            } catch (error) {
+                console.error('Lỗi khi lấy sản phẩm mới:', error);
+            } finally {
+                this.isLoading = false;
+            }
+        },
+        getCategoryClass(categoryId) {
+            // Ánh xạ category_id thành các class như women, men, kid, accessories, cosmetic
+            const categoryMap = {
+                2: 'kid', // Giả định category_id 2 là kid
+                // Thêm các ánh xạ khác nếu cần
+            };
+            return categoryMap[categoryId] || 'accessories';
+        },
+        isNewProduct(createdAt) {
+            // Kiểm tra sản phẩm có phải là mới (ví dụ: trong vòng 7 ngày)
+            const createdDate = new Date(createdAt);
+            const now = new Date();
+            const diffDays = (now - createdDate) / (1000 * 60 * 60 * 24);
+            return diffDays <= 7;
+        },
+        truncateName(name) {
+            // Cắt ngắn tên sản phẩm nếu quá dài
+            return name.length > 50 ? name.substring(0, 50) + '...' : name;
+        }
+    },
+    filters: {
+        formatPrice(value) {
+            return `$${Number(value).toFixed(1)}`; // Định dạng giá
+        }
+    }
+};
 </script>
-
-<style></style>
+<style scoped></style>

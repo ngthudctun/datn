@@ -48,9 +48,6 @@ Route::delete('/products/{product}', [APIProductController::class, 'destroy']);
 
 
 
-
-
-
 /* api của truong */
 Route::resource('seller-category', SellerCateController::class);
 Route::get('seller-image-gate', [ImageSelected::class, 'index']);
