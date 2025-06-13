@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use Illuminate\Auth\Events\Login;
-use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -26,23 +25,36 @@ class LoginController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
+     /**
+     * Xử lý đăng nhập và trả token
      */
     public function store(Request $request)
     {
-        // Validate dữ liệu từ frontend
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:1|confirmed',
-        ], [
-            "email.unique" => "Email đã tồn tại",
-            "password.confirmed" => "Mật khẩu không trùng khớp"
+        // Validate input
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
-        $validated['password'] = Hash::make($validated['password']);
-        $logins = User::create($validated);
-        return response()->json($logins, 201);
+
+        // Kiểm tra thông tin đăng nhập
+        if (!Auth::attempt($credentials)) {
+            return response()->json([
+                'message' => 'Email hoặc mật khẩu không đúng'
+            ], 401);
+        }
+
+        // Lấy thông tin người dùng đã xác thực
+        $user = Auth::user();
+
+        // Tạo token Sanctum
+        $token = $user->createToken('api-token')->plainTextToken;
+
+        // Trả về kết quả
+        return response()->json([
+            'message' => 'Đăng nhập thành công',
+            'user' => $user,
+            'token' => $token
+        ]);
     }
 
     /**
