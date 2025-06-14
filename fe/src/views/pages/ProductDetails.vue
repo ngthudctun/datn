@@ -79,20 +79,20 @@
                                 <li>
                                     <span>Available size:</span>
                                     <div class="size__btn">
-                                        <label for="xs-btn" class="active">
-                                            <input type="radio" id="xs-btn">
+                                        <label :class="{ 'active': selectedSize === 'xs' }" for="xs-btn">
+                                            <input type="radio" id="xs-btn" value="xs" v-model="selectedSize">
                                             xs
                                         </label>
-                                        <label for="s-btn">
-                                            <input type="radio" id="s-btn">
+                                        <label :class="{ 'active': selectedSize === 's' }" for="s-btn">
+                                            <input type="radio" id="s-btn" value="s" v-model="selectedSize">
                                             s
                                         </label>
-                                        <label for="m-btn">
-                                            <input type="radio" id="m-btn">
+                                        <label :class="{ 'active': selectedSize === 'm' }" for="m-btn">
+                                            <input type="radio" id="m-btn" value="m" v-model="selectedSize">
                                             m
                                         </label>
-                                        <label for="l-btn">
-                                            <input type="radio" id="l-btn">
+                                        <label :class="{ 'active': selectedSize === 'l' }" for="l-btn">
+                                            <input type="radio" id="l-btn" value="l" v-model="selectedSize">
                                             l
                                         </label>
                                     </div>
@@ -314,6 +314,9 @@ function setActive(index) {
     $('.product__details__pic__slider').trigger('to.owl.carousel', [index, 300])
 }
 
+// --- Quản lý kích thước (size) ---
+const selectedSize = ref('xs') // Giá trị mặc định là 'xs'
+
 onMounted(() => {
     nextTick(() => {
         const $slider = $('.product__details__pic__slider')
@@ -336,6 +339,6 @@ onMounted(() => {
 })
 </script>
 
-
-
-<style></style>
+<style scoped>
+/* Không cần thêm style mới vì class 'active' đã được định nghĩa trong CSS gốc */
+</style>

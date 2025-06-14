@@ -6,7 +6,7 @@
 
 <script>
 import axios from 'axios';
-import { useToast } from '@/assets/js/toast';
+import { useShowtoast } from '@/assets/js/toast';
 
 export default {
     name: 'WishlistButton',
@@ -21,9 +21,8 @@ export default {
         }
     },
     setup() {
-        // Khởi tạo toast trong setup để sử dụng trong component
-        const { toast } = useToast();
-        return { toast };
+        const toastStore = useShowtoast();
+        return { toastStore };
     },
     data() {
         return {
@@ -34,15 +33,18 @@ export default {
     methods: {
         async toggleWishlist() {
             if (this.isLoading) return;
-
-            // Kiểm tra đăng nhập
+            this.toastStore.toast({
+                    title: 'Thông báo',
+                    message: 'Vui lòng đăng nhập để thêm vào danh sách yêu thích',
+                    type: 'info',
+            });
+            return;
             const token = localStorage.getItem('token');
             if (!token) {
-                this.toast({
-                    title: 'Lỗi',
+                this.toastStore.toast({
+                    title: 'Thông báo',
                     message: 'Vui lòng đăng nhập để thêm vào danh sách yêu thích',
                     type: 'error',
-                    duration: 3000
                 });
                 this.$router.push('/dang-nhap');
                 return;
@@ -50,7 +52,7 @@ export default {
 
             this.isLoading = true;
             try {
-                const response = await axios.post(
+                const response = await axios.get(
                     '/api/wishlist/toggle',
                     { product_id: this.productId },
                     {
@@ -61,19 +63,17 @@ export default {
                 );
                 this.isWishlisted = response.data.is_wishlisted;
                 this.$emit('update:wishlisted', this.isWishlisted);
-                this.toast({
-                    title: 'Thành công',
+                this.toastStore.toast({
+                    title: 'Thông báo',
                     message: response.data.message || (this.isWishlisted ? 'Đã thêm vào danh sách yêu thích' : 'Đã xóa khỏi danh sách yêu thích'),
-                    type: 'success',
-                    duration: 3000
+                    type: response.data.type || 'success',
                 });
             } catch (error) {
                 console.error('Lỗi khi cập nhật danh sách yêu thích:', error);
-                this.toast({
-                    title: 'Lỗi',
+                this.toastStore.toast({
+                    title: 'Thông báo',
                     message: error.response?.data?.message || 'Không thể cập nhật danh sách yêu thích',
-                    type: 'error',
-                    duration: 3000
+                    type: error.response?.data?.type || 'error',
                 });
             } finally {
                 this.isLoading = false;

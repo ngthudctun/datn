@@ -1,12 +1,11 @@
 <template>
   <main>
-  <ToastList />
-    <router-view /> 
+    <div id="toastbox" style="height: 100px" class="toastbox"></div>
+    <router-view />
   </main>
 </template>
 
 <script setup>
-import ToastList from "@/components/common/ToastList.vue"
 import { RouterView } from 'vue-router';
 import axios from "axios";
 </script>

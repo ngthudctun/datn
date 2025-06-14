@@ -490,7 +490,11 @@
                     </div>
                 </router-link>
             </div>
+            <div class="col-lg-12 text-center mt-3">
+                    <a href="#" class="primary-btn load-btn">Xem thêm</a>
+                </div>
         </div>
+        
     </section>
 </template>
 

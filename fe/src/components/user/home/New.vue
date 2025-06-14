@@ -27,7 +27,7 @@
                                 </li>
                                 <li>
                                     <router-link :to="'/thanh-toan/' + product.slug">
-                                        <span class="fal fa-credit-card"></span>
+                                        <span class="fal fa-bag-shopping"></span>
                                     </router-link>
                                 </li>
                             </ul>
