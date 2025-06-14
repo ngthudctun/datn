@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('shop_name', 255);
             $table->text('shop_description')->nullable();
+            $table->decimal('rating', 2, 1)->default(0.0);
             $table->timestamps();
         });
     }
