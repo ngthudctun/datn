@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Carbon\Carbon;
 
 class Product extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'product_name',
         'image',
@@ -18,13 +21,11 @@ class Product extends Model
         'brand_id',
     ];
 
-    // Danh sách biến thể
     public function variants()
     {
         return $this->hasMany(ProductVariant::class);
     }
 
-    // Giảm giá áp dụng
     public function discount()
     {
         return $this->hasOne(Discount::class)
@@ -32,7 +33,16 @@ class Product extends Model
             ->whereDate('end_date', '>=', Carbon::now());
     }
 
-    // Trả về phần trăm giảm
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
     public function getDiscountRateAttribute()
     {
         $discount = $this->discount;
@@ -42,7 +52,7 @@ class Product extends Model
         return $discount->value;
     }
 
-    // Trả về phần trăm giảm giá biến thể
+
     public function getMinFinalPriceAttribute()
     {
         return $this->variants->min(fn ($variant) => $variant->final_price);
