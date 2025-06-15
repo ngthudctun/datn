@@ -20,6 +20,12 @@ use App\Http\Controllers\DiscountController;
 /* api của trung */
 Route::get('/products/latest', [ProductController::class, 'latestFive']);
 
+
+
+
+/* api của trung */
+Route::get('/products/latest', [ProductController::class, 'latestFive']);
+
 Route::apiResource('products', ProductController::class);
 
 /*API cua trung */
@@ -38,6 +44,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
 });
+
+
+/*API cua trung */
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users', [AuthController::class, 'index']);
     Route::get('/logout', [AuthController::class, 'logout']);
@@ -71,9 +80,9 @@ Route::get('seller-category-parent', [SellerCateController::class, 'getParentcat
 /* api của truong */
 
 
-// Hung 
+// Hung
 Route::get('/api/products/{slug}', [ProductController::class, 'show']);
-// Hung 
+// Hung
 
 // API của Tuấn
 Route::resource('discounts', DiscountController::class);

@@ -8,16 +8,38 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    // Lấy danh sách sản phẩm
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::inRandomOrder()->paginate(18);
+    $query = Product::with([
+        'category:id,category_name',
+        'brand:id,brand_name',
+        'discount',
+        'variants.attributeVariants.attribute',
+        'variants.images'
+    ]);
+
+    if ($request->has('category_id')) {
+        $query->where('category_id', $request->category_id);
+    }
+
+    if ($request->has('brand_id')) {
+        $query->where('brand_id', $request->brand_id);
+    }
+
+    if ($request->has('search')) {
+        $query->where('product_name', 'like', '%' . $request->search . '%');
+    }
+
+        $products = $query->inRandomOrder()->paginate(18);
+
         return response()->json($products);
     }
+
     public function getById($id)
     {
     $product = Product::with([
-        'variants',
+        'variants.attributeVariants.attribute',
+        'variants.images',
         'discount',
         'category',
         'brand'
@@ -32,8 +54,9 @@ class ProductController extends Controller
 
         return response()->json($product);
     }
-    public function getRelatedById($id)
-    {
+
+
+    public function getRelatedById($id) {
         $products = Product::find($id);
         $relatedProducts = Product::where('category_code', $products->category_code)
             ->where('id', '!=', $id)
@@ -46,12 +69,16 @@ class ProductController extends Controller
 
         return response()->json($products);
     }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         //
+
+        $products = Product::with('variants.attributeVariants', 'variants.images')->paginate(10);
+        return response()->json($products);
     }
     // Lấy 1 sản phẩm theo ID
     public function show($id)
