@@ -25,7 +25,6 @@ class GoogleController extends Controller
 
             Auth::login($user);
 
-
             return redirect('/home'); 
 
         } catch (\Exception $e) {
