@@ -29,7 +29,7 @@
 /*----------------------------------------*/
 
 :root {
-	--color--primary: #ca1515;
+	--color-primary: #ca1515;
 	/* Đỏ đậm */
 	--gradient-primary: linear-gradient(45deg, #CA1515, #FF4444);
 
@@ -56,7 +56,7 @@
 /*----------------------------------------*/
 
 .primary-color {
-	color: var(--color--primary) !important;
+	color: var(--color-primary) !important;
 }
 
 html,
@@ -606,7 +606,7 @@ ol {
 
 .banner__text span {
 	font-size: 18px;
-	color: var(--color--primary);
+	color: var(--color-primary);
 	text-transform: uppercase;
 }
 
@@ -798,14 +798,14 @@ ol {
 
 .discount__text__title h2 {
 	font-size: 60px;
-	color: var(--color--primary);
+	color: var(--color-primary);
 	font-family: "Cookie", cursive;
 	line-height: 46px;
 	margin-bottom: 10px;
 }
 
 .discount__text__title h5 {
-	color: var(--color--primary);
+	color: var(--color-primary);
 	font-weight: 700;
 }
 
@@ -861,7 +861,7 @@ ol {
 
 .services__item i {
 	font-size: 36px;
-	color: var(--color--primary);
+	color: var(--color-primary);
 	position: absolute;
 	left: 0;
 	top: 4px;
@@ -994,7 +994,7 @@ ol {
 }
 
 .footer__widget ul li a:hover {
-	color: var(--color--primary);
+	color: var(--color-primary);
 }
 
 .footer__newslatter {
@@ -1084,11 +1084,11 @@ ol {
 }
 
 .footer__copyright__text i {
-	color: var(--color--primary);
+	color: var(--color-primary);
 }
 
 .footer__copyright__text a:hover {
-	color: var(--color--primary);
+	color: var(--color-primary);
 }
 
 /*---------------------
@@ -1151,6 +1151,9 @@ ol {
 	padding-left: 30px;
 	margin-bottom: 10px;
 	margin-right: 10px;
+	&:hover{
+		box-shadow: var(--box-shadow);
+	}
 }
 
 .categories__item.categories__large__item {
@@ -1258,7 +1261,7 @@ ol {
 }
 
 .product__item.sale .product__item__text .product__price {
-	color: var(--color--primary);
+	color: var(--color-primary);
 }
 
 .product__item__pic {
@@ -1414,7 +1417,7 @@ ol {
 }
 
 .product__item__text .product__price {
-	color: var(--color--primary);
+	color: var(--color-primary);
 	font-weight: 600;
 }
 
@@ -1604,6 +1607,8 @@ ol {
 
 .filter-range-wrap .range-slider .price-input {
 	position: relative;
+	display: flex;
+	justify-content: space-between;
 }
 
 .filter-range-wrap .range-slider .price-input p {
@@ -1616,11 +1621,11 @@ ol {
 
 .filter-range-wrap .range-slider .price-input:after {
 	position: absolute;
-	left: 60px;
+	left: 120px;
 	top: 12px;
 	height: 1px;
-	width: 5px;
-	background: var(--gradient-black);
+	width: 8px;
+	background: #646464;
 	content: "";
 }
 
@@ -1695,12 +1700,12 @@ ol {
 
 .sidebar__sizes .size__list label input:checked~.checkmark,
 .sidebar__color .size__list label input:checked~.checkmark {
-	border-color: var(--color--primary);
+	border-color: var(--color-primary);
 }
 
 .sidebar__sizes .size__list label input:checked~.checkmark:after,
 .sidebar__color .size__list label input:checked~.checkmark:after {
-	border-color: var(--color--primary);
+	border-color: var(--color-primary);
 	opacity: 1;
 }
 
@@ -1909,7 +1914,7 @@ ol {
 
 /* Active state - thumbnail được chọn */
 .product__details__pic__thumbs .pt.active {
-	border-color: var(--color--primary);
+	border-color: var(--color-primary);
 	/* Màu border khi active */
 	box-shadow: var(--box-shadow);
 	transform: translateY(-2px);
@@ -2005,7 +2010,7 @@ ol {
 .product__details__price {
 	font-size: 30px;
 	font-weight: 600;
-	color: var(--color--primary);
+	color: var(--color-primary);
 	margin-bottom: 30px;
 }
 
@@ -2178,11 +2183,11 @@ ol {
 }
 
 .product__details__widget ul li .stock__checkbox label input:checked~.checkmark {
-	border-color: var(--color--primary);
+	border-color: var(--color-primary);
 }
 
 .product__details__widget ul li .stock__checkbox label input:checked~.checkmark:after {
-	border-color: var(--color--primary);
+	border-color: var(--color-primary);
 	opacity: 1;
 }
 
@@ -2289,8 +2294,8 @@ ol {
 }
 
 .product__details__widget ul li .size__btn label.active {
-	color: var(--color--primary);
-	border-color: var(--color--primary);
+	color: var(--color-primary);
+	border-color: var(--color-primary);
 }
 
 .product__details__widget ul li .size__btn label input {
@@ -2445,7 +2450,7 @@ ol {
 
 .shop__cart__table tbody tr .cart__price {
 	font-size: 16px;
-	color: var(--color--primary);
+	color: var(--color-primary);
 	font-weight: 600;
 	width: 190px;
 }
@@ -2472,7 +2477,7 @@ ol {
 
 .shop__cart__table tbody tr .cart__total {
 	font-size: 16px;
-	color: var(--color--primary);
+	color: var(--color-primary);
 	font-weight: 600;
 	width: 150px;
 }
@@ -2513,7 +2518,7 @@ ol {
 }
 
 .cart__btn a span {
-	color: var(--color--primary);
+	color: var(--color-primary);
 	font-size: 14px;
 	margin-right: 5px;
 }
@@ -2594,7 +2599,7 @@ ol {
 }
 
 .cart__total__procced ul li span {
-	color: var(--color--primary);
+	color: var(--color-primary);
 	float: right;
 }
 
@@ -2818,7 +2823,7 @@ ol {
 
 .coupon__link span {
 	font-size: 14px;
-	color: var(--color--primary);
+	color: var(--color-primary);
 }
 
 .checkout__form h5 {
@@ -2837,7 +2842,7 @@ ol {
 }
 
 .checkout__form .checkout__form__input p span {
-	color: var(--color--primary);
+	color: var(--color-primary);
 }
 
 .checkout__form .checkout__form__input input {
@@ -2850,7 +2855,7 @@ ol {
 	padding-left: 20px;
 	color: #666666;
 	&:focus{
-		border-color: var(--color--primary);
+		border-color: var(--color-primary);
 	}
 }
 
@@ -2895,11 +2900,11 @@ ol {
 }
 
 .checkout__form .checkout__form__checkbox label input:checked~.checkmark {
-	border-color: var(--color--primary);
+	border-color: var(--color-primary);
 }
 
 .checkout__form .checkout__form__checkbox label input:checked~.checkmark:after {
-	border-color: var(--color--primary);
+	border-color: var(--color-primary);
 	opacity: 1;
 }
 
@@ -3003,7 +3008,7 @@ ol {
 }
 
 .checkout__order__total ul li span {
-	color: var(--color--primary);
+	color: var(--color-primary);
 	float: right;
 }
 
@@ -3028,11 +3033,11 @@ ol {
 }
 
 .checkout__order__widget label input:checked~.checkmark {
-	border-color: var(--color--primary);
+	border-color: var(--color-primary);
 }
 
 .checkout__order__widget label input:checked~.checkmark:after {
-	border-color: var(--color--primary);
+	border-color: var(--color-primary);
 	opacity: 1;
 }
 
@@ -3132,6 +3137,9 @@ ol {
 	background: var(--gradient-white);
 	padding: 12px 85px 10px;
 	border-radius: 50px;
+	&:hover{
+		background: var(--gradient-gray);
+	}
 }
 
 /*---------------------
@@ -3176,7 +3184,7 @@ ol {
 }
 
 .blog__sidebar__item ul li a:hover {
-	color: var(--color--primary);
+	color: var(--color-primary);
 }
 
 .blog__sidebar__item ul li a:hover span {
@@ -3337,7 +3345,7 @@ ol {
 	height: 30px;
 	width: 30px;
 	font-size: 18px;
-	color: var(--color--primary);
+	color: var(--color-primary);
 	background: #ffffff;
 	position: absolute;
 	left: 0;
@@ -3490,7 +3498,7 @@ ol {
 
 .blog__comment__item__text ul li i {
 	font-size: 14px;
-	color: var(--color--primary);
+	color: var(--color-primary);
 	margin-right: 5px;
 }
 
@@ -3533,7 +3541,7 @@ ol {
 
 .contact__address ul li h6 i {
 	font-size: 16px;
-	color: var(--color--primary);
+	color: var(--color-primary);
 	margin-right: 5px;
 }
 

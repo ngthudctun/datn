@@ -10,7 +10,7 @@ use Illuminate\Validation\ValidationException;
 
 class SellerCateController extends Controller
 {
-    // Danh sách danh mục (có lọc, tìm kiếm, phân trang)
+    // Danh sách danh mục
     public function index(Request $request)
     {
         $query = Category::withTrashed()->withCount('products');
@@ -23,16 +23,18 @@ class SellerCateController extends Controller
             $query->where('status', $request->status);
         }
 
-        if ($request->sort === 'newest') {
-            $query->orderBy('created_at', 'desc');
-        } elseif ($request->sort === 'oldest') {
-            $query->orderBy('created_at', 'asc');
+        if ($request->has('sort')) {
+            if ($request->sort === 'newest') {
+                $query->orderBy('created_at', 'desc');
+            } elseif ($request->sort === 'oldest') {
+                $query->orderBy('created_at', 'asc');
+            }
         }
 
         return response()->json($query->paginate(4));
     }
 
-    // Lấy danh mục cha
+    // Lấy danh mục cha (trừ chính nó nếu có)
     public function getParentcate(?int $id = null)
     {
         $query = Category::select('id', 'category_name');
@@ -61,11 +63,12 @@ class SellerCateController extends Controller
                 'category_name' => $validated['category_name'],
                 'image' => $validated['image'] ?? null,
                 'slug' => $slug,
-                'category_parent_id' => $request->category_parent_id ?: null,
+                'category_parent_id' => empty($request->category_parent_id) || $request->category_parent_id == 0 ? null : (int)$request->category_parent_id,
                 'status' => $request->status ?? 1,
             ]);
 
             return response()->json([
+                'type' => 'success',
                 'message' => 'Tạo danh mục thành công',
                 'data' => $category
             ], 201);
@@ -82,12 +85,12 @@ class SellerCateController extends Controller
         }
     }
 
-    // Lấy chi tiết 1 danh mục
+    // Xem chi tiết danh mục
     public function show(string $id)
     {
         try {
-            $category = Category::with('parent:id,category_name')->findOrFail($id);
-            $cateparent = $this->getParentcate($id)->getData(true)['cateparent'];
+            $category = Category::with('parent:id,category_name')->findOrFail((int)$id);
+            $cateparent = $this->getParentcate((int)$id)->getData(true)['cateparent'];
 
             return response()->json([
                 'cateparent' => $cateparent,
@@ -127,9 +130,9 @@ class SellerCateController extends Controller
             $category->update([
                 'category_name' => $validated['category_name'],
                 'image' => $validated['image'] ?? $category->image,
-                'category_parent_id' => $request->category_parent_id ?: null,
+                'category_parent_id' => empty($request->category_parent_id) || $request->category_parent_id == 0 ? null : (int)$request->category_parent_id,
                 'slug' => $slug,
-                'status' => $request->status ?? $category->status
+                'status' => $request->status ?? $category->status,
             ]);
 
             return response()->json([

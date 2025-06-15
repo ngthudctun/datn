@@ -14,11 +14,11 @@
                     <div class="footer__widget">
                         <h6>ShopNow</h6>
                         <ul>
-                            <li><a href="#">Về ShopNow</a></li>
-                            <li><a href="#">Điều Khoản ShopNow</a></li>
-                            <li><a href="#">Chính Sách Bảo Mật</a></li>
-                            <li><a href="#">ShopNow Blog</a></li>
-                            <li><a href="#">Liên hệ ShopNow</a></li>
+                            <li><router-link to="/lien-he">Về ShopNow</router-link></li>
+                            <li><router-link to="/dieu-khoan-dich-vu">Điều Khoản ShopNow</router-link></li>
+                            <li><router-link to="/chinh-sach-bao-mat">Chính Sách Bảo Mật</router-link></li>
+                            <li><router-link to="/bai-viet">ShopNow Blog</router-link></li>
+                            <li><router-link to="/lien-he">Liên hệ ShopNow</router-link></li>
                         </ul>
                     </div>
                 </div>
@@ -26,11 +26,11 @@
                     <div class="footer__widget">
                         <h6>Tài khoản</h6>
                         <ul>
-                            <li><a href="#">Tài khoản của tôi</a></li>
-                            <li><a href="#">Đơn hàng</a></li>
-                            <li><a href="#">Thanh toán</a></li>
-                            <li><a href="#">Yêu thích</a></li>
-                            <li><a href="#">Khuyến mãi</a></li>
+                            <li><router-link to="/user">Tài khoản của tôi</router-link></li>
+                            <li><router-link to="/user/don-hang">Đơn hàng</router-link></li>
+                            <li><router-link to="/user/thanh-toan">Thanh toán</router-link></li>
+                            <li><router-link to="/user/san-pham-yeu-thich">Yêu thích</router-link></li>
+                            <li><router-link to="/user/khuyen-maii">Khuyến mãi</router-link></li>
                         </ul>
                     </div>
                 </div>

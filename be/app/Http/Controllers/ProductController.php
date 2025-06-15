@@ -30,7 +30,8 @@ class ProductController extends Controller
         $query->where('product_name', 'like', '%' . $request->search . '%');
     }
 
-        $products = $query::inRandomOrder()->paginate(18);
+
+        $products = $query->inRandomOrder()->paginate(18);
         return response()->json($products);
     }
 
@@ -57,8 +58,8 @@ class ProductController extends Controller
     public function getRelatedById($id) {
         $products = Product::find($id);
         $relatedProducts = Product::where('category_code', $products->category_code)
-        ->where('id', '!=', $id)
-        ->get();
+            ->where('id', '!=', $id)
+            ->get();
         return response()->json($relatedProducts);
     }
     public function latestFive()
@@ -67,6 +68,7 @@ class ProductController extends Controller
 
         return response()->json($products);
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -120,7 +122,6 @@ class ProductController extends Controller
 
         return response()->json(['message' => 'Tạo sản phẩm thành công', 'product' => $product->load('variants.attributeVariants', 'variants.images')]);
     }
-
     // Cập nhật sản phẩm
     public function update(Request $request, $id)
     {

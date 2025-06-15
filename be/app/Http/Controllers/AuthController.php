@@ -41,8 +41,9 @@ class AuthController extends Controller
         ]);
     }
 
-    // Đăng ký và tự động đăng nhập
-    public function createUser(Request $request)
+    // Đăng ký
+    public function register(Request $request)
+
     {
         $validated = $request->validate([
             'username' => 'required|string|max:255',
@@ -59,7 +60,7 @@ class AuthController extends Controller
         $token = $user->createToken('api-token')->plainTextToken;
 
         return response()->json([
-            'message' => 'Đăng ký và đăng nhập thành công',
+            'message' => 'Đăng ký thành công',
             'user' => new UserResource($user),
             'token' => $token
         ], 201);

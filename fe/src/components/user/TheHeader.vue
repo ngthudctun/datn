@@ -44,22 +44,25 @@
                     <div class="header__right">
                         <ul class="header__right__widget">
                             <li>
-                                <a>
+                                <router-link to="/user/thong-bao">
                                     <i class="fa-light fa-bell"></i>
                                     <div class="tip">2</div>
-                                </a>
+                                </router-link>
                             </li>
-                            <li><a href="#"><span class="fa-light fa-heart"></span>
+                            <li><router-link to="/user/san-pham-yeu-thich">
+                                    <span class="fa-light fa-heart"></span>
                                     <div class="tip">2</div>
-                                </a></li>
-                            <li><a href="#"><span class="fa-light fa-cart-shopping"></span>
+                                </router-link></li>
+                            <li><router-link to="/user/gio-hang">
+                                    <span class="fa-light fa-cart-shopping"></span>
                                     <div class="tip">2</div>
-                                </a></li>
+                                </router-link></li>
                             <li>
-                                <a>
+                                <router-link to="/user" title="nguyenkhachung" data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom" data-bs-title="Tooltip on bottom">
                                     <span class="fa-light fa-user"></span>
                                     <div class="tip">2</div>
-                                </a>
+                                </router-link>
                             </li>
                         </ul>
                     </div>
@@ -69,19 +72,9 @@
                 <i class="fa fa-bars"></i>
             </div>
         </div>
-        <nav>
-            <ul class="d-flex gap-5">
-                <li><router-link to="/">Trang chủ</router-link></li>
-                <li><router-link to="/cua-hang">Cửa hàng</router-link></li>
-                <li><router-link to="/chi-tiet-san-pham">Chi tiết sản phẩm</router-link></li>
-                <li><router-link to="/gio-hang">Giỏ hàng</router-link></li>
-                <li><router-link to="/thanh-toan">Thanh toán</router-link></li>
-                <li><router-link to="/bai-viet">Bài viết</router-link></li>
-                <li><router-link to="/chi-tiet-bai-viet">Chi tiết bài viết</router-link></li>
-                <li><router-link to="/lien-he">Liên hệ</router-link></li>
-                <li><router-link to="/dang-nhap">Đăng nhập</router-link></li>
-                <li><router-link to="/dang-ky">Đăng ký</router-link></li>
-            </ul>
-        </nav>
     </header>
 </template>
+<script setup>
+
+import { useRouter } from 'vue-router'
+</script>
