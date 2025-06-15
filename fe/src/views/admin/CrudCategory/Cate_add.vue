@@ -56,7 +56,15 @@
                       <input
                         v-model="category_name"
                         value="máy tính"
+<<<<<<< HEAD
+<<<<<<< HEAD
                         placeholder="nhập tên danh mục"
+=======
+                        placeholder="nhập tên sản phẩm"
+>>>>>>> 74732299 (add-model)
+=======
+                        placeholder="nhập tên danh mục"
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
                         type="text"
                         class="mt-1 form-control"
                         id="usr"
@@ -65,7 +73,15 @@
                     </div>
 
                     <div class="form-group mt-3 position-relative">
+<<<<<<< HEAD
+<<<<<<< HEAD
                       <label for="usr" class="d-flex">Danh mục cha: </label>
+=======
+                      <label for="usr">Danh mục cha:</label>
+>>>>>>> 74732299 (add-model)
+=======
+                      <label for="usr" class="d-flex">Danh mục cha: </label>
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
                       <form
                         class="d-flex form-control mt-1 align-items-center position-relative"
                         for="myInputcate"
@@ -84,11 +100,25 @@
                             Adminlayout.myFunction('myInputcate', 'myULcate')
                           "
                         />
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                        <button
+                          type="button"
+                          class="btn rounded-start-0 top-0 end-0 btn-danger position-absolute"
+                        >
+                          Thêm danh mục
+                        </button>
+>>>>>>> 74732299 (add-model)
+=======
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
                       </form>
 
                       <ul
                         id="myULcate"
                         class="position-absolute my-ul-list top-100 w-100"
+<<<<<<< HEAD
+<<<<<<< HEAD
                         style="left: 0; overflow-y: auto"
                       >
                         <li
@@ -97,16 +127,67 @@
                         >
                           <div href="#" class="box-con w-100">
                             <label class="w-100" :for="'idcate-' + item.id">
+=======
+                        style="left: 0"
+=======
+                        style="left: 0; overflow-y: auto"
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
+                      >
+                        <li
+                          v-for="(item, index) in category_parent_arr"
+                          :key="index"
+                        >
+                          <div href="#" class="box-con w-100">
+<<<<<<< HEAD
+                            <label class="w-100" for="idcate-1">
+>>>>>>> 74732299 (add-model)
+=======
+                            <label class="w-100" :for="'idcate-' + item.id">
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
                               <input
                                 type="radio"
                                 class="list_cate"
                                 name="category_product"
+<<<<<<< HEAD
+<<<<<<< HEAD
                                 :id="'idcate-' + item.id"
                                 :value="item.category_name"
                                 v-on:click="Adminlayout.clickout('myULcate')"
                                 v-on:change="categoryget(item.id)"
                               />
                               {{ item.category_name }}
+=======
+                                id="idcate-1"
+                                value="Con cá 1"
+=======
+                                :id="'idcate-' + item.id"
+                                :value="item.category_name"
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
+                                v-on:click="Adminlayout.clickout('myULcate')"
+                                v-on:change="categoryget(item.id)"
+                              />
+<<<<<<< HEAD
+                              Con cá 1
+                            </label>
+                          </div>
+                        </li>
+                        <li>
+                          <div href="#" class="box-con w-100">
+                            <label class="w-100" for="idcate-2">
+                              <input
+                                type="radio"
+                                class="list_cate"
+                                name="category_product"
+                                id="idcate-2"
+                                value="Con cá 2"
+                                v-on:click="Adminlayout.clickout('myULcate')"
+                                v-on:change="categoryget(2)"
+                              />
+                              Con cá 2
+>>>>>>> 74732299 (add-model)
+=======
+                              {{ item.category_name }}
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
                             </label>
                           </div>
                         </li>
@@ -217,6 +298,66 @@ const Adminlayout = AdminLayout();
 const category_parent_arr = ref(null);
 const inputvariant = ref([]);
 const erroraray = ref(null);
+<<<<<<< HEAD
+const category_name = ref("");
+const image = ref("");
+const category_parent_name = ref(null);
+const category_parent_id = ref(0);
+const slug = ref("");
+const status = ref(1);
+function reimg(img) {
+  image.value = img;
+}
+const uploadcate = async () => {
+  const formData = new FormData();
+  formData.append("category_name", category_name.value);
+  formData.append("category_parent_id", category_parent_id.value);
+  formData.append("image", image.value);
+  formData.append("slug", slug.value || "");
+  formData.append("status", status.value || "");
+
+<<<<<<< HEAD
+  try {
+    const response = await axios.post(`/api/seller-category`, formData);
+    if (response) {
+      Swal.fire({
+        icon: "success",
+        title: response.data.type,
+        text: response.data.message,
+        timer: 2000,
+        showConfirmButton: true,
+      });
+
+      setTimeout(() => {
+        erroraray.value = null;
+        window.location.href = "/admin/danh-sach-danh-muc";
+      }, 2000);
+    }
+  } catch (error) {
+    {
+      erroraray.value = error.response.data.errors;
+      console.log(erroraray.value);
+    }
+  }
+};
+const getparent = async () => {
+  try {
+    const response = await axios.get(`/api/seller-category-parent`);
+    category_parent_arr.value = response.data.cateparent;
+    console.log(category_parent_arr.value);
+    /*  errors.value = {}; */
+  } catch (error) {
+    {
+      console.log(error);
+    }
+  }
+};
+
+onMounted(() => {});
+getparent();
+=======
+=======
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
 const category_name = ref("");
 const image = ref("");
 const category_parent_name = ref(null);
@@ -271,7 +412,11 @@ const getparent = async () => {
 };
 
 onMounted(() => {});
+<<<<<<< HEAD
+>>>>>>> 74732299 (add-model)
+=======
 getparent();
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
 function categoryget(valuenum) {
   var inputshowcatevalue = document.getElementById("idcate-" + valuenum).value;
   category_parent_name.value = inputshowcatevalue;
@@ -285,4 +430,11 @@ function deletecateselect() {
   category_parent_name.value = null;
   category_parent_id.value = null;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+const stepvariant = ref(0);
+>>>>>>> 74732299 (add-model)
+=======
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
 </script>

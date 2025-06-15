@@ -81,6 +81,10 @@
                       <div
                         class="col-12 col-lg-6 d-flex justify-content-center"
                       >
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
                         <select
                           v-on:change="getListCateSell()"
                           v-model="filtertime"
@@ -88,12 +92,22 @@
                         >
                           <option value="newest">mới nhất</option>
                           <option value="oldest">cũ nhất</option>
+<<<<<<< HEAD
+=======
+                        <select class="form-select w-100 text-center border-1">
+                          <option>mới nhất</option>
+                          <option>cũ nhất</option>
+>>>>>>> 74732299 (add-model)
+=======
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
                         </select>
                       </div>
                       <div
                         class="col-12 w-100 col-lg-6 mt-2 mt-lg-0 d-flex justify-content-center"
                       >
                         <select
+<<<<<<< HEAD
+<<<<<<< HEAD
                           v-on:change="getListCateSell()"
                           v-model="filtertrash"
                           class="form-select w-100 text-center border-1 px-1"
@@ -101,6 +115,23 @@
                         >
                           <option value="1">Kích hoạt</option>
                           <option value="2">Đã ẩn</option>
+=======
+                          class="form-select w-100 text-center border-1 px-1"
+                          style="box-sizing: border-box"
+                        >
+                          <option selected disabled>Trạng thái</option>
+                          <option value="hidden">Đã ẩn</option>
+                          <option value="active">Kích hoạt</option>
+>>>>>>> 74732299 (add-model)
+=======
+                          v-on:change="getListCateSell()"
+                          v-model="filtertrash"
+                          class="form-select w-100 text-center border-1 px-1"
+                          style="box-sizing: border-box"
+                        >
+                          <option value="1">Kích hoạt</option>
+                          <option value="2">Đã ẩn</option>
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
                         </select>
                       </div>
                     </div>
@@ -178,8 +209,17 @@
                                 <input
                                   type="checkbox"
                                   class="nlb-toggle-input"
+<<<<<<< HEAD
+<<<<<<< HEAD
                                   @click="changestatus(item.id)"
                                   :checked="getcheck(item.status)"
+=======
+                                  :checked="getcheck(item.delete_at)"
+>>>>>>> 74732299 (add-model)
+=======
+                                  @click="changestatus(item.id)"
+                                  :checked="getcheck(item.status)"
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
                                 />
                                 <span class="nlb-slider"></span>
                               </label>
@@ -219,7 +259,15 @@
                         </div>
                       </li>
                     </ul>
+<<<<<<< HEAD
+<<<<<<< HEAD
                     <ul class="pagination d-flex justify-content-end mt-2 px-5" style="box-sizing: border-box;">
+=======
+                    <ul class="pagination">
+>>>>>>> 74732299 (add-model)
+=======
+                    <ul class="pagination d-flex justify-content-end mt-2 px-5" style="box-sizing: border-box;">
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
                       <li
                         v-for="(link, index) in catelist.links"
                         :key="index"
@@ -232,6 +280,10 @@
                         <a
                           class="page-link"
                           href="#"
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
                           @click.prevent="
                             link.url
                               ? GetPaniCate(
@@ -242,6 +294,12 @@
                                 )
                               : null
                           "
+<<<<<<< HEAD
+=======
+                          @click.prevent="GetPaniCate(link.url)"
+>>>>>>> 74732299 (add-model)
+=======
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
                           v-html="link.label"
                         ></a>
                       </li>
@@ -266,17 +324,35 @@ import "@/assets/css/admincss/css/curdproduct/productlist.css";
 import NavSuport from "@/components/admin/AdminLayout/NavSuport.vue";
 import Rageslider from "@/components/admin/AdminLayout/button/rageslider.vue";
 import { ref, onMounted } from "vue";
+<<<<<<< HEAD
+<<<<<<< HEAD
 
 import { useShowtoast } from "@/assets/js/toast";
 import axios from "axios";
 import Categories from "@/components/user/home/Categories.vue";
 import dayjs from "dayjs";
 const toastStore = useShowtoast();
+=======
+import axios from "axios";
+import Categories from "@/components/user/home/Categories.vue";
+import dayjs from "dayjs";
+
+>>>>>>> 74732299 (add-model)
+=======
+
+import { useShowtoast } from "@/assets/js/toast";
+import axios from "axios";
+import Categories from "@/components/user/home/Categories.vue";
+import dayjs from "dayjs";
+const toastStore = useShowtoast();
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
 const formatDate = (datetime) => {
   return dayjs(datetime).format("DD/MM/YYYY HH:mm");
 };
 
 const catelist = ref([]);
+<<<<<<< HEAD
+<<<<<<< HEAD
 const filtertime = ref("newest");
 const filtertrash = ref(1);
 const filtersearch = ref(null);
@@ -291,18 +367,45 @@ const getListCateSell = async () => {
       },
     });
 
+=======
+
+const getListCateSell = async () => {
+  try {
+    const response = await axios.get(`/api/seller-category`);
+>>>>>>> 74732299 (add-model)
+=======
+const filtertime = ref("newest");
+const filtertrash = ref(1);
+const filtersearch = ref(null);
+
+const getListCateSell = async () => {
+  try {
+    const response = await axios.get(`/api/seller-category`, {
+      params: {
+        search: filtersearch.value,
+        sort: filtertime.value,
+        status: filtertrash.value,
+      },
+    });
+
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
     catelist.value = response.data; // Cập nhật dữ liệu
     console.log(catelist.value);
   } catch (error) {
     console.error("Lỗi khi gọi API:", error);
   }
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
 const decodeHtml = (html) => {
   const txt = document.createElement("textarea");
   txt.innerHTML = html;
   return txt.value;
 };
 const GetPaniCate = async (link, status, sort, search) => {
+<<<<<<< HEAD
   try {
     if (!link) return;
 
@@ -314,6 +417,26 @@ const GetPaniCate = async (link, status, sort, search) => {
     const response = await axios.get(url.toString());
 
     catelist.value = response.data;
+=======
+const GetPaniCate = async (link) => {
+  try {
+    console.log(link);
+    const response = await axios.get(link);
+    catelist.value = response.data; // Cập nhật dữ liệu
+>>>>>>> 74732299 (add-model)
+=======
+  try {
+    if (!link) return;
+
+    const url = new URL(decodeHtml(link));
+    if (status) url.searchParams.set("status", filtertrash.value);
+    if (sort) url.searchParams.set("sort", filtertime.value);
+    if (search) url.searchParams.set("search", filtersearch.value);
+
+    const response = await axios.get(url.toString());
+
+    catelist.value = response.data;
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
   } catch (error) {
     console.error("Lỗi khi gọi API:", error);
   }
@@ -328,7 +451,16 @@ const getselectop = (value) => {
   getSelect.value = value;
   console.log(getSelect.value);
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
 
+const getcheck = (checkvalue) => {
+  console.log(checkvalue);
+  if (checkvalue == 1) {
+=======
+=======
+
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
 const getcheck = (checkvalue) => {
   console.log(checkvalue);
   if (checkvalue == 1) {
@@ -337,6 +469,19 @@ const getcheck = (checkvalue) => {
     return false;
   }
 };
+<<<<<<< HEAD
+const changestatus = (value) => {
+  if (value) {
+    return false;
+  } else {
+>>>>>>> 74732299 (add-model)
+    return true;
+  } else {
+    return false;
+  }
+};
+=======
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
 
 const changestatus = async (id) => {
   try {

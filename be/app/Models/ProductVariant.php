@@ -18,12 +18,15 @@ class ProductVariant extends Model
     ];
 
     // Mối quan hệ: Biến thể (variant) thuộc về một sản phẩm
+    // 🔗 Mối quan hệ: ProductVariant thuộc về Product
+    // Mối quan hệ: Biến thể (variant) thuộc về một sản phẩm
     public function product()
     {
         return $this->belongsTo(Product::class);
     }
 
     // Mối quan hệ: Biến thể này có thể nằm trong nhiều đơn hàng (order_items)
+    // 🔗 Mối quan hệ: ProductVariant có nhiều OrderItems
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
@@ -46,10 +49,12 @@ class ProductVariant extends Model
 
         // Giảm giá theo tiền cố định mỗi sp
         if ($discount->discount_type === 'fixed_amount') {
-            return max(0, $this->price - $discount->value); 
+            return max(0, $this->price - $discount->value);
+            return max(0, $this->price - $discount->value);
         }
 
         // Trường hợp lỗi để lại giá gốc
         return $this->price;
     }
+
 }

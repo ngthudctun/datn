@@ -19,8 +19,6 @@ class CategoryController extends Controller
         ]);
     }
 
-
-
     public function getAllCategory()
     {
         $getCategories = Category::all();

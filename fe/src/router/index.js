@@ -54,7 +54,7 @@ const routes = [
             { path: 'them-danh-muc', name: 'add-cate', component: () => import('@/views/admin/CrudCategory/Cate_add.vue') },
             { path: 'cap-nhat-danh-muc/:id', name: 'update-cate', component: () => import('@/views/admin/CrudCategory/Cate_update.vue') }
         ]
-    }
+    },
 ]
 
 const router = createRouter({

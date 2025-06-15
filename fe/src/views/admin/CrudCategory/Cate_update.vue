@@ -252,9 +252,15 @@ const updateCate = async () => {
     console.log(response);
     if (response) {
       Swal.fire({
+<<<<<<< HEAD
+        icon: "success",
+        title: response.data.type,
+        text: response.data.message,
+=======
         icon: response.data.type,
         title: response.data.message,
         text: "bạn sẽ được chuyển hướng sau 2 giây",
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
         timer: 2000,
         showConfirmButton: true,
       });
