@@ -82,6 +82,14 @@
                         class="col-12 col-lg-6 d-flex justify-content-center"
                       >
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                        <select class="form-select w-100 text-center border-1">
+                          <option>mới nhất</option>
+                          <option>cũ nhất</option>
+=======
+>>>>>>> dev
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> 0055686a09fb6751679672067b3054586721cd03
@@ -98,8 +106,12 @@
                           <option>mới nhất</option>
                           <option>cũ nhất</option>
 >>>>>>> 74732299 (add-model)
+<<<<<<< HEAD
 =======
 >>>>>>> 0055686a09fb6751679672067b3054586721cd03
+=======
+>>>>>>> main
+>>>>>>> dev
                         </select>
                       </div>
                       <div
@@ -107,6 +119,16 @@
                       >
                         <select
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                          class="form-select w-100 text-center border-1 px-1"
+                          style="box-sizing: border-box"
+                        >
+                          <option selected disabled>Trạng thái</option>
+                          <option value="hidden">Đã ẩn</option>
+                          <option value="active">Kích hoạt</option>
+=======
+>>>>>>> dev
 <<<<<<< HEAD
                           v-on:change="getListCateSell()"
                           v-model="filtertrash"
@@ -123,6 +145,7 @@
                           <option value="hidden">Đã ẩn</option>
                           <option value="active">Kích hoạt</option>
 >>>>>>> 74732299 (add-model)
+<<<<<<< HEAD
 =======
                           v-on:change="getListCateSell()"
                           v-model="filtertrash"
@@ -132,6 +155,9 @@
                           <option value="1">Kích hoạt</option>
                           <option value="2">Đã ẩn</option>
 >>>>>>> 0055686a09fb6751679672067b3054586721cd03
+=======
+>>>>>>> main
+>>>>>>> dev
                         </select>
                       </div>
                     </div>
@@ -211,15 +237,24 @@
                                   class="nlb-toggle-input"
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+                                  :checked="getcheck(item.delete_at)"
+=======
+>>>>>>> dev
+<<<<<<< HEAD
                                   @click="changestatus(item.id)"
                                   :checked="getcheck(item.status)"
 =======
                                   :checked="getcheck(item.delete_at)"
 >>>>>>> 74732299 (add-model)
+<<<<<<< HEAD
 =======
                                   @click="changestatus(item.id)"
                                   :checked="getcheck(item.status)"
 >>>>>>> 0055686a09fb6751679672067b3054586721cd03
+=======
+>>>>>>> main
+>>>>>>> dev
                                 />
                                 <span class="nlb-slider"></span>
                               </label>
@@ -261,13 +296,22 @@
                     </ul>
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+                    <ul class="pagination">
+=======
+>>>>>>> dev
+<<<<<<< HEAD
                     <ul class="pagination d-flex justify-content-end mt-2 px-5" style="box-sizing: border-box;">
 =======
                     <ul class="pagination">
 >>>>>>> 74732299 (add-model)
+<<<<<<< HEAD
 =======
                     <ul class="pagination d-flex justify-content-end mt-2 px-5" style="box-sizing: border-box;">
 >>>>>>> 0055686a09fb6751679672067b3054586721cd03
+=======
+>>>>>>> main
+>>>>>>> dev
                       <li
                         v-for="(link, index) in catelist.links"
                         :key="index"
@@ -280,6 +324,12 @@
                         <a
                           class="page-link"
                           href="#"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                          @click.prevent="GetPaniCate(link.url)"
+=======
+>>>>>>> dev
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -298,8 +348,12 @@
 =======
                           @click.prevent="GetPaniCate(link.url)"
 >>>>>>> 74732299 (add-model)
+<<<<<<< HEAD
 =======
 >>>>>>> 0055686a09fb6751679672067b3054586721cd03
+=======
+>>>>>>> main
+>>>>>>> dev
                           v-html="link.label"
                         ></a>
                       </li>
@@ -326,6 +380,10 @@ import Rageslider from "@/components/admin/AdminLayout/button/rageslider.vue";
 import { ref, onMounted } from "vue";
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+=======
+>>>>>>> dev
+<<<<<<< HEAD
 
 import { useShowtoast } from "@/assets/js/toast";
 import axios from "axios";
@@ -333,10 +391,15 @@ import Categories from "@/components/user/home/Categories.vue";
 import dayjs from "dayjs";
 const toastStore = useShowtoast();
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> dev
 import axios from "axios";
 import Categories from "@/components/user/home/Categories.vue";
 import dayjs from "dayjs";
 
+<<<<<<< HEAD
 >>>>>>> 74732299 (add-model)
 =======
 
@@ -346,6 +409,12 @@ import Categories from "@/components/user/home/Categories.vue";
 import dayjs from "dayjs";
 const toastStore = useShowtoast();
 >>>>>>> 0055686a09fb6751679672067b3054586721cd03
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 74732299 (add-model)
+>>>>>>> main
+>>>>>>> dev
 const formatDate = (datetime) => {
   return dayjs(datetime).format("DD/MM/YYYY HH:mm");
 };
@@ -353,6 +422,10 @@ const formatDate = (datetime) => {
 const catelist = ref([]);
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+=======
+>>>>>>> dev
+<<<<<<< HEAD
 const filtertime = ref("newest");
 const filtertrash = ref(1);
 const filtersearch = ref(null);
@@ -368,10 +441,15 @@ const getListCateSell = async () => {
     });
 
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> dev
 
 const getListCateSell = async () => {
   try {
     const response = await axios.get(`/api/seller-category`);
+<<<<<<< HEAD
 >>>>>>> 74732299 (add-model)
 =======
 const filtertime = ref("newest");
@@ -389,12 +467,23 @@ const getListCateSell = async () => {
     });
 
 >>>>>>> 0055686a09fb6751679672067b3054586721cd03
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 74732299 (add-model)
+>>>>>>> main
+>>>>>>> dev
     catelist.value = response.data; // Cập nhật dữ liệu
     console.log(catelist.value);
   } catch (error) {
     console.error("Lỗi khi gọi API:", error);
   }
 };
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> dev
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -418,11 +507,16 @@ const GetPaniCate = async (link, status, sort, search) => {
 
     catelist.value = response.data;
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> dev
 const GetPaniCate = async (link) => {
   try {
     console.log(link);
     const response = await axios.get(link);
     catelist.value = response.data; // Cập nhật dữ liệu
+<<<<<<< HEAD
 >>>>>>> 74732299 (add-model)
 =======
   try {
@@ -437,6 +531,12 @@ const GetPaniCate = async (link) => {
 
     catelist.value = response.data;
 >>>>>>> 0055686a09fb6751679672067b3054586721cd03
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 74732299 (add-model)
+>>>>>>> main
+>>>>>>> dev
   } catch (error) {
     console.error("Lỗi khi gọi API:", error);
   }
@@ -453,14 +553,22 @@ const getselectop = (value) => {
 };
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+=======
+>>>>>>> dev
+<<<<<<< HEAD
 
 const getcheck = (checkvalue) => {
   console.log(checkvalue);
   if (checkvalue == 1) {
 =======
+<<<<<<< HEAD
 =======
 
 >>>>>>> 0055686a09fb6751679672067b3054586721cd03
+=======
+>>>>>>> main
+>>>>>>> dev
 const getcheck = (checkvalue) => {
   console.log(checkvalue);
   if (checkvalue == 1) {

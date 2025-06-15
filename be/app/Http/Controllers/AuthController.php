@@ -23,10 +23,6 @@ class AuthController extends Controller
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
-        ], [
-            'email.required' => 'Vui lòng nhập email',
-            'email.email' => 'Email không đúng định dạng',
-            'password.required' => 'Vui lòng nhập mật khẩu'
         ]);
 
         if (!Auth::attempt($credentials)) {
@@ -45,7 +41,7 @@ class AuthController extends Controller
         ]);
     }
 
-    // Đăng ký
+    // Đăng ký và tự động đăng nhập
     public function createUser(Request $request)
     {
         $validated = $request->validate([

@@ -214,12 +214,20 @@ import uploadimage from "./uploadimagesAd.vue";
 import axios from "axios";
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+=======
+>>>>>>> dev
+<<<<<<< HEAD
 import { baseImageUrl } from "@/config/constans";
 =======
 >>>>>>> 74732299 (add-model)
+<<<<<<< HEAD
 =======
 import { baseImageUrl } from "@/config/constans";
 >>>>>>> 0055686a09fb6751679672067b3054586721cd03
+=======
+>>>>>>> main
+>>>>>>> dev
 const imageUrl = import.meta.env.VITE_IMAGE_BASE_URL;
 const props = defineProps({
   type: String,
@@ -230,6 +238,12 @@ const props = defineProps({
   haveImage: String,
 });
 const images_firt = ref(null);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+const images = ref([]);
+=======
+>>>>>>> dev
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -243,8 +257,12 @@ const hiddenInput = ref(null);
 =======
 const images = ref([]);
 >>>>>>> 74732299 (add-model)
+<<<<<<< HEAD
 =======
 >>>>>>> 0055686a09fb6751679672067b3054586721cd03
+=======
+>>>>>>> main
+>>>>>>> dev
 const getListCateSell = async () => {
   try {
     const response = await axios.get(`/api/seller-image-gate`, {
@@ -257,16 +275,33 @@ const getListCateSell = async () => {
 <<<<<<< HEAD
 =======
     console.log(images.value);
+=======
+>>>>>>> dev
+<<<<<<< HEAD
+=======
+    console.log(images.value);
 >>>>>>> 74732299 (add-model)
+<<<<<<< HEAD
 =======
 >>>>>>> 0055686a09fb6751679672067b3054586721cd03
+=======
+>>>>>>> main
+>>>>>>> dev
   } catch (error) {
     console.error("Lỗi khi gọi API:", error);
   }
 };
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> dev
 /* const GetPaniCate = async (link) => {
   try {
     console.log(link);
@@ -280,9 +315,16 @@ const getListCateSell = async () => {
 onMounted(() => {
   getListCateSell(); // Gọi API khi component được mount
 });
+<<<<<<< HEAD
 >>>>>>> 74732299 (add-model)
 =======
 >>>>>>> 0055686a09fb6751679672067b3054586721cd03
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 74732299 (add-model)
+>>>>>>> main
+>>>>>>> dev
 
 const emit = defineEmits(["returnimg", "returnimgex"]);
 function submitImage() {

@@ -3,45 +3,36 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-use App\Models\Category;
 
 class SellerCateController extends Controller
 {
     // Danh sách danh mục (có lọc, tìm kiếm, phân trang)
     public function index(Request $request)
     {
-        $query = Category::query()->withCount('products');
+        $query = Category::withTrashed()->withCount('products');
 
         if ($request->filled('search')) {
             $query->where('category_name', 'like', '%' . $request->search . '%');
         }
 
         if ($request->has('status')) {
-            if ($request->status == 1) {
-                $query->where('status', 1);
-            } elseif ($request->status == 2) {
-                $query->where('status', 2);
-            }
+            $query->where('status', $request->status);
         }
 
-        if ($request->has('sort')) {
-            if ($request->sort === 'newest') {
-                $query->orderBy('created_at', 'desc');
-            } elseif ($request->sort === 'oldest') {
-                $query->orderBy('created_at', 'asc');
-            }
+        if ($request->sort === 'newest') {
+            $query->orderBy('created_at', 'desc');
+        } elseif ($request->sort === 'oldest') {
+            $query->orderBy('created_at', 'asc');
         }
 
-        $cateall = $query->paginate(4);
-
-        return response()->json($cateall);
+        return response()->json($query->paginate(4));
     }
 
-    // Lấy danh mục cha (trừ ID hiện tại nếu có)
+    // Lấy danh mục cha
     public function getParentcate(?int $id = null)
     {
         $query = Category::select('id', 'category_name');
@@ -50,9 +41,7 @@ class SellerCateController extends Controller
             $query->where('id', '!=', $id);
         }
 
-        $cateparent = $query->get();
-
-        return response()->json(['cateparent' => $cateparent], 200);
+        return response()->json(['cateparent' => $query->get()], 200);
     }
 
     // Tạo mới danh mục
@@ -71,13 +60,12 @@ class SellerCateController extends Controller
             $category = Category::create([
                 'category_name' => $validated['category_name'],
                 'image' => $validated['image'] ?? null,
-                'category_parent_id' => empty($request->category_parent_id) || $request->category_parent_id == 0 ? null : (int)$request->category_parent_id,
                 'slug' => $slug,
+                'category_parent_id' => $request->category_parent_id ?: null,
                 'status' => $request->status ?? 1,
             ]);
 
             return response()->json([
-                'type' => 'success',
                 'message' => 'Tạo danh mục thành công',
                 'data' => $category
             ], 201);
@@ -94,12 +82,12 @@ class SellerCateController extends Controller
         }
     }
 
-    // Hiển thị thông tin 1 danh mục
+    // Lấy chi tiết 1 danh mục
     public function show(string $id)
     {
         try {
-            $category = Category::with('parent:id,category_name')->findOrFail((int)$id);
-            $cateparent = $this->getParentcate((int)$id)->getData(true)['cateparent'];
+            $category = Category::with('parent:id,category_name')->findOrFail($id);
+            $cateparent = $this->getParentcate($id)->getData(true)['cateparent'];
 
             return response()->json([
                 'cateparent' => $cateparent,
@@ -112,7 +100,7 @@ class SellerCateController extends Controller
                     'category_parent_id' => $category->category_parent_id,
                     'category_parent_name' => $category->parent->category_name ?? null,
                 ]
-            ], 200);
+            ]);
         } catch (\Exception $e) {
             return response()->json([
                 'message' => 'Lỗi hệ thống',
@@ -139,16 +127,15 @@ class SellerCateController extends Controller
             $category->update([
                 'category_name' => $validated['category_name'],
                 'image' => $validated['image'] ?? $category->image,
-                'category_parent_id' => empty($request->category_parent_id) || $request->category_parent_id == 0 ? null : (int)$request->category_parent_id,
+                'category_parent_id' => $request->category_parent_id ?: null,
                 'slug' => $slug,
                 'status' => $request->status ?? $category->status
             ]);
 
             return response()->json([
-                'type' => 'success',
                 'message' => 'Cập nhật danh mục thành công',
                 'data' => $category
-            ], 200);
+            ]);
         } catch (ValidationException $e) {
             return response()->json([
                 'message' => 'Dữ liệu gửi lên không hợp lệ',
@@ -162,11 +149,10 @@ class SellerCateController extends Controller
         }
     }
 
-    // Đổi trạng thái hiển thị danh mục
+    // Đổi trạng thái danh mục
     public function changeStatus(Request $request)
     {
         $category = Category::findOrFail((int)$request->id);
-
         $category->status = $category->status == 1 ? 2 : 1;
         $category->save();
 
@@ -176,9 +162,21 @@ class SellerCateController extends Controller
         ]);
     }
 
-    // Xóa danh mục (nếu cần)
-    public function destroy(Request $request)
+    // Xoá danh mục
+    public function destroy(string $id)
     {
-        // Viết code xóa ở đây nếu cần
+        try {
+            $category = Category::findOrFail($id);
+            $category->delete();
+
+            return response()->json([
+                'message' => 'Xoá danh mục thành công.'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Lỗi khi xoá danh mục.',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 }

@@ -30,8 +30,7 @@ class ProductController extends Controller
         $query->where('product_name', 'like', '%' . $request->search . '%');
     }
 
-        $products = $query->inRandomOrder()->paginate(18);
-
+        $products = $query::inRandomOrder()->paginate(18);
         return response()->json($products);
     }
 
