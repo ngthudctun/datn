@@ -23,6 +23,7 @@ class AuthController extends Controller
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
+
     $credentials = $request->validate([
         'email' => ['required', 'email'],
         'password' => ['required'],
@@ -49,6 +50,9 @@ class AuthController extends Controller
             'username' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:1|confirmed',
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ], [
             'email.required' => 'Vui lòng nhập email',
             'email.email' => 'Email không đúng định dạng',
@@ -100,9 +104,6 @@ class AuthController extends Controller
     {
         if ($request->user()) {
             $request->user()->currentAccessToken()->delete();
-<<<<<<< HEAD
-
-
     public function createUser(Request $request)
     {
         $validated = $request->validate([
@@ -127,12 +128,11 @@ class AuthController extends Controller
     {
         if ($request->user()) {
             $request->user()->currentAccessToken()->delete();
-
-=======
->>>>>>> f1ec6e5d (update product và api google)
             return response()->json(['message' => 'Đăng xuất thành công']);
         }
 
         return response()->json(['message' => 'Không xác thực được người dùng'], 401);
+    }
+}
     }
 }

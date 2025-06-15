@@ -2279,6 +2279,9 @@ ol {
 	margin-right: 10px;
 	display: inline-block;
 	margin-bottom: 0;
+	border: 1px solid #666;
+	padding: 2px 8px;
+	border-radius: 2px;
 }
 
 .product__details__widget ul li .size__btn label:last-child {
@@ -2287,6 +2290,7 @@ ol {
 
 .product__details__widget ul li .size__btn label.active {
 	color: var(--color--primary);
+	border-color: var(--color--primary);
 }
 
 .product__details__widget ul li .size__btn label input {

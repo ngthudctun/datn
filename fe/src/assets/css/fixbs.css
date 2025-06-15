@@ -1,29 +1,109 @@
-.dropdown-menu li{
+:root {
+	--color--primary: #ca1515;
+	/* Đỏ đậm */
+	--gradient-primary: linear-gradient(45deg, #CA1515, #FF4444);
+
+	/* Xanh lá */
+	--gradient-green: linear-gradient(45deg, #36A300, #66D633);
+
+	/* Xám nhạt */
+	--gradient-gray: linear-gradient(45deg, #E1E1E1, #F8F8F8);
+
+	/* Trắng */
+	--gradient-white: linear-gradient(45deg, #f6f6f6, #ffffff);
+
+	/* Vàng */
+	--gradient-yellow: linear-gradient(45deg, #FFA500, #FFD700);
+
+	/* Đen */
+	--gradient-black: linear-gradient(45deg, #111111, #555555);
+
+	--box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+
+.dropdown-menu li {
     width: 100% !important;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     min-width: 10px !important;
 }
 
-.review .rating{
+.review .rating {
     text-transform: lowercase;
 }
 
 .review .rating i {
-	font-size: 14px;
-	background: var(--gradient-yellow);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	display: inline-block;
-	margin-right: 4px;
+    font-size: 14px;
+    background: var(--gradient-yellow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    margin-right: 4px;
 }
 
 .pro-qty .dec,
 .pro-qty .inc {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
+}
+
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.invalid-feedback {
+    color: #dc3545 !important;
+    font-size: 0.875rem;
+}
+
+
+.custom-checkbox {
+    display: block;
+    padding-left: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    visibility: hidden;
+}
+
+.custom-checkbox input:checked~.checkmark {
+    border-color: var(--color--primary);
+}
+
+.custom-checkbox input:checked~.checkmark:after {
+    border-color: var(--color--primary);
+    opacity: 1;
+}
+
+.custom-checkbox .checkmark {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 12px;
+    width: 12px;
+    border: 1px solid #444444;
+    border-radius: 2px;
+}
+
+.custom-checkbox .checkmark:after {
+    position: absolute;
+    left: 0px;
+    top: -2px;
+    width: 12px;
+    height: 5px;
+    border: solid #ffffff;
+    border-width: 1.5px 1.5px 0px 0px;
+    transform: rotate(127deg);
+    opacity: 0;
+    content: "";
 }

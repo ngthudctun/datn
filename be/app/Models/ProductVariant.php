@@ -17,9 +17,9 @@ class ProductVariant extends Model
         'status',
     ];
 
-
     // Mối quan hệ: Biến thể (variant) thuộc về một sản phẩm
     // 🔗 Mối quan hệ: ProductVariant thuộc về Product
+    // Mối quan hệ: Biến thể (variant) thuộc về một sản phẩm
     public function product()
     {
         return $this->belongsTo(Product::class);
@@ -50,6 +50,7 @@ class ProductVariant extends Model
 
         // Giảm giá theo tiền cố định mỗi sp
         if ($discount->discount_type === 'fixed_amount') {
+            return max(0, $this->price - $discount->value);
             return max(0, $this->price - $discount->value);
         }
 

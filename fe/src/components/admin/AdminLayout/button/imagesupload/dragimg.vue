@@ -213,9 +213,13 @@ import { onMounted, ref, watch } from "vue";
 import uploadimage from "./uploadimagesAd.vue";
 import axios from "axios";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { baseImageUrl } from "@/config/constans";
 =======
 >>>>>>> 74732299 (add-model)
+=======
+import { baseImageUrl } from "@/config/constans";
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
 const imageUrl = import.meta.env.VITE_IMAGE_BASE_URL;
 const props = defineProps({
   type: String,
@@ -227,14 +231,20 @@ const props = defineProps({
 });
 const images_firt = ref(null);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
 
 const imageStore = useImageSelect();
 
 const images = ref([]);
 const hiddenInput = ref(null);
+<<<<<<< HEAD
 =======
 const images = ref([]);
 >>>>>>> 74732299 (add-model)
+=======
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
 const getListCateSell = async () => {
   try {
     const response = await axios.get(`/api/seller-image-gate`, {
@@ -244,13 +254,17 @@ const getListCateSell = async () => {
     });
     images.value = response.data; // Cập nhật dữ liệu
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     console.log(images.value);
 >>>>>>> 74732299 (add-model)
+=======
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
   } catch (error) {
     console.error("Lỗi khi gọi API:", error);
   }
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /* const GetPaniCate = async (link) => {
@@ -267,6 +281,8 @@ onMounted(() => {
   getListCateSell(); // Gọi API khi component được mount
 });
 >>>>>>> 74732299 (add-model)
+=======
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
 
 const emit = defineEmits(["returnimg", "returnimgex"]);
 function submitImage() {
@@ -281,6 +297,7 @@ function submitImage() {
   emit("returnimg", selected);
   if (selected) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     images_firt.value = selected;
 =======
     oneimg.classList.remove("d-none");
@@ -288,6 +305,9 @@ function submitImage() {
     images_firt.value = imageUrl + selected;
     showoneimg.src = images_firt.value;
 >>>>>>> 74732299 (add-model)
+=======
+    images_firt.value = selected;
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
   } else {
     images_firt.value = null;
   }
@@ -301,7 +321,6 @@ function toggleImageSelect(img) {
   } else {
     selectedImage.value = img;
   }
-  console.log(img);
 }
 
 let uploadnum = ref(0);

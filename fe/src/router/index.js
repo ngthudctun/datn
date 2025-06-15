@@ -13,6 +13,8 @@ import Contact from '@/views/pages/Contact.vue'
 import Login from '@/views/pages/Login.vue'
 import Register from '@/views/pages/Register.vue'
 import ForgotPassword from '@/views/pages/ForgotPassword.vue'
+import User from '@/views/pages/User.vue'
+import Wishlist from '@/views/pages/Wishlist.vue'
 
 const routes = [
     {
@@ -79,6 +81,16 @@ const routes = [
                 name: 'ForgotPassword',
                 component: ForgotPassword,
             },
+            {
+                path: 'user',
+                name: 'user',
+                component: User,
+            },
+            {
+                path: 'user/san-pham-yeu-thich',
+                name: 'wishlist',
+                component: Wishlist
+            }
         ],
     },
 
@@ -120,7 +132,11 @@ const routes = [
                 path: "cap-nhat-danh-muc/:id",
                 name: "update-cate",
                 component: () => import('@/views/admin/CrudCategory/Cate_update.vue'),
+<<<<<<< HEAD
                 
+=======
+
+>>>>>>> 0055686a09fb6751679672067b3054586721cd03
             },
         ],
 

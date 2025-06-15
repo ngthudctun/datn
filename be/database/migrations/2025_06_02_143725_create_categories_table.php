@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->string('image')->nullable();
             $table->enum('status', [1, 2])->default(1); // ➕ Thêm dòng này
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
