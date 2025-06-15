@@ -90,11 +90,14 @@ export default {
 .category-item {
     cursor: pointer;
     border: none;
+    &:hover{
+        box-shadow: var(--box-shadow);
+    }
 }
 
 .category-item:hover img {
     transition: transform 0.3s ease;
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .category-section:hover :deep(.owl-nav button.owl-prev),

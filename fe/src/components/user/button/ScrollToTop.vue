@@ -1,6 +1,6 @@
 <template>
     <button class="scroll-to-top" :class="{ show: showScrollTop }" @click="scrollToTop">
-        <i class="fas fa-arrow-up"></i>
+        <i class="fa-light fa-arrow-up"></i>
     </button>
 </template>
 
@@ -37,14 +37,14 @@ export default {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: #dc3545;
+    background: var(--gradient-primary);
     /* --primary-red */
     color: white;
     border: none;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     opacity: 0;
@@ -57,7 +57,7 @@ export default {
 }
 
 .scroll-to-top:hover {
-    background: #c82333;
+    background: var(--gradient-primary);
     /* --dark-red */
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);

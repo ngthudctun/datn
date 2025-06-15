@@ -77,6 +77,7 @@ export default {
             try {
                 const response = await axios.get('/api/products/latest');
                 this.products = response.data;
+                console.log(this.products);
             } catch (error) {
                 console.error('Lỗi khi lấy sản phẩm mới:', error);
             } finally {
