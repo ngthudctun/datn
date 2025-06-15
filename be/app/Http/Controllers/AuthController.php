@@ -23,36 +23,6 @@ class AuthController extends Controller
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
-
-    $credentials = $request->validate([
-        'email' => ['required', 'email'],
-        'password' => ['required'],
-    ]);
-
-    if (!Auth::attempt($credentials)) {
-        return response()->json([
-            'message' => 'Email hoặc mật khẩu không đúng'
-        ], 401);
-    }
-
-    $users = Auth::user();
-
-    $token = $users->createToken('api-token')->plainTextToken;
-
-    return response()->json([
-        'message' => 'Đăng nhập thành công',
-        'user' => $users,
-        'token' => $token
-    ]);
-    }
-    public function createUser(Request $request) {
-        $validated = $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:1|confirmed',
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
         ], [
             'email.required' => 'Vui lòng nhập email',
             'email.email' => 'Email không đúng định dạng',
@@ -104,35 +74,9 @@ class AuthController extends Controller
     {
         if ($request->user()) {
             $request->user()->currentAccessToken()->delete();
-    public function createUser(Request $request)
-    {
-        $validated = $request->validate([
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed',
-        ], [
-            'email.unique' => 'Email đã tồn tại',
-            'password.confirmed' => 'Mật khẩu không trùng khớp',
-            'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự'
-        ]);
-
-        $validated['password'] = Hash::make($validated['password']);
-        $user = User::create($validated);
-
-        return response()->json([
-            'message' => 'Đăng ký thành công',
-            'user' => new UserResource($user)
-        ], 201);
-    }
-
-    public function logout(Request $request)
-    {
-        if ($request->user()) {
-            $request->user()->currentAccessToken()->delete();
             return response()->json(['message' => 'Đăng xuất thành công']);
         }
 
         return response()->json(['message' => 'Không xác thực được người dùng'], 401);
-    }
-}
     }
 }

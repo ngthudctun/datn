@@ -16,17 +16,12 @@ use App\Http\Controllers\ApiWishlistController;
 use App\Http\Controllers\API\ProductController as APIProductController;
 use Illuminate\Support\Facades\Request;
 
-/* api của trung */
-Route::get('/products/latest', [ProductController::class, 'latestFive']);
-Route::post('/products/latest', [ProductController::class, 'latestFive']);
 
-Route::apiResource('products', ProductController::class);
-
-/*API cua trung */
 
 // Đức Tuấn
 use App\Http\Controllers\DiscountController;
 
+/* api của trung */
 Route::get('/products/latest', [ProductController::class, 'latestFive']);
 Route::apiResource('products', ProductController::class);
 
@@ -42,6 +37,7 @@ Route::post('/auth/google/callback', [GoogleController::class, 'handleGoogleCall
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('users', AuthController::class);
     Route::post('/logout', [AuthController::class, 'logout']);
+});
 /*API cua trung */
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users', [AuthController::class, 'index']);
