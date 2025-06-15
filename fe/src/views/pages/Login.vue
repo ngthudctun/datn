@@ -165,12 +165,6 @@ export default {
                 this.isLoading = false;
             }
         }
-
-        async loginGogle() {
-            
-        }
-
-
     }
 }
 </script>
