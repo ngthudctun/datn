@@ -25,7 +25,7 @@
       <div class="">
         <NavSuport />
       </div>
-
+      <div id="toastbox" style="height: 100px" class="toastbox"></div>
       <div class="bg-white" style="padding-top: 70px">
         <div class="row border-black py-4">
           <div class="px-4" style="box-sizing: border-box">
@@ -63,6 +63,8 @@
                         <form class="d-flex align-items-center">
                           <i class="fas fa-search"></i>
                           <input
+                            v-model="filtersearch"
+                            v-on:input="getListCateSell()"
                             class="form-control mx-2 border-0 p-0"
                             style="background-color: rgb(227 230 237 / 0%)"
                             type=""
@@ -79,27 +81,62 @@
                       <div
                         class="col-12 col-lg-6 d-flex justify-content-center"
                       >
+<<<<<<< HEAD
                         <select class="form-select w-100 text-center border-1">
                           <option>mới nhất</option>
                           <option>cũ nhất</option>
+=======
+<<<<<<< HEAD
+                        <select
+                          v-on:change="getListCateSell()"
+                          v-model="filtertime"
+                          class="form-select w-100 text-center border-1"
+                        >
+                          <option value="newest">mới nhất</option>
+                          <option value="oldest">cũ nhất</option>
+=======
+                        <select class="form-select w-100 text-center border-1">
+                          <option>mới nhất</option>
+                          <option>cũ nhất</option>
+>>>>>>> 74732299 (add-model)
+>>>>>>> main
                         </select>
                       </div>
                       <div
                         class="col-12 w-100 col-lg-6 mt-2 mt-lg-0 d-flex justify-content-center"
                       >
                         <select
+<<<<<<< HEAD
                           class="form-select w-100 text-center border-1 px-1"
                           style="box-sizing: border-box"
                         >
                           <option selected disabled>Trạng thái</option>
                           <option value="hidden">Đã ẩn</option>
                           <option value="active">Kích hoạt</option>
+=======
+<<<<<<< HEAD
+                          v-on:change="getListCateSell()"
+                          v-model="filtertrash"
+                          class="form-select w-100 text-center border-1 px-1"
+                          style="box-sizing: border-box"
+                        >
+                          <option value="1">Kích hoạt</option>
+                          <option value="2">Đã ẩn</option>
+=======
+                          class="form-select w-100 text-center border-1 px-1"
+                          style="box-sizing: border-box"
+                        >
+                          <option selected disabled>Trạng thái</option>
+                          <option value="hidden">Đã ẩn</option>
+                          <option value="active">Kích hoạt</option>
+>>>>>>> 74732299 (add-model)
+>>>>>>> main
                         </select>
                       </div>
                     </div>
                   </div>
-                  <div class="row box-product" style="overflow-x: auto">
-                    <ul>
+                  <div class="row box-product" style="overflow-x: auto; ">
+                    <ul style="border-bottom: 1px solid;">
                       <li>
                         <div
                           class="mt-4 d-flex align-items-center"
@@ -175,7 +212,16 @@
                                 <input
                                   type="checkbox"
                                   class="nlb-toggle-input"
+<<<<<<< HEAD
                                   :checked="getcheck(item.delete_at)"
+=======
+<<<<<<< HEAD
+                                  @click="changestatus(item.id)"
+                                  :checked="getcheck(item.status)"
+=======
+                                  :checked="getcheck(item.delete_at)"
+>>>>>>> 74732299 (add-model)
+>>>>>>> main
                                 />
                                 <span class="nlb-slider"></span>
                               </label>
@@ -196,7 +242,9 @@
                                 <ul class="dropdown-menu">
                                   <li>
                                     <router-link
-                                      :to="'/admin/cap-nhat-danh-muc'"
+                                      :to="
+                                        '/admin/cap-nhat-danh-muc/' + item.id
+                                      "
                                     >
                                       <div class="dropdown-item">
                                         Chỉnh sửa
@@ -213,7 +261,15 @@
                         </div>
                       </li>
                     </ul>
+<<<<<<< HEAD
                     <ul class="pagination">
+=======
+<<<<<<< HEAD
+                    <ul class="pagination d-flex justify-content-end mt-2 px-5" style="box-sizing: border-box;">
+=======
+                    <ul class="pagination">
+>>>>>>> 74732299 (add-model)
+>>>>>>> main
                       <li
                         v-for="(link, index) in catelist.links"
                         :key="index"
@@ -226,7 +282,24 @@
                         <a
                           class="page-link"
                           href="#"
+<<<<<<< HEAD
                           @click.prevent="GetPaniCate(link.url)"
+=======
+<<<<<<< HEAD
+                          @click.prevent="
+                            link.url
+                              ? GetPaniCate(
+                                  link.url,
+                                  filtertrash,
+                                  filtertime,
+                                  filtersearch
+                                )
+                              : null
+                          "
+=======
+                          @click.prevent="GetPaniCate(link.url)"
+>>>>>>> 74732299 (add-model)
+>>>>>>> main
                           v-html="link.label"
                         ></a>
                       </li>
@@ -251,30 +324,94 @@ import "@/assets/css/admincss/css/curdproduct/productlist.css";
 import NavSuport from "@/components/admin/AdminLayout/NavSuport.vue";
 import Rageslider from "@/components/admin/AdminLayout/button/rageslider.vue";
 import { ref, onMounted } from "vue";
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+import { useShowtoast } from "@/assets/js/toast";
+import axios from "axios";
+import Categories from "@/components/user/home/Categories.vue";
+import dayjs from "dayjs";
+const toastStore = useShowtoast();
+=======
+>>>>>>> main
 import axios from "axios";
 import Categories from "@/components/user/home/Categories.vue";
 import dayjs from "dayjs";
 
+<<<<<<< HEAD
+=======
+>>>>>>> 74732299 (add-model)
+>>>>>>> main
 const formatDate = (datetime) => {
   return dayjs(datetime).format("DD/MM/YYYY HH:mm");
 };
 
 const catelist = ref([]);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+const filtertime = ref("newest");
+const filtertrash = ref(1);
+const filtersearch = ref(null);
+
+const getListCateSell = async () => {
+  try {
+    const response = await axios.get(`/api/seller-category`, {
+      params: {
+        search: filtersearch.value,
+        sort: filtertime.value,
+        status: filtertrash.value,
+      },
+    });
+
+=======
+>>>>>>> main
 
 const getListCateSell = async () => {
   try {
     const response = await axios.get(`/api/seller-category`);
+<<<<<<< HEAD
+=======
+>>>>>>> 74732299 (add-model)
+>>>>>>> main
     catelist.value = response.data; // Cập nhật dữ liệu
     console.log(catelist.value);
   } catch (error) {
     console.error("Lỗi khi gọi API:", error);
   }
 };
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+const decodeHtml = (html) => {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
+};
+const GetPaniCate = async (link, status, sort, search) => {
+  try {
+    if (!link) return;
+
+    const url = new URL(decodeHtml(link));
+    if (status) url.searchParams.set("status", filtertrash.value);
+    if (sort) url.searchParams.set("sort", filtertime.value);
+    if (search) url.searchParams.set("search", filtersearch.value);
+
+    const response = await axios.get(url.toString());
+
+    catelist.value = response.data;
+=======
+>>>>>>> main
 const GetPaniCate = async (link) => {
   try {
     console.log(link);
     const response = await axios.get(link);
     catelist.value = response.data; // Cập nhật dữ liệu
+<<<<<<< HEAD
+=======
+>>>>>>> 74732299 (add-model)
+>>>>>>> main
   } catch (error) {
     console.error("Lỗi khi gọi API:", error);
   }
@@ -289,6 +426,15 @@ const getselectop = (value) => {
   getSelect.value = value;
   console.log(getSelect.value);
 };
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+const getcheck = (checkvalue) => {
+  console.log(checkvalue);
+  if (checkvalue == 1) {
+=======
+>>>>>>> main
 const getcheck = (checkvalue) => {
   if (!checkvalue) {
     console.log(checkvalue);
@@ -301,7 +447,28 @@ const changestatus = (value) => {
   if (value) {
     return false;
   } else {
+>>>>>>> 74732299 (add-model)
     return true;
+  } else {
+    return false;
+  }
+};
+
+const changestatus = async (id) => {
+  try {
+    const response = await axios.patch("/api/seller-category-change-status", {
+      id,
+    });
+
+    toastStore.toast({
+      title: "Thông báo",
+      message: response.data.message,
+      type: response.data.type,
+      duration: 2000,
+    });
+    console.log(response);
+  } catch (error) {
+    console.error("Lỗi khi đổi trạng thái:", error);
   }
 };
 </script>

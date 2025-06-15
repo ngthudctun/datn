@@ -15,8 +15,10 @@ class CategoryController extends Controller
     {
         $category = Category::paginate(5);
         return response()->json($category);
+
     }
-    public function getAllCategory() {
+    public function getAllCategory()
+    {
         $getCategories = Category::all();
         return response()->json($getCategories);
     }

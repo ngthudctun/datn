@@ -2,34 +2,53 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class GoogleController extends Controller
 {
-    public function redirectToGoogle()
+    public function getGoogleRedirectUrl()
     {
-        return Socialite::driver('google')->redirect();
+        $url = Socialite::driver('google')
+            ->stateless()
+            ->redirect()
+            ->getTargetUrl();
+
+        return response()->json(['url' => $url]);
     }
 
-    public function handleGoogleCallback()
+    // Xử lý callback từ Google
+    public function handleGoogleCallbackApi(Request $request)
     {
         try {
-            $googleUser = Socialite::driver('google')->stateless()->user();
+            $googleUser = Socialite::driver('google')
+                ->stateless()
+                ->userFromToken($request->token);
 
-            // Tìm hoặc tạo user
             $user = User::firstOrCreate(
                 ['email' => $googleUser->getEmail()],
-                ['name' => $googleUser->getName()]
+                [
+                    'name' => $googleUser->getName(),
+                    'role' => 'user',
+                    'password' => Hash::make(Str::random(24)),
+                ]
             );
 
-            Auth::login($user);
+            $token = $user->createToken('google_token')->plainTextToken;
 
-            return redirect('/home'); // hoặc bất kỳ đâu
+            return response()->json([
+                'user' => $user,
+                'token' => $token,
+            ]);
 
         } catch (\Exception $e) {
-            return redirect('/login')->with('error', 'Đăng nhập Google thất bại!');
+            return response()->json([
+                'message' => 'Google login failed',
+                'error' => $e->getMessage(),
+            ], 500);
         }
     }
 }
