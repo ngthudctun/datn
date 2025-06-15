@@ -11,12 +11,26 @@ class ProductController extends Controller
     // Lấy danh sách sản phẩm
     public function index()
     {
-        $products = Product::paginate(18);
+        $products = Product::inRandomOrder()->paginate(18);
         return response()->json($products);
     }
-    public function getById($id) {
-        $products = Product::find($id);
-        return response()->json($products);
+    public function getById($id)
+    {
+    $product = Product::with([
+        'variants',
+        'discount',
+        'category',
+        'brand'
+    ])->find($id);
+
+    if (!$product) {
+        return response()->json(['message' => 'Không tìm thấy sản phẩm'], 404);
+    }
+
+        $product->min_final_price = $product->min_final_price;
+        $product->discount_rate = $product->discount_rate;
+
+        return response()->json($product);
     }
     public function getRelatedById($id) {
         $products = Product::find($id);
