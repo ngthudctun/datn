@@ -166,6 +166,10 @@ export default {
             }
         }
 
+        async loginGogle() {
+            
+        }
+
 
     }
 }

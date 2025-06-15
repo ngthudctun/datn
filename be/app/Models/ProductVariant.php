@@ -31,7 +31,21 @@ class ProductVariant extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
-    
+
+    public function attributeVariants()
+    {
+        return $this->belongsToMany(
+            \App\Models\AttributeVariant::class,
+         'product_variant_attribute',
+            'product_variant_id',
+            'attribute_variant_id'
+    );
+    }
+ function images() {
+        return $this->hasMany(ProductVariantImage::class);
+    }
+
+
     public function getFinalPriceAttribute()
     {
         // Lấy discount hiện tại từ sản phẩm cha
@@ -49,7 +63,6 @@ class ProductVariant extends Model
 
         // Giảm giá theo tiền cố định mỗi sp
         if ($discount->discount_type === 'fixed_amount') {
-            return max(0, $this->price - $discount->value);
             return max(0, $this->price - $discount->value);
         }
 

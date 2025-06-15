@@ -3,37 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-<<<<<<< HEAD
-<<<<<<< HEAD
-use GrahamCampbell\ResultType\Success;
-=======
->>>>>>> 74732299 (add-model)
-=======
-use GrahamCampbell\ResultType\Success;
->>>>>>> 0055686a09fb6751679672067b3054586721cd03
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use App\Models\Category;
 
 class SellerCateController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-<<<<<<< HEAD
-<<<<<<< HEAD
+    // Danh sách danh mục (có lọc, tìm kiếm, phân trang)
     public function index(Request $request)
     {
         $query = Category::query()->withCount('products');
 
-        // 🔍 1. Tìm kiếm theo tên
         if ($request->filled('search')) {
             $query->where('category_name', 'like', '%' . $request->search . '%');
         }
 
-        // ✅ 2. Lọc theo trạng thái
         if ($request->has('status')) {
             if ($request->status == 1) {
                 $query->where('status', 1);
@@ -42,7 +28,6 @@ class SellerCateController extends Controller
             }
         }
 
-        // ✅ 3. Lọc theo thời gian tạo
         if ($request->has('sort')) {
             if ($request->sort === 'newest') {
                 $query->orderBy('created_at', 'desc');
@@ -56,161 +41,43 @@ class SellerCateController extends Controller
         return response()->json($cateall);
     }
 
+    // Lấy danh mục cha (trừ ID hiện tại nếu có)
     public function getParentcate(?int $id = null)
     {
+        $query = Category::select('id', 'category_name');
 
         if ($id) {
-
-            $cateparent = Category::where('id', '!=', (int) $id)
-                ->select('id', 'category_name') // Chỉ lấy các cột cần
-                ->get();
-            return $cateparent;
-        } else {
-            $cateparent = Category::select('id', 'category_name') // Chỉ lấy các cột cần
-                ->get();
-            return response()->json([
-                'cateparent' => $cateparent,
-            ], 200);
+            $query->where('id', '!=', $id);
         }
+
+        $cateparent = $query->get();
+
+        return response()->json(['cateparent' => $cateparent], 200);
     }
 
-
-=======
-    public function index()
-=======
-    public function index(Request $request)
->>>>>>> 0055686a09fb6751679672067b3054586721cd03
-    {
-        $query = Category::query()->withCount('products');
-
-        // 🔍 1. Tìm kiếm theo tên
-        if ($request->filled('search')) {
-            $query->where('category_name', 'like', '%' . $request->search . '%');
-        }
-
-        // ✅ 2. Lọc theo trạng thái
-        if ($request->has('status')) {
-            if ($request->status == 1) {
-                $query->where('status', 1);
-            } elseif ($request->status == 2) {
-                $query->where('status', 2);
-            }
-        }
-
-        // ✅ 3. Lọc theo thời gian tạo
-        if ($request->has('sort')) {
-            if ($request->sort === 'newest') {
-                $query->orderBy('created_at', 'desc');
-            } elseif ($request->sort === 'oldest') {
-                $query->orderBy('created_at', 'asc');
-            }
-        }
-
-        $cateall = $query->paginate(4);
-
-        return response()->json($cateall);
-    }
-
-<<<<<<< HEAD
->>>>>>> 74732299 (add-model)
-=======
-    public function getParentcate(?int $id = null)
-    {
-
-        if ($id) {
-
-            $cateparent = Category::where('id', '!=', (int) $id)
-                ->select('id', 'category_name') // Chỉ lấy các cột cần
-                ->get();
-            return $cateparent;
-        } else {
-            $cateparent = Category::select('id', 'category_name') // Chỉ lấy các cột cần
-                ->get();
-            return response()->json([
-                'cateparent' => $cateparent,
-            ], 200);
-        }
-    }
-
-
->>>>>>> 0055686a09fb6751679672067b3054586721cd03
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Tạo mới danh mục
     public function store(Request $request)
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
         try {
-            // Validate dữ liệu đầu vào
             $validated = $request->validate([
                 'category_name' => 'required|string|max:255|unique:categories,category_name',
                 'image' => 'nullable|string|max:255',
                 'slug' => 'nullable|string|max:255',
                 'category_parent_id' => 'nullable|integer',
-
             ]);
 
-            // Gán slug nếu không truyền
             $slug = $validated['slug'] ?? Str::slug($validated['category_name']);
 
-            // Tạo mới danh mục
             $category = Category::create([
                 'category_name' => $validated['category_name'],
                 'image' => $validated['image'] ?? null,
-                'category_parent_id' =>
-                empty($request->category_parent_id) || $request->category_parent_id == 0
-                    ? null
-                    : (int)$request->category_parent_id,
+                'category_parent_id' => empty($request->category_parent_id) || $request->category_parent_id == 0 ? null : (int)$request->category_parent_id,
                 'slug' => $slug,
-                'status' => $request->status ?? 1 // mặc định là hiển thị nếu không truyền
+                'status' => $request->status ?? 1,
             ]);
 
             return response()->json([
                 'type' => 'success',
-=======
-
-=======
->>>>>>> 0055686a09fb6751679672067b3054586721cd03
-        try {
-            // Validate dữ liệu đầu vào
-            $validated = $request->validate([
-                'category_name' => 'required|string|max:255|unique:categories,category_name',
-                'image' => 'nullable|string|max:255',
-                'slug' => 'nullable|string|max:255',
-                'category_parent_id' => 'nullable|integer',
-
-            ]);
-
-            // Gán slug nếu không truyền
-            $slug = $validated['slug'] ?? Str::slug($validated['category_name']);
-
-            // Tạo mới danh mục
-            $category = Category::create([
-                'category_name' => $validated['category_name'],
-                'image' => $validated['image'] ?? null,
-                'category_parent_id' =>
-                empty($request->category_parent_id) || $request->category_parent_id == 0
-                    ? null
-                    : (int)$request->category_parent_id,
-                'slug' => $slug,
-                'status' => $request->status ?? 1 // mặc định là hiển thị nếu không truyền
-            ]);
-
-            return response()->json([
-<<<<<<< HEAD
->>>>>>> 74732299 (add-model)
-=======
-                'type' => 'success',
->>>>>>> 0055686a09fb6751679672067b3054586721cd03
                 'message' => 'Tạo danh mục thành công',
                 'data' => $category
             ], 201);
@@ -227,22 +94,14 @@ class SellerCateController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // Hiển thị thông tin 1 danh mục
     public function show(string $id)
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 0055686a09fb6751679672067b3054586721cd03
         try {
-            // Lấy danh mục cùng với thông tin danh mục cha (chỉ lấy id, category_name)
             $category = Category::with('parent:id,category_name')->findOrFail((int)$id);
+            $cateparent = $this->getParentcate((int)$id)->getData(true)['cateparent'];
 
-            $cateparent = $this->getParentcate((int)$id);
             return response()->json([
-
                 'cateparent' => $cateparent,
                 'data' => [
                     'id' => $category->id,
@@ -251,7 +110,7 @@ class SellerCateController extends Controller
                     'image' => $category->image,
                     'status' => $category->status,
                     'category_parent_id' => $category->category_parent_id,
-                    'category_parent_name' => $category->parent->category_name ?? null, // <- lấy tên danh mục cha
+                    'category_parent_name' => $category->parent->category_name ?? null,
                 ]
             ], 200);
         } catch (\Exception $e) {
@@ -260,64 +119,27 @@ class SellerCateController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
-<<<<<<< HEAD
     }
 
-
-
-=======
-        //
-    }
-
->>>>>>> 74732299 (add-model)
-=======
-    }
-
-
-
->>>>>>> 0055686a09fb6751679672067b3054586721cd03
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
+    // Cập nhật danh mục
     public function update(Request $request, string $id)
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 0055686a09fb6751679672067b3054586721cd03
         try {
-
-            // Tìm danh mục cần cập nhật
             $category = Category::findOrFail($id);
 
-            // Validate dữ liệu đầu vào
             $validated = $request->validate([
                 'category_name' => 'required|string|max:255|unique:categories,category_name,' . $id,
                 'image' => 'nullable|string|max:255',
                 'slug' => 'nullable|string|max:255',
                 'category_parent_id' => 'nullable|integer',
-
             ]);
 
-            // Gán slug nếu không truyền
             $slug = $validated['slug'] ?? Str::slug($validated['category_name']);
 
-            // Cập nhật dữ liệu
             $category->update([
                 'category_name' => $validated['category_name'],
                 'image' => $validated['image'] ?? $category->image,
-                'category_parent_id' =>
-                empty($request->category_parent_id) || $request->category_parent_id == 0
-                    ? null
-                    : (int)$request->category_parent_id,
+                'category_parent_id' => empty($request->category_parent_id) || $request->category_parent_id == 0 ? null : (int)$request->category_parent_id,
                 'slug' => $slug,
                 'status' => $request->status ?? $category->status
             ]);
@@ -338,67 +160,25 @@ class SellerCateController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
-<<<<<<< HEAD
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Request $request) {}
+    // Đổi trạng thái hiển thị danh mục
     public function changeStatus(Request $request)
     {
-
         $category = Category::findOrFail((int)$request->id);
 
-        if ($category->status == 1) {
-            $category->status = 2; // Ẩn danh mục
-            $message = 'Danh mục đã bị ẩn.';
-        } else {
-            $category->status = 1; // Hiển thị lại danh mục
-            $message = 'Danh mục đã được hiển thị.';
-        }
-
+        $category->status = $category->status == 1 ? 2 : 1;
         $category->save();
 
         return response()->json([
-            'message' => $message,
+            'message' => $category->status == 1 ? 'Danh mục đã được hiển thị.' : 'Danh mục đã bị ẩn.',
             'type' => 'success'
         ]);
-=======
-        //
-=======
->>>>>>> 0055686a09fb6751679672067b3054586721cd03
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Request $request) {}
-    public function changeStatus(Request $request)
+    // Xóa danh mục (nếu cần)
+    public function destroy(Request $request)
     {
-<<<<<<< HEAD
-        //
->>>>>>> 74732299 (add-model)
-=======
-
-        $category = Category::findOrFail((int)$request->id);
-
-        if ($category->status == 1) {
-            $category->status = 2; // Ẩn danh mục
-            $message = 'Danh mục đã bị ẩn.';
-        } else {
-            $category->status = 1; // Hiển thị lại danh mục
-            $message = 'Danh mục đã được hiển thị.';
-        }
-
-        $category->save();
-
-        return response()->json([
-            'message' => $message,
-            'type' => 'success'
-        ]);
->>>>>>> 0055686a09fb6751679672067b3054586721cd03
+        // Viết code xóa ở đây nếu cần
     }
 }
