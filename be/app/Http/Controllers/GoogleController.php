@@ -25,7 +25,7 @@ class GoogleController extends Controller
 
             Auth::login($user);
 
-            return redirect('/home'); /
+            return redirect('/home'); 
 
         } catch (\Exception $e) {
             return redirect('/login')->with('error', 'Đăng nhập Google thất bại!');
