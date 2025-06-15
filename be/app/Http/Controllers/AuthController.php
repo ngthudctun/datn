@@ -43,7 +43,7 @@ class AuthController extends Controller
     }
     public function createUser(Request $request)
     {
-        $credentials = $request->validate([
+        $credentials = $request->validate([ 
             'email' => ['required', 'email'],
             'password' => ['required'],
         ], [
@@ -66,51 +66,6 @@ class AuthController extends Controller
             'user' => new UserResource($user),
             'token' => $token
         ]);
-    }
-
-    // Đăng ký
-    public function createUser(Request $request)
-    {
-        $validated = $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed',
-        ], [
-            'email.unique' => 'Email đã tồn tại',
-            'password.confirmed' => 'Mật khẩu không trùng khớp',
-            'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự'
-        ]);
-
-        $validated['password'] = Hash::make($validated['password']);
-        $user = User::create($validated);
-        $token = $user->createToken('api-token')->plainTextToken;
-
-        return response()->json([
-            'message' => 'Đăng ký và đăng nhập thành công',
-            'user' => new UserResource($user),
-            'token' => $token
-        ], 201);
-    }
-
-    public function createUser(Request $request)
-    {
-        $validated = $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed',
-        ], [
-            'email.unique' => 'Email đã tồn tại',
-            'password.confirmed' => 'Mật khẩu không trùng khớp',
-            'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự'
-        ]);
-
-        $validated['password'] = Hash::make($validated['password']);
-        $user = User::create($validated);
-
-        return response()->json([
-            'message' => 'Đăng ký thành công',
-            'user' => new UserResource($user)
-        ], 201);
     }
 
     public function logout(Request $request)

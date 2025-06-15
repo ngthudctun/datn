@@ -45,17 +45,13 @@ export default {
             }
 
             this.isLoading = true;
-            loadingStore.start();
             try {
-                const response = await axios.get(
-                    '/api/wishlist/toggle',
-                    { product_id: this.productId },
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
-                    }
-                );
+                const response = await this.$axios.get('/wishlist/toggle', {
+                    params: {
+                        product_id: this.productId
+                    },
+                });
+
                 this.isWishlisted = response.data.is_wishlisted;
                 this.$emit('update:wishlisted', this.isWishlisted);
                 this.toastStore.toast({
@@ -72,12 +68,10 @@ export default {
                 });
             } finally {
                 this.isLoading = false;
-                loadingStore.end();
             }
         }
     }
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

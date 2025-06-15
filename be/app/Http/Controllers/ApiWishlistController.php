@@ -15,25 +15,37 @@ class ApiWishlistController extends Controller
 
         $userId = auth()->id();
         if (!$userId) {
-            return response()->json(['message' => 'Chưa đăng nhập'], 401);
+            return response()->json([
+                'message' => 'Chưa đăng nhập'
+            ], 401);
         }
 
-        $existing = Wishlist::where('user_id', $userId)
-                            ->where('product_id', $request->product_id)
-                            ->first();
+        $wishlist = Wishlist::where('user_id', $userId)
+            ->where('product_id', $request->product_id)
+            ->first();
 
-        if ($existing) {
-            $existing->delete();
-            return response()->json(['message' => 'Đã xóa khỏi danh sách yêu thích']);
+        if ($wishlist) {
+            $wishlist->delete();
+
+            return response()->json([
+                'message' => 'Đã xóa khỏi danh sách yêu thích',
+                'is_wishlisted' => false,
+                'type' => 'success',
+            ]);
         }
 
         Wishlist::create([
             'user_id' => $userId,
-            'product_id' => $request->product_id
+            'product_id' => $request->product_id,
         ]);
 
-        return response()->json(['message' => 'Đã thêm vào danh sách yêu thích']);
+        return response()->json([
+            'message' => 'Đã thêm vào danh sách yêu thích',
+            'is_wishlisted' => true,
+            'type' => 'success',
+        ]);
     }
+
 
     public function index()
     {
