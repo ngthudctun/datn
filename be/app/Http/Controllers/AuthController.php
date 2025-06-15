@@ -18,38 +18,9 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-<<<<<<< HEAD
-    $credentials = $request->validate([
-        'email' => ['required', 'email'],
-        'password' => ['required'],
-    ]);
-
-    if (!Auth::attempt($credentials)) {
-        return response()->json([
-            'message' => 'Email hoặc mật khẩu không đúng'
-        ], 401);
-    }
-
-    $users = Auth::user();
-
-    $token = $users->createToken('api-token')->plainTextToken;
-
-    return response()->json([
-        'message' => 'Đăng nhập thành công',
-        'user' => $users,
-        'token' => $token
-    ]);
-    }
-    public function createUser(Request $request) {
-        $validated = $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:1|confirmed',
-=======
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
->>>>>>> 6de8624992cda7712093da3cb8a6cf2b263ea8bf
         ], [
             'email.required' => 'Vui lòng nhập email',
             'email.email' => 'Email không đúng định dạng',
@@ -75,6 +46,7 @@ class AuthController extends Controller
     public function createUser(Request $request)
     {
         $validated = $request->validate([
+            'username' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8|confirmed',
         ], [

@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="row property__gallery">
-                <div v-for="product in products" :key="product.id" class="col-lg-3 col-md-4 col-sm-6 mix"
+                <div v-for="product in products" :key="product.id" class="col-lg-3 col-md-4 col-sm-6 mix mb-5"
                     :class="getCategoryClass(product.category_id)">
                     <router-link :to="'/san-pham/' + product.slug" class="product__item">
                         <div class="product__item__pic set-bg"
@@ -34,7 +34,7 @@
                         </div>
                         <div class="product__item__text">
                             <h6>
-                                <router-link :to="'/san-pham/' + product.slug">{{ truncateName(product.product_name)
+                                <router-link :to="'/san-pham/' + product.slug">{{ (product.product_name)
                                     }}</router-link>
                             </h6>
                             <div class="rating">

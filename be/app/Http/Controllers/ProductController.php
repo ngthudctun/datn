@@ -15,18 +15,20 @@ class ProductController extends Controller
         $products = Product::paginate(12);
         return response()->json($products);
     }
-    public function getById($id) {
+    public function getById($id)
+    {
         $products = Product::find($id);
         return response()->json($products);
     }
-    public function getRelatedById($id) {
+    public function getRelatedById($id)
+    {
         $products = Product::find($id);
         $relatedProducts = Product::where('category_code', $products->category_code)
-        ->where('id', '!=', $id)
-        ->get();
+            ->where('id', '!=', $id)
+            ->get();
         return response()->json($relatedProducts);
     }
-    public function latestFive()    
+    public function latestFive()
     {
         $products = Product::orderBy('created_at', 'desc')->take(8)->get();
 
@@ -51,10 +53,19 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($slug)
     {
-        //
+        $product = Product::with([
+            'category',
+            'brand',
+            'variants.attributeVariants.attribute',
+            'variants.images',
+            'reviews.user',
+        ])->where('slug', $slug)->firstOrFail();
+
+        return response()->json($product);
     }
+
 
     /**
      * Show the form for editing the specified resource.

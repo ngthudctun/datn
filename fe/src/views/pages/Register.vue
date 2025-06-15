@@ -11,78 +11,57 @@
                         <form @submit.prevent="register">
                             <div class="form-group">
                                 <label for="username" class="sr-only">Họ và tên</label>
-                                <input 
-                                    type="text" 
-                                    id="username" 
-                                    placeholder="Họ và tên" 
-                                    v-model.trim="form.username"
-                                    :class="{ 'is-invalid': errors.username }"
-                                    aria-describedby="username-error"
-                                >
+                                <input type="text" id="username" placeholder="Họ và tên" v-model.trim="form.username"
+                                    :class="{ 'is-invalid': errors.username }" aria-describedby="username-error">
                                 <div v-if="errors.username" class="invalid-feedback" id="username-error">
                                     {{ errors.username }}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="sr-only">Email</label>
-                                <input 
-                                    type="text" 
-                                    id="email" 
-                                    placeholder="Email" 
-                                    v-model.trim="form.email"
-                                    :class="{ 'is-invalid': errors.email }"
-                                    aria-describedby="email-error"
-                                >
+                                <input type="text" id="email" placeholder="Email" v-model.trim="form.email"
+                                    :class="{ 'is-invalid': errors.email }" aria-describedby="email-error">
                                 <div v-if="errors.email" class="invalid-feedback" id="email-error">
                                     {{ errors.email }}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="sr-only">Mật khẩu</label>
-                                <input 
-                                    type="password" 
-                                    id="password" 
-                                    placeholder="Mật khẩu" 
-                                    v-model.trim="form.password"
-                                    :class="{ 'is-invalid': errors.password }"
-                                    aria-describedby="password-error"
-                                >
+                                <input type="password" id="password" placeholder="Mật khẩu" v-model.trim="form.password"
+                                    :class="{ 'is-invalid': errors.password }" aria-describedby="password-error">
                                 <div v-if="errors.password" class="invalid-feedback" id="password-error">
                                     {{ errors.password }}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password_confirmation" class="sr-only">Xác nhận mật khẩu</label>
-                                <input 
-                                    type="password" 
-                                    id="password_confirmation" 
-                                    placeholder="Xác nhận mật khẩu" 
+                                <input type="password" id="password_confirmation" placeholder="Xác nhận mật khẩu"
                                     v-model.trim="form.password_confirmation"
                                     :class="{ 'is-invalid': errors.password_confirmation }"
-                                    aria-describedby="password_confirmation-error"
-                                >
-                                <div v-if="errors.password_confirmation" class="invalid-feedback" id="password_confirmation-error">
+                                    aria-describedby="password_confirmation-error">
+                                <div v-if="errors.password_confirmation" class="invalid-feedback"
+                                    id="password_confirmation-error">
                                     {{ errors.password_confirmation }}
                                 </div>
                             </div>
                             <div class="text-center mt-3">
-                                <button 
-                                    type="submit" 
-                                    class="site-btn" 
-                                    :disabled="isLoading"
-                                >
-                                    <span v-if="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                <button type="submit" class="site-btn" :disabled="isLoading">
+                                    <span v-if="isLoading" class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
                                     {{ isLoading ? 'Đang xử lý...' : 'Đăng ký' }}
                                 </button>
                                 <hr class="style-eight">
                                 <div class="auth__social">
-                                    <a href="#"><i class="fa-brands fa-google"></i> - Đăng ký bằng Google</a>
+                                    <a href="#"><i class="fa-brands fa-google"></i> - Đăng nhập bằng Google</a>
                                 </div>
                                 <p class="text-dark">Bằng việc đăng ký, bạn đã đồng ý với ShopNow về <br>
-                                    <router-link class="primary-color" to="/dieu-khoan-dich-vu">điều khoản dịch vụ</router-link>
-                                    & <router-link class="primary-color" to="/chinh-sach-bao-mat">chính sách bảo mật</router-link>
+                                    <router-link class="primary-color" to="/dieu-khoan-dich-vu">điều khoản dịch
+                                        vụ</router-link>
+                                    & <router-link class="primary-color" to="/chinh-sach-bao-mat">chính sách bảo
+                                        mật</router-link>
                                 </p>
-                                <p>Bạn đã có tài khoản? <router-link class="primary-color" to="/dang-nhap">Đăng nhập</router-link></p>
+                                <p>Bạn đã có tài khoản? <router-link class="primary-color" to="/dang-nhap">Đăng
+                                        nhập</router-link></p>
                             </div>
                         </form>
                     </div>
@@ -95,6 +74,8 @@
 
 <script>
 import axios from 'axios'
+
+import { useShowtoast } from '@/assets/js/toast';
 
 export default {
     name: 'Register',
@@ -114,6 +95,10 @@ export default {
             },
             isLoading: false
         }
+    },
+    setup() {
+        const toastStore = useShowtoast();
+        return { toastStore };
     },
     methods: {
         validateForm() {
@@ -181,24 +166,37 @@ export default {
             this.isLoading = true;
             try {
                 const response = await axios.post('/api/register', this.form);
-                alert('Đăng ký thành công!');
+                this.toastStore.toast({
+                    title: 'Thông báo',
+                    message: 'Đăng ký thành công',
+                    type: 'success',
+                });
                 this.$router.push('/dang-nhap');
             } catch (error) {
                 if (error.response && error.response.data && error.response.data.errors) {
                     Object.keys(error.response.data.errors).forEach(key => {
                         this.errors[key] = error.response.data.errors[key][0];
                     });
-                    alert('Có lỗi xảy ra khi đăng ký.');
+                    this.toastStore.toast({
+                        title: 'Thông báo',
+                        message: 'Lỗi khi đăng ký',
+                        type: 'error',
+                    });
                 } else {
-                    alert('Lỗi kết nối server.');
+                    console.log(error);
+                    this.toastStore.toast({
+                        title: 'Thông báo',
+                        message: 'Lỗi server, vui lòng thử lại sau',
+                        type: 'error',
+                    });
                 }
             } finally {
                 this.isLoading = false;
             }
         }
+
     }
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

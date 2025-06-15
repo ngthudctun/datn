@@ -7,13 +7,13 @@
             <div class="owl-carousel owl-theme" ref="owlCarousel">
                 <div class="item" v-for="(group, index) in groupedCategories" :key="index">
                     <div class="category-grid">
-                        <a href="" class="category-item" v-for="cat in group" :key="cat.name + cat.img">
+                        <router-link :to="cat.slug" class="category-item" v-for="cat in group" :key="cat.category_name + cat.image">
                             <div class="p-3 text-center h-100 d-flex flex-column align-items-center">
-                                <img :src="cat.img" :alt="cat.name" class="img-fluid mb-2"
+                                <img :src="$imageUrl + cat.image" :alt="cat.category_name" class="img-fluid mb-2"
                                     style="height: 100px; object-fit: cover; width: 100%; max-width: 120px;" />
-                                <h6 class="fw-semibold mt-auto">{{ cat.name }}</h6>
+                                <h6 class="fw-semibold mt-auto">{{ cat.category_name }}</h6>
                             </div>
-                        </a>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -22,36 +22,13 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: "Categories",
     data() {
         return {
-            categories: [
-                { name: "Áo Thun", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Quần Jean", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Giày", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Túi Xách", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Mũ", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Đồng Hồ", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Áo Thun 2", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Quần Jean 2", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Giày 2", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Túi Xách 2", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Mũ 2", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Đồng Hồ 2", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Áo Thun", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Quần Jean", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Giày", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Túi Xách", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Mũ", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Đồng Hồ", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Áo Thun 2", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Quần Jean 2", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Giày 2", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Túi Xách 2", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Mũ 2", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-                { name: "Đồng Hồ 2", img: "https://cdn-imgix.headout.com/tour/7064/TOUR-IMAGE/b2c74200-8da7-439a-95b6-9cad1aa18742-4445-dubai-img-worlds-of-adventure-tickets-02.jpeg?auto=format&w=900&h=562.5&q=90&fit=crop&ar=16%3A10" },
-            ],
+            categories: [], // ban đầu rỗng, sẽ được gán sau từ API
         };
     },
     computed: {
@@ -63,29 +40,45 @@ export default {
             return groups;
         },
     },
-    mounted() {
-        // Khởi tạo Owl Carousel trên phần tử ref
-        $(this.$refs.owlCarousel).owlCarousel({
-            loop: true,
-            margin: 4,
-            nav: true,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 10000,
-            autoplayHoverPause: true,
-            items: 1,
-            responsive: {
-                0: { items: 1 },
-                576: { items: 1.5 },
-                768: { items: 2 },
-                992: { items: 3 },
-                1200: { items: 4 }
+    methods: {
+        async fetchCategories() {
+            try {
+                const res = await axios.get('/api/categories');
+                this.categories = res.data.data; // đảm bảo API trả về mảng trong `data`
+                console.log(this.categories)
+                this.initOwlCarousel(); // khởi tạo sau khi gán data
+            } catch (err) {
+                console.error("Lỗi khi tải danh mục:", err);
             }
-        });
+        },
+        initOwlCarousel() {
+            this.$nextTick(() => {
+                $(this.$refs.owlCarousel).owlCarousel({
+                    loop: true,
+                    margin: 4,
+                    nav: true,
+                    dots: false,
+                    autoplay: true,
+                    autoplayTimeout: 10000,
+                    autoplayHoverPause: true,
+                    items: 1,
+                    responsive: {
+                        0: { items: 1 },
+                        576: { items: 1.5 },
+                        768: { items: 2 },
+                        992: { items: 3 },
+                        1200: { items: 4 }
+                    }
+                });
+            });
+        }
+    },
+    mounted() {
+        this.fetchCategories(); // Gọi API khi component mount
     }
 };
-</script>
 
+</script>
 <style scoped>
 .category-grid {
     display: grid !important;

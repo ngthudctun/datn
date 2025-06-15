@@ -44,7 +44,7 @@ export const useShowtoast = defineStore("Showtoast", {
                 const delay = (duration / 1000).toFixed(2);
 
                 toast.classList.add("toastmain", `toast--${type}`, "mb-2");
-                toast.style.animation = `slideInLeft ease 0.3s, slideOutRight linear 0.5s ${delay}s forwards`;
+                toast.style.animation = `slideInRight ease 0.3s, slideOutRight linear 0.5s ${delay}s forwards`;
 
                 // Tạo thanh progress riêng
                 const progress = document.createElement("div");

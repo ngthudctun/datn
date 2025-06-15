@@ -26,11 +26,11 @@ Route::apiResource('banners', BannerController::class);
 Route::apiResource('logins', LoginController::class);
 
 /*API cua trung */
+Route::post('/register', [AuthController::class, 'createUser']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users', [AuthController::class, 'index']);
     Route::get('/logout', [AuthController::class, 'logout']);
-    Route::get('/register', [AuthController::class, 'createUser']);
-    Route::post('/login', [AuthController::class, 'login'])->name('login');
     Route::apiResource('/cart/toggle', CartController::class);
     Route::get('/wishlist/toggle', [ApiWishlistController::class, 'toggle']);
     Route::get('/wishlist', [ApiWishlistController::class, 'index']);
@@ -56,3 +56,8 @@ Route::patch('seller-category-change-status', [SellerCateController::class, 'cha
 Route::get('seller-category-parent', [SellerCateController::class, 'getParentcate']);
 /* api của truong */
 Route::get('/products/latest', [ProductController::class, 'latestFive']);
+
+
+// Hung 
+Route::get('/api/products/{slug}', [ProductController::class, 'show']);
+// Hung 

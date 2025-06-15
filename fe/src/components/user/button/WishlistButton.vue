@@ -33,12 +33,6 @@ export default {
     methods: {
         async toggleWishlist() {
             if (this.isLoading) return;
-            this.toastStore.toast({
-                    title: 'Thông báo',
-                    message: 'Vui lòng đăng nhập để thêm vào danh sách yêu thích',
-                    type: 'info',
-            });
-            return;
             const token = localStorage.getItem('token');
             if (!token) {
                 this.toastStore.toast({
@@ -51,6 +45,7 @@ export default {
             }
 
             this.isLoading = true;
+            loadingStore.start();
             try {
                 const response = await axios.get(
                     '/api/wishlist/toggle',
@@ -77,6 +72,7 @@ export default {
                 });
             } finally {
                 this.isLoading = false;
+                loadingStore.end();
             }
         }
     }

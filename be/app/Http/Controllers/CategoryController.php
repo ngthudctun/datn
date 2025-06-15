@@ -13,14 +13,21 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::paginate(5);
-        return response()->json($category);
+        $categories = Category::whereNull('category_parent_id')->inRandomOrder()->get();
+        return response()->json([
+            'data' => $categories
+        ]);
     }
-    public function getAllCategory() {
+
+
+
+    public function getAllCategory()
+    {
         $getCategories = Category::all();
         return response()->json($getCategories);
     }
-    public function addCategory(Request $request) {
+    public function addCategory(Request $request)
+    {
         $nameCategory = $request->validate([
             'name' => 'required|string|max:50|unique:categories,name'
         ]);
@@ -39,20 +46,21 @@ class CategoryController extends Controller
         ]);
         $category = Category::find($categoryId);
 
-    if (!$category) {
-        return response()->json(['message' => 'Danh mục không tồn tại'], 404);
-    }
+        if (!$category) {
+            return response()->json(['message' => 'Danh mục không tồn tại'], 404);
+        }
 
-    $category->update(['name' => $nameCategory['name']]);
+        $category->update(['name' => $nameCategory['name']]);
 
-    return response()->json(['message' => 'Cập nhật thành công', 'category' => $category]);
+        return response()->json(['message' => 'Cập nhật thành công', 'category' => $category]);
     }
-    public function deleteCategory(string $id) {
+    public function deleteCategory(string $id)
+    {
         $category = Category::find($id);
 
         $hasProduct = Product::where('category_code', $id)->get();
 
-        if($hasProduct->count() > 0) {
+        if ($hasProduct->count() > 0) {
             Product::where('category_code', $id)->update(
                 ['category_code' => 11]
             );
@@ -60,7 +68,6 @@ class CategoryController extends Controller
 
         $category->delete();
         return response()->json(["message" => "Xóa danh mục thành công"]);
-
     }
     /**
      * Show the form for creating a new resource.
